@@ -5,24 +5,22 @@
                 "Mapname": {
                     "MapScore": 0
                 },
-                "THS": 0
+                "TotalHighscore": 0
             }
         }
     ],
-    "HS": [
+    "Highscore": [
         {
-            "Name": {
-                "PHS": [
-                    {
-                        "Name": {
-                            "Mapname": {
-                                "MapScore": 0
-                            },
-                            "THS": 0
-                        }
+            "PersonalHighscore": [
+                {
+                    "Name": {
+                        "Mapname": {
+                            "MapScore": 0
+                        },
+                        "TotalHighscore": 0
                     }
-                ]
-            }
+                }
+            ]
         }
     ],
     "Users": [

@@ -664,25 +664,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Tokelu\\.nuget\\packages\\": {},
+    "C:\\Users\\Duffy\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\GIT\\PRJ4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Highscore.csproj",
+      "projectUniqueName": "C:\\Users\\Duffy\\Desktop\\PRJ4\\prj4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Highscore.csproj",
       "projectName": "Highscore",
-      "projectPath": "D:\\GIT\\PRJ4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Highscore.csproj",
-      "packagesPath": "C:\\Users\\Tokelu\\.nuget\\packages\\",
-      "outputPath": "D:\\GIT\\PRJ4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\obj\\",
+      "projectPath": "C:\\Users\\Duffy\\Desktop\\PRJ4\\prj4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Highscore.csproj",
+      "packagesPath": "C:\\Users\\Duffy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Duffy\\Desktop\\PRJ4\\prj4\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Tokelu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Duffy\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
