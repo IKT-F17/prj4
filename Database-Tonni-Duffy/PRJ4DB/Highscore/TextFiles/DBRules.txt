@@ -1,0 +1,11 @@
+﻿Regelsæt for DB
+
+1. Personal highscore skal indeholde kan indeholde ingen, et eller flere name(s).
+2. Name skal indeholde én total highscore.
+3. Personal highscore kan indeholde ingen, et eller flere mapname(s).
+4. Mapname skal indeholde én Mapscore.
+5. Highscore kan indeholde ingen, en eller flere personal highscores
+6. Users kan indeholde ingen, et eller flere login name(s)
+7. login name skal indeholde et og kun et username/password par.
+8. Imap kan indeholde ingen, en eller flere mapfilepaths
+9. Mapfilepaths skal indeholde en filepath og kun én.
