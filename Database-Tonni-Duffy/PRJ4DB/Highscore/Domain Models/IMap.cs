@@ -2,7 +2,6 @@
 {
     public class IMap
     {
-        public MapFilePath MapFilePath { get; set; }
+        public MapFilePath MapName { get; set; }
     }
-
 }

@@ -1,8 +1,10 @@
 ﻿namespace Highscore
 {
+
     public class User
     {
-        public Name LoginName { get; set; }
+        public Scores Scores { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
     }
-
 }

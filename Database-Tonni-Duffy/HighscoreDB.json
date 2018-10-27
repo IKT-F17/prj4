@@ -1,34 +1,15 @@
 {
-    "PHS": [
+    "Users": [
         {
-            "Name": {
-                "Mapname": {
+            "Scores": {
+                "Map": {
+                    "Name": "",
                     "MapScore": 0
                 },
                 "TotalHighscore": 0
-            }
-        }
-    ],
-    "Highscore": [
-        {
-            "PersonalHighscore": [
-                {
-                    "Name": {
-                        "Mapname": {
-                            "MapScore": 0
-                        },
-                        "TotalHighscore": 0
-                    }
-                }
-            ]
-        }
-    ],
-    "Users": [
-        {
-            "Name": {
-                "Username": "",
-                "Password": ""
-            }
+            },
+            "Username": "",
+            "Password": ""
         }
     ],
     "IMap": [
