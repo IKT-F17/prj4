@@ -1,0 +1,7 @@
+﻿--
+-- Create Table    : 'MAPDB'   
+-- DB1ID           :  
+--
+CREATE TABLE MAPDB (
+    DB1ID          INT IDENTITY(1,1) NOT NULL,
+CONSTRAINT pk_MAPDB PRIMARY KEY CLUSTERED (DB1ID))

@@ -1,0 +1,22 @@
+{
+    "Users": [
+        {
+            "Scores": {
+                "Map": {
+                    "Name": "",
+                    "MapScore": 0
+                },
+                "TotalHighscore": 0
+            },
+            "Username": "",
+            "Password": ""
+        }
+    ],
+    "IMap": [
+        {
+            "MapName": {
+                "filepath": ""
+            }
+        }
+    ]
+}

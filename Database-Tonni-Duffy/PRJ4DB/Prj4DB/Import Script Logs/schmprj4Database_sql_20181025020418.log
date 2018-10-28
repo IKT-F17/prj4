@@ -1,0 +1,13 @@
+25-10-2018 16:04:18	This log contains information about the import operation of the script 'schmprj4Database.sql' into project 'Prj4DB' on computer 'DESKTOP-KLGP8A2' by user'Tokelu.
+25-10-2018 16:04:18	Started importing file: D:\GIT\PRJ4\Database-Tonni-Duffy\MSSQL\schmprj4Database.sql 
+25-10-2018 16:04:18	File name D:\GIT\PRJ4\Database-Tonni-Duffy\MSSQL\schmprj4Database.sql (size: 3646)
+25-10-2018 16:04:18	Parsing import script
+25-10-2018 16:04:18	Total number of batches in script: 17
+25-10-2018 16:04:18	Total number of statements in script: 7
+25-10-2018 16:04:18	The script was successfully imported into the project.
+25-10-2018 16:04:18	Analyzing schema objects...
+25-10-2018 16:04:18	Scanning project for duplicate elements
+25-10-2018 16:04:18	Finished duplicate element processing
+25-10-2018 16:04:19	In the script that you provided to the import operation, one or more statements were not fully understood. These statements were moved to the ScriptsIgnoredOnImport.sql file. Review the file contents for additional information.
+25-10-2018 16:04:19	A summary of the import was saved to the following location: D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Prj4DB\Import Script Logs\schmprj4Database_sql_20181025020418.log
+25-10-2018 16:04:19	Click Finish to continue...

@@ -1,0 +1,7 @@
+﻿--
+-- Create Table    : 'HSDB'   
+-- DB2ID           :  
+--
+CREATE TABLE HSDB (
+    DB2ID          INT IDENTITY(1,1) NOT NULL,
+CONSTRAINT pk_HSDB PRIMARY KEY CLUSTERED (DB2ID))
