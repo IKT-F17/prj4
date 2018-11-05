@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO.MemoryMappedFiles;
 using System.Net;
-using System.Security.AccessControl;
+//using System.Security.AccessControl;
+
+using Highscore;
+
+
 
 namespace Highscore.Utilities
 {
@@ -11,7 +15,7 @@ namespace Highscore.Utilities
     {
         public Utilities()
         {
-            user = new User()
+            var user = new User()
             {
                 Password = "",
                 Username = "",
@@ -35,13 +39,28 @@ namespace Highscore.Utilities
 
         */
 
+
+
+        private SqlConnection OpenConnection
+        {
+            get
+            {
+                var con = new SqlConnection(
+                    // ADD DB Connectionstring here. 
+                );
+                con.Open();
+                return con;
+            }
+        }
+
+
         void AddAccount(ref User user)
         {
             string insertStringParam = @"INSERT INTO User (password, username, totalHighscore, mapScore, name)
                                             OUTPUT user.Username
                                             VALUES (@Password, @Username, @TotalHighscore, @MapScore, @Name)";
 
-            using (SQLCommand cmd = New SQLCommand(InsertStringParam, OpenConnection))
+            using (SqlCommand cmd = new SqlCommand(insertStringParam, OpenConnection))
             {
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Username", user.Username);
@@ -58,10 +77,10 @@ namespace Highscore.Utilities
                                             Set totalHighscore = @TotalHighscore, mapScore = @MapScore
                                             WHERE username = @Username AND name = @Name";
 
-            using (SQLCommand cmd = New SQLCommand(InsertStringParam, OpenConnection))
+            using (SqlCommand cmd = new SqlCommand(InsertStringParam, OpenConnection))
             {
-                cmd.Parameters.AddwithValue("@TotalHighscore", user.Scores.TotalHighscore);
-                cmd.Parameters.AddwithValue("@MapScore", user.Scores.Map.MapScore);
+                cmd.Parameters.AddWithValue("@TotalHighscore", user.Scores.TotalHighscore);
+                cmd.Parameters.AddWithValue("@MapScore", user.Scores.Map.MapScore);
                 cmd.ExecuteNonQuery();
             }
         }
@@ -79,11 +98,29 @@ namespace Highscore.Utilities
 
         void DeleteAccount(ref User user) //delete only if username exists
         {
-
+            string DeleteString = @"DELETE FROM User WHERE (Username=@Username)";
+            using (SqlCommand cmd = new SqlCommand(DeleteString, OpenConnection))
+            {
+                cmd.Parameters.AddWithValue("@Username", user.Username);
+                var count = cmd.ExecuteNonQuery(); //Vi bruger måske ikke count til noget ? men den er ikke til nogen skade .
+                user = null;
+            }
         }
 
-        void ChangeAccountPassword(ref User user) 
+
+
+        void ChangeAccountPassword(ref User user)
         {
+            string insertStringParam = @"UPDATE User 
+                                                SET Password=@Password
+                                                WHERE Username=@Username";
+
+            using (SqlCommand cmd = new SqlCommand(insertStringParam, OpenConnection))
+            {
+                cmd.Parameters.AddWithValue("@Password", user.Password);
+                var count = cmd.ExecuteNonQuery();
+            }
+
 
         }
 

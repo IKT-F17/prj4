@@ -1,6 +1,19 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Database-Tonni-Duffy",
+    "\\Database-Tonni-Duffy\\PRJ4DB",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Highscore",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\obj",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\TextFiles",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Utilities",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\MapDB",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\MapDB\\dbo",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\MapDB\\dbo\\Tables",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Prj4DB",
+    "\\Database-Tonni-Duffy\\PRJ4DB\\Prj4DB\\dbo",
+    "\\PRJ4-Rat-Defence\\Monsters"
   ],
+  "SelectedNode": "\\Database-Tonni-Duffy\\PRJ4DB\\Highscore\\Highscore.csproj",
   "PreviewInSolutionExplorer": false
 }

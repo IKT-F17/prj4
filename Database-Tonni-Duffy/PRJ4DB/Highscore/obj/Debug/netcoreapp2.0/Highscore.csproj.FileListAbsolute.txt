@@ -1,0 +1,8 @@
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\bin\Debug\netcoreapp2.0\Highscore.deps.json
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\bin\Debug\netcoreapp2.0\Highscore.runtimeconfig.json
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\bin\Debug\netcoreapp2.0\Highscore.runtimeconfig.dev.json
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\bin\Debug\netcoreapp2.0\Highscore.dll
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\obj\Debug\netcoreapp2.0\Highscore.csprojAssemblyReference.cache
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\obj\Debug\netcoreapp2.0\Highscore.csproj.CoreCompileInputs.cache
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\obj\Debug\netcoreapp2.0\Highscore.AssemblyInfoInputs.cache
+D:\GIT\PRJ4\Database-Tonni-Duffy\PRJ4DB\Highscore\obj\Debug\netcoreapp2.0\Highscore.AssemblyInfo.cs

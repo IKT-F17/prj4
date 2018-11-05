@@ -1,4 +1,9 @@
-﻿namespace Highscore
+﻿using System;
+using System.Collections.Generic;
+
+
+
+namespace Highscore
 {
     public class Lists
     {
