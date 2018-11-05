@@ -2,7 +2,7 @@
 {
     public interface IOffensiveUnit
     {
-        void Path();
+        void Path(int startTile, int endTile, int offensiveTiles);
         void Immunites();
 
         string nameOffensiveUnit { get; set; }//gobil, ponys,cats, Orgs
