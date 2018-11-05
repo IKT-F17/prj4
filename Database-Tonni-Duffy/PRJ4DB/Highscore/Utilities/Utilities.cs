@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.IO.MemoryMappedFiles;
 using System.Net;
 using System.Security.AccessControl;
 
@@ -13,11 +14,11 @@ namespace Highscore.Utilities
             user = new User()
             {
                 Password = "",
-                Username ="",
+                Username = "",
                 Scores =
                 {
                     TotalHighscore = 0,
-                    Map = 
+                    Map =
                     {
                         MapScore = 0,
                         Name = ""
@@ -34,13 +35,13 @@ namespace Highscore.Utilities
 
         */
 
-        void AddUser(ref User user)
+        void AddAccount(ref User user)
         {
             string insertStringParam = @"INSERT INTO User (password, username, totalHighscore, mapScore, name)
                                             OUTPUT user.Username
                                             VALUES (@Password, @Username, @TotalHighscore, @MapScore, @Name)";
-            
-            using (SQLCommand cmd = New SQLCommand(InsertStringParam,OpenConnection))
+
+            using (SQLCommand cmd = New SQLCommand(InsertStringParam, OpenConnection))
             {
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 cmd.Parameters.AddWithValue("@Username", user.Username);
@@ -63,6 +64,52 @@ namespace Highscore.Utilities
                 cmd.Parameters.AddwithValue("@MapScore", user.Scores.Map.MapScore);
                 cmd.ExecuteNonQuery();
             }
+        }
+
+        void GetMap(ref MapFilePath mapFile) //return string of mapfilepath
+        {
+
+        }
+
+
+        void CreateAccount(ref User user) //if username exists don't create
+        {
+
+        }
+
+        void DeleteAccount(ref User user) //delete only if username exists
+        {
+
+        }
+
+        void ChangeAccountPassword(ref User user) 
+        {
+
+        }
+
+        void GetLeaderBoard(ref User user) //return all the scores and add in list. THen sort list and take top 10. (quicksort)
+        {
+
+        }
+
+        void GetAccountScore(ref User user) //returns value of score
+        {
+
+        }
+
+        void GetAccountMapScore(ref User user, Map name) //returns score for a specific map for a specific Account
+        {
+
+        }
+
+        void AddMap(ref MapFilePath mapFilePath, Map name) //add a string of the filepath for the map file and map name to class map
+        {
+            
+        }
+
+        void DeleteMap(ref MapFilePath mapFilePath, Map name) //delete a string of the filepath for the map file and map name on class map
+        {
+
         }
     }
 }
