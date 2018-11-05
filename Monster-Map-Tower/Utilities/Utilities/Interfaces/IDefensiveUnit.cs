@@ -7,13 +7,13 @@
         void degradUnit();
         void location();
 
-        string nameDefensiveUnit;//
-        int defendPower;//How hard can it hit
-        int defendType;//What type of deffens
-        int range;//How far
-        int upgradPrice;//How much
-        int degradPrice;
-        int defensiveTiles;//where to place?
+        string nameDefensiveUnit { get; set; } //
+        int defendPower { get; set; }//How hard can it hit
+        int defendType { get; set; }//What type of deffens
+        int range { get; set; }//How far
+        int upgradPrice { get; set; }//How much
+        int degradPrice { get; set; }
+        int defensiveTiles { get; set; }//where to place?
         
     }
 }

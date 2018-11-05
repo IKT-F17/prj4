@@ -5,12 +5,12 @@
         void Path();
         void Immunites();
 
-        string nameOffensiveUnit;//gobil, ponys,cats, Orgs
-        int runSpeed;//offensive unit speed on map
-        int reward;//reward for killing an offensive unit
-        int hitPoints;//attack power
-        int starTile;
-        int offensiveTiles;
-        int endTile;
+        string nameOffensiveUnit { get; set; }//gobil, ponys,cats, Orgs
+        int runSpeed { get; set; }//offensive unit speed on map
+        int reward { get; set; }//reward for killing an offensive unit
+        int hitPoints { get; set; }//attack power
+        int startTile { get; set; }
+        int offensiveTiles { get; set; }
+        int endTile { get; set; }
     }
 }

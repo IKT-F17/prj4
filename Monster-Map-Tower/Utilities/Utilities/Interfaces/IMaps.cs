@@ -1,4 +1,7 @@
-﻿namespace Utilities.Interfaces
+﻿using System.Dynamic;
+using Utilities.Interfaces;
+
+namespace Utilities.Interfaces
 {
     public interface IMaps
     {
@@ -7,12 +10,10 @@
         void callWave();
         void placeDefensiveUnit();
 
-        string nameMap;
-        int tilesTypes;
-        IDefensiveUnit IDefensiveUnit;
-        IOffensiveUnit IOffensiveUnit;
-        int baseTile;
-        int spawnTile;
+        string nameMap { get; set; }
+        int tilesTypes { get; set; }
+        int baseTile { get; set; }
+        int spawnTile { get; set; }
 
     }
 }

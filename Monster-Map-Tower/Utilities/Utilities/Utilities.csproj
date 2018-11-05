@@ -45,11 +45,14 @@
     <Compile Include="Interfaces\IDefensiveUnit.cs" />
     <Compile Include="Interfaces\IMaps.cs" />
     <Compile Include="Interfaces\IOffensiveUnit.cs" />
+    <Compile Include="Interfaces\Map.cs" />
+    <Compile Include="Interfaces\InterFaceTest.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
