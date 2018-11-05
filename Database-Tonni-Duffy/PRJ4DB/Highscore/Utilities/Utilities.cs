@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO.MemoryMappedFiles;
 using System.Net;
+using System.Text.RegularExpressions;
 //using System.Security.AccessControl;
 
 using Highscore;
@@ -73,11 +74,11 @@ namespace Highscore.Utilities
 
         void UpdateScore(ref User user)
         {
-            string InsertStringParam = @"Update User
+            string updateStringParam = @"Update User
                                             Set totalHighscore = @TotalHighscore, mapScore = @MapScore
                                             WHERE username = @Username AND name = @Name";
 
-            using (SqlCommand cmd = new SqlCommand(InsertStringParam, OpenConnection))
+            using (SqlCommand cmd = new SqlCommand(updateStringParam, OpenConnection))
             {
                 cmd.Parameters.AddWithValue("@TotalHighscore", user.Scores.TotalHighscore);
                 cmd.Parameters.AddWithValue("@MapScore", user.Scores.Map.MapScore);
@@ -111,11 +112,11 @@ namespace Highscore.Utilities
 
         void ChangeAccountPassword(ref User user)
         {
-            string insertStringParam = @"UPDATE User 
+            string updateStringParam = @"UPDATE User 
                                                 SET Password=@Password
                                                 WHERE Username=@Username";
 
-            using (SqlCommand cmd = new SqlCommand(insertStringParam, OpenConnection))
+            using (SqlCommand cmd = new SqlCommand(updateStringParam, OpenConnection))
             {
                 cmd.Parameters.AddWithValue("@Password", user.Password);
                 var count = cmd.ExecuteNonQuery();
@@ -124,19 +125,48 @@ namespace Highscore.Utilities
 
         }
 
-        void GetLeaderBoard(ref User user) //return all the scores and add in list. THen sort list and take top 10. (quicksort)
+        void GetLeaderBoard(ref User user) //return all the scores and add in list. Then sort list and take top 10. (quicksort)
         {
 
         }
 
-        void GetAccountScore(ref User user) //returns value of score
+        int GetAccountScore(ref User user) //returns value of score
         {
+            string selectStringParam = @"SELECT FROM User WHERE (Username=@Username)";
 
+            using (SqlCommand cmd = new SqlCommand(selectStringParam, OpenConnection))
+            {
+                cmd.Parameters.AddWithValue("@Username", user.Username);
+                SqlDataReader rdr = null;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read())
+                {
+                    user.Scores.TotalHighscore = (int) rdr["TotalHighScore"];
+                    return user.Scores.TotalHighscore;
+                }
+
+                return 0;
+            }
         }
 
-        void GetAccountMapScore(ref User user, Map name) //returns score for a specific map for a specific Account
+        int GetAccountMapScore(ref User user, string name) //returns score for a specific map for a specific Account
         {
+            string selectStringParam = @"SELECT FROM User WHERE Username=@Username AND Name=@Name";
 
+            using (SqlCommand cmd = new SqlCommand(selectStringParam, OpenConnection))
+            {
+                cmd.Parameters.AddWithValue("@Username", user.Username);
+                cmd.Parameters.AddWithValue("@Name", user.Scores.Map.Name);
+                SqlDataReader rdr = null;
+                rdr = cmd.ExecuteReader();
+                if (rdr.Read() && (string)rdr["Name"] == name)
+                {
+                    user.Scores.Map.MapScore = (int) rdr["MapScore"];
+                    return user.Scores.Map.MapScore;
+                }
+
+                return 0;
+            }
         }
 
         void AddMap(ref MapFilePath mapFilePath, Map name) //add a string of the filepath for the map file and map name to class map
