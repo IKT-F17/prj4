@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefence", "TowerDefence\TowerDefence.csproj", "{C359650B-453C-4AC3-9A78-CCD824D7D1AB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceTower", "PlaceTower\PlaceTower.csproj", "{792E65D6-012C-4FA7-A876-967B7131207B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{792E65D6-012C-4FA7-A876-967B7131207B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{792E65D6-012C-4FA7-A876-967B7131207B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{792E65D6-012C-4FA7-A876-967B7131207B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{792E65D6-012C-4FA7-A876-967B7131207B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
