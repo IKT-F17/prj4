@@ -32,10 +32,11 @@ namespace PlaceTower
         {
             //lblTime.Content = DateTime.Now.ToString("HH:mm:ss.fff");
 
+            //Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - 4);
+
             // TODO: Collision detection check pr. tick.
 
         }
-
 
         #region SELECT & PLACE:
 
@@ -61,14 +62,15 @@ namespace PlaceTower
             _towerSelected.Stroke = _isClicked ? Brushes.Black : null;
         }*/
 
-        // TOWER PLACEMENT 1:
+        #region TOWER PLACEMENT 1:
+
         private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Hides the tower placement graphics.
-            TowerPlacement1.Visibility = Visibility.Collapsed;
-
             // Prevents event handler from going any future, when no tower is selected.
             if (_towerSelected == null) return;
+            
+            // Hides the tower placement graphics.
+            TowerPlacement1.Visibility = Visibility.Collapsed;
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
@@ -76,6 +78,9 @@ namespace PlaceTower
             _isClicked = false;
 
             NewRedTowerPlacement1.Visibility = Visibility.Visible;
+
+            // TODO create hitbox.
+
         }
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
@@ -88,13 +93,17 @@ namespace PlaceTower
             NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Hidden;
         }
 
+        #endregion
+
+        #region TOWER PLACEMENT 2:
+
         private void TowerPlacement2_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Hides the tower placement graphics.
-            TowerPlacement2.Visibility = Visibility.Collapsed;
-
             // Prevents event handler from going any future, when no tower is selected.
             if (_towerSelected == null) return;
+
+            // Hides the tower placement graphics.
+            TowerPlacement2.Visibility = Visibility.Collapsed;
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
@@ -116,6 +125,7 @@ namespace PlaceTower
 
         #endregion
 
+        #endregion
 
         #region MOBS:
 
