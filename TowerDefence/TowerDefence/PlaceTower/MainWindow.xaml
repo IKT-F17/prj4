@@ -64,7 +64,7 @@
         <Rectangle x:Name="NewRedTowerPlacement2" Visibility="Collapsed" Panel.ZIndex="98" Fill="Red" Width="40" Height="40" StrokeThickness="2" Canvas.Left="264" Canvas.Top="80" MouseEnter="NewRedTowerPlacement2_OnMouseEnter" MouseLeave="NewRedTowerPlacement2_OnMouseLeave"/>
         <Ellipse x:Name="NewRedTowerCoverAreaPlacement2" Visibility="Collapsed" Panel.ZIndex="97" Width="120" Height="120" Canvas.Left="224" Canvas.Top="40" Stroke="#3F000000" Fill="#260000FF" />
 
-<!-- Tower Placement 3 -->
+        <!-- Tower Placement 3 -->
         <!--<Rectangle x:Name="TowerPlacement3" Panel.ZIndex="99" Fill="DarkGray" Width="40" Height="40" Canvas.Left="344" Canvas.Top="80" />-->
 
         <!-- Tower Placement 4 -->
@@ -73,6 +73,7 @@
         <!-- Mobs -->
         <Button x:Name="Mob1" Width="20" Height="20" Background="Black" Content="10" Foreground="White" FontSize="9" Canvas.Left="500" Canvas.Top="135" />
 
+        <Button Content="Test Hit" Canvas.Left="476" Canvas.Top="402" Padding="4" Click="ButtonBase_OnClick" />
     </Canvas>
 
 </Window>

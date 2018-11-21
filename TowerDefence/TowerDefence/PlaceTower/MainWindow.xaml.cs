@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,6 +14,8 @@ namespace PlaceTower
         private bool _isClicked;
         private Rectangle _towerSelected;
         private bool _collision = false;
+        private Rect _hitBoxMob1;
+        private Rect _hitBoxTp1;
 
         /// <summary>
         /// The default MainWindow function.
@@ -25,6 +28,8 @@ namespace PlaceTower
             timer.Interval = TimeSpan.FromMilliseconds(20); // Tweak this for performance.
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            _hitBoxMob1 = new Rect(new Point(800, 135), new Size(20, 20));
         }
 
         // GAME TIMER LOOP:
@@ -35,7 +40,11 @@ namespace PlaceTower
             //Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - 4);
 
             // TODO: Collision detection check pr. tick.
+            _hitBoxMob1.X = _hitBoxMob1.X - 4;
 
+            _collision = _hitBoxTp1.IntersectsWith(_hitBoxMob1);
+
+            if (_collision) HitDetected();
         }
 
         #region SELECT & PLACE:
@@ -80,7 +89,7 @@ namespace PlaceTower
             NewRedTowerPlacement1.Visibility = Visibility.Visible;
 
             // TODO create hitbox.
-
+            _hitBoxTp1 = new Rect(new Point(144,40), new Size(120,120));
         }
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
@@ -136,15 +145,21 @@ namespace PlaceTower
                 case Key.Left:
                     //Canvas.SetLeft(Mob1, 224);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - 4);
+                    //_hitBoxMob1.X = _hitBoxMob1.X - 4;
                     break;
                 case Key.Right:
                     //Canvas.SetLeft(Mob1, 264);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) + 4);
+                    //_hitBoxMob1.X = _hitBoxMob1.X - 4;
                     break;
             }
         }
 
         #endregion
 
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(_collision.ToString());
+        }
     }
 }
