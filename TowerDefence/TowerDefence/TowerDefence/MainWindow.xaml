@@ -5,8 +5,58 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TowerDefence"
         mc:Ignorable="d"
-        Title="Tower Defence v0.1" Height="480" Width="1000">
-    <Canvas>
-        
+        Title="Tower Defence" Background="DimGray" Height="520" Width="1056" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Mob1_KeyDown">
+
+    <Canvas x:Name="Map">
+        <Canvas.Background>
+            <ImageBrush Stretch="None" ImageSource="Resources/map34x11.png"/>
+        </Canvas.Background>
+
+        <!-- For Testing: Tick Timer-->
+        <Label Name="lblTime" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
+
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Mob HP:" FontWeight="Bold"/>
+            <Label x:Name="MobHP" Content="100" />
+        </StackPanel>
+
+        <Button x:Name="btnSpawnNewMob" Content="Spawn a mob" Width="90" Height="30" Canvas.Left="440" Canvas.Top="402" Click="BtnSpawnNewMob_OnClick"/>
+
+        <!-- Select Towers "Toolbox" -->
+        <StackPanel Orientation="Horizontal" Canvas.Left="10" Canvas.Top="402" >
+            <Rectangle x:Name="NewRedTower" Fill="Red" Width="40" Height="40" StrokeThickness="2" MouseDown="NewRedTower_MouseDown" Panel.ZIndex="1"/>
+
+            <!-- Spacer -->
+            <Rectangle Width="10" Visibility="Hidden"/>
+
+            <!--<Rectangle x:Name="NewBlueTower" Fill="Blue" Width="40" Height="40" StrokeThickness="2" MouseDown="NewBlueTower_MouseDown" Panel.ZIndex="1"/>-->
+        </StackPanel>
+
+        <!-- Tower Placement 1 -->
+        <Rectangle x:Name="TowerPlacement1" Width="42" Height="42" Canvas.Left="168" Canvas.Top="176" MouseDown="TowerPlacement1_OnMouseDown"/>
+        <Rectangle x:Name="NewRedTowerPlacement1" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="168" Canvas.Top="176" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="Resources/Tower1_42x42.png"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Ellipse x:Name="NewRedTowerCoverAreaPlacement1" Visibility="Hidden" Width="142" Height="142" Canvas.Left="118" Canvas.Top="126" Stroke="#3F000000" Fill="#260000FF" />
+
+        <!-- Tower Placement 2 -->
+        <Rectangle x:Name="TowerPlacement2" Panel.ZIndex="99" Fill="DarkGray" Width="40" Height="40" Canvas.Left="264" Canvas.Top="80" MouseDown="TowerPlacement2_OnMouseDown"/>
+        <Rectangle x:Name="NewRedTowerPlacement2" Visibility="Collapsed" Panel.ZIndex="98" Fill="Red" Width="40" Height="40" StrokeThickness="2" Canvas.Left="264" Canvas.Top="80" MouseEnter="NewRedTowerPlacement2_OnMouseEnter" MouseLeave="NewRedTowerPlacement2_OnMouseLeave"/>
+        <Ellipse x:Name="NewRedTowerCoverAreaPlacement2" Visibility="Collapsed" Panel.ZIndex="97" Width="120" Height="120" Canvas.Left="224" Canvas.Top="40" Stroke="#3F000000" Fill="#260000FF" />
+
+        <!-- Tower Placement 3 -->
+        <!--<Rectangle x:Name="TowerPlacement3" Panel.ZIndex="99" Fill="DarkGray" Width="40" Height="40" Canvas.Left="344" Canvas.Top="80" />-->
+
+        <!-- Tower Placement 4 -->
+        <!--<Rectangle x:Name="TowerPlacement4" Panel.ZIndex="99" Fill="DarkGray" Width="40" Height="40" Canvas.Left="424" Canvas.Top="80" />-->
+
+        <!-- Mobs -->
+        <Rectangle x:Name="Mob1" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="985" Canvas.Top="40"/>
+
+        <Rectangle x:Name="Mob2" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1059" Canvas.Top="300"/>
+
     </Canvas>
+
 </Window>

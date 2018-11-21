@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Cryptography.X509Certificates;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -13,6 +14,8 @@ namespace UserControl
         private bool _isClicked;
         private Rectangle _towerSelected;
         private bool _collision = false;
+        private Rect _hitBoxMob1;
+        private Rect _hitBoxTp1;
 
         /// <summary>
         /// The default MainWindow function.
@@ -25,6 +28,8 @@ namespace UserControl
             timer.Interval = TimeSpan.FromMilliseconds(20); // Tweak this for performance.
             timer.Tick += Timer_Tick;
             timer.Start();
+
+            _hitBoxMob1 = new Rect(new Point(800, 135), new Size(20, 20));
         }
 
         // GAME TIMER LOOP:
@@ -32,10 +37,15 @@ namespace UserControl
         {
             //lblTime.Content = DateTime.Now.ToString("HH:mm:ss.fff");
 
+            //Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - 4);
+
             // TODO: Collision detection check pr. tick.
+            _hitBoxMob1.X = _hitBoxMob1.X - 4;
 
+            _collision = _hitBoxTp1.IntersectsWith(_hitBoxMob1);
+
+            if (_collision) HitDetected();
         }
-
 
         #region SELECT & PLACE:
 
@@ -61,14 +71,15 @@ namespace UserControl
             _towerSelected.Stroke = _isClicked ? Brushes.Black : null;
         }*/
 
-        // TOWER PLACEMENT 1:
+        #region TOWER PLACEMENT 1:
+
         private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Hides the tower placement graphics.
-            TowerPlacement1.Visibility = Visibility.Collapsed;
-
             // Prevents event handler from going any future, when no tower is selected.
             if (_towerSelected == null) return;
+            
+            // Hides the tower placement graphics.
+            TowerPlacement1.Visibility = Visibility.Collapsed;
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
@@ -76,6 +87,9 @@ namespace UserControl
             _isClicked = false;
 
             NewRedTowerPlacement1.Visibility = Visibility.Visible;
+
+            // TODO create hitbox.
+            _hitBoxTp1 = new Rect(new Point(144,40), new Size(120,120));
         }
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
@@ -88,13 +102,17 @@ namespace UserControl
             NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Hidden;
         }
 
+        #endregion
+
+        #region TOWER PLACEMENT 2:
+
         private void TowerPlacement2_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Hides the tower placement graphics.
-            TowerPlacement2.Visibility = Visibility.Collapsed;
-
             // Prevents event handler from going any future, when no tower is selected.
             if (_towerSelected == null) return;
+
+            // Hides the tower placement graphics.
+            TowerPlacement2.Visibility = Visibility.Collapsed;
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
@@ -116,6 +134,7 @@ namespace UserControl
 
         #endregion
 
+        #endregion
 
         #region MOBS:
 
@@ -126,15 +145,21 @@ namespace UserControl
                 case Key.Left:
                     //Canvas.SetLeft(Mob1, 224);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - 4);
+                    //_hitBoxMob1.X = _hitBoxMob1.X - 4;
                     break;
                 case Key.Right:
                     //Canvas.SetLeft(Mob1, 264);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) + 4);
+                    //_hitBoxMob1.X = _hitBoxMob1.X - 4;
                     break;
             }
         }
 
         #endregion
 
+        private void ButtonBase_OnClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show(_collision.ToString());
+        }
     }
 }
