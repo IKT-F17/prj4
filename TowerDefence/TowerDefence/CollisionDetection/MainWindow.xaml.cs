@@ -7,7 +7,7 @@ using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
 
-namespace PlaceTower
+namespace UserControl
 {
     public partial class MainWindow : Window
     {
