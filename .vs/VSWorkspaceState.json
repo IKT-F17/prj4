@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Monster-Map-Tower",
+    "\\Monster-Map-Tower\\Utilities"
   ],
+  "SelectedNode": "\\Monster-Map-Tower\\Utilities",
   "PreviewInSolutionExplorer": false
 }
