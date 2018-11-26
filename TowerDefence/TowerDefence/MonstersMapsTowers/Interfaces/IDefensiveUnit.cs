@@ -4,7 +4,7 @@
     {
 
         void upgradUnit(IDefensiveUnit unit, IPlayer player);
-        void downgradeUnit(int price, IDefensiveUnit unit);
+        void downgradeUnit(IDefensiveUnit unit, IPlayer player);
         void location(int tiles);
 
         string nameDefensiveUnit { get; set; } //
