@@ -9,17 +9,17 @@ namespace MonstersMapsTowers.Class
 {
     public class DefensiveUnit : IDefensiveUnit
     {
-        public DefensiveUnit(string name = "", int hitpower = 0, int type = 0, int atteckrange = 0, double upprice = 0, double downprice = 0, int tiles = 0, int level = 0, double price = 0, int unitId = 0)
+        public DefensiveUnit(int unitId = 0)
         {
-            name = nameDefensiveUnit;
-            hitpower = defensivePower;
-            type = defenseType;
-            atteckrange = defenseRange;
-            upprice = upgradeCost;
-            downprice = unitValue;//is this a + or -? skulle den måske hedde downgradcost?
-            tiles = defensiveTiles;
-            level = defensiveLevel;
-            price = unitCost;
+            nameDefensiveUnit = "";
+            defensivePower = 0;
+            defenseType = 0;
+            defenseRange = 0;
+            upgradeCost = 0;
+            unitValue = 0;//is this a + or -? skulle den måske hedde downgradcost?
+            defensiveTiles = 0;
+            defensiveLevel = 0;
+            unitCost = 0;
             unitId = defensUnitId;
         }
 
