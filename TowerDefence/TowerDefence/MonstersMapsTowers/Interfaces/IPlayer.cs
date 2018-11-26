@@ -2,7 +2,8 @@
 {
     public interface IPlayer
     {
-        int bank { get; set; }
+        double bank { get; set; }
+        double updateBank(double sum);
 
     }
 }

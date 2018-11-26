@@ -3,7 +3,7 @@
     public interface IDefensiveUnit//Tower
     {
 
-        void upgradUnit(double price, IDefensiveUnit unit);
+        void upgradUnit(IDefensiveUnit unit, IPlayer player);
         void downgradeUnit(int price, IDefensiveUnit unit);
         void location(int tiles);
 

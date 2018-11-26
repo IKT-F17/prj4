@@ -11,10 +11,19 @@ namespace MonstersMapsTowers.Class
     {
         public Player(string userName)
         {
-            int bank_ = 0;
+            double bank_ = 0;
             string databaseUserName = userName;
         }
-        public int bank { get; set; }
+        public double bank { get; set; }
 
+        public double updateBank(double sum)
+        {
+            double newsum = 0;
+                       
+            newsum = bank + sum;
+            bank = newsum;
+                       
+            return bank;
+        }
     }
 }

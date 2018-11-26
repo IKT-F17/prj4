@@ -26,7 +26,7 @@ namespace MonstersMapsTowers.Class
         //private double downgradeReturnValueFactor =  
 
 
-        public void upgradUnit(double price, IDefensiveUnit unit)
+        public void upgradUnit(IDefensiveUnit unit,IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
 
@@ -40,8 +40,12 @@ namespace MonstersMapsTowers.Class
             tower.defenseType = unit.defenseType;           // only necessary if we actually change the tower type when upgrading
             tower.defenseRange = unit.defenseRange + 1;
             tower.defensiveTiles = unit.defensiveTiles;     //  What is this for ? 
-            tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;
+            tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;//new upprice  
             tower.unitValue = unit.unitValue + unit.upgradeCost;
+
+            player.updateBank(unit.upgradeCost);//subtrac the price from user bank
+            unit = tower;//add overwrit the old tower
+            //add the tower to the map list of towers
 
             //needs the 
 
