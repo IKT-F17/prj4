@@ -7,9 +7,9 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    class MyLittelPony:IOffensiveUnit
+    class MyLittlePony : IOffensiveUnit
     {
-        public MyLittelPony(int startTile, int endTile, int offensiveTiles)
+        public MyLittlePony(int startTile, int endTile, int offensiveTiles)
         {
             nameOffensiveUnit = "MyLittelPony";
             runSpeed = 2;
@@ -17,7 +17,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             hitPoints = 150;
             Immunites();
             Path(startTile, endTile, offensiveTiles);
-
         }
 
         public void Path(int startTile, int endTile, int offensiveTiles)
