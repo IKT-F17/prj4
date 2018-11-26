@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
@@ -23,27 +24,29 @@ namespace MonstersMapsTowers.Class
 
         }
 
-        public void waveWith10Units()
+        public void wave(IOffensiveUnit unit, int amount, int time)
         {
 
+            var testTimer = new System.Timers.Timer(time);
             int waveCounter = 0;
-            int unitAmount = 10;
+           
 
             //Adds monsters to wave list
-            while (waveCounter < unitAmount)
+            while (waveCounter < amount)
             {
-                spawnMob();
+                spawnMob(unit);
                 waveCounter++;
-                System.Threading.Thread.Sleep(1000); //Sleep for 1 second
-
+                testTimer.Interval = time;
+                Console.WriteLine("Det virker");
+                Console.ReadLine();
             }
 
         }
 
-        public void spawnMob()
+        public void spawnMob(IOffensiveUnit unit)
         {
-            OffensiveUnit unit = new OffensiveUnit(0, 0, 0);
-            offensiveUnitList.Add(unit);
+            unit = new OffensiveUnit(0, 0, 0);
+            offensiveUnitList.Add(unit); 
         }
 
         public void callWave()
