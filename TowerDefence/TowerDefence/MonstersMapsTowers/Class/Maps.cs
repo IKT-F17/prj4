@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using MonstersMapsTowers.Interfaces;
 
@@ -14,7 +15,7 @@ namespace MonstersMapsTowers.Class
 
           }*/
 
-
+        public List<IOffensiveUnit> offensiveUnitList { get; private set; }
         #region IMaps
 
         public void makeOffensiveUnitPath()
@@ -22,9 +23,27 @@ namespace MonstersMapsTowers.Class
 
         }
 
-        public void wave()
+        public void waveWith10Units()
         {
 
+            int waveCounter = 0;
+            int unitAmount = 10;
+
+            //Adds monsters to wave list
+            while (waveCounter < unitAmount)
+            {
+                spawnMob();
+                waveCounter++;
+                System.Threading.Thread.Sleep(1000); //Sleep for 1 second
+
+            }
+
+        }
+
+        public void spawnMob()
+        {
+            OffensiveUnit unit = new OffensiveUnit(0, 0, 0);
+            offensiveUnitList.Add(unit);
         }
 
         public void callWave()
