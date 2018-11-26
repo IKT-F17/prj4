@@ -1,4 +1,4 @@
-﻿namespace Utilities.Interfaces
+﻿namespace MonstersMapsTowers.Interfaces
 {
     public interface IOffensiveUnit
     {

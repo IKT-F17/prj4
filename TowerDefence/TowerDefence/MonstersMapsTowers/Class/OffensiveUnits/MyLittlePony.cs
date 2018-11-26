@@ -1,24 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Utilities.Interfaces;
+using MonstersMapsTowers.Interfaces;
 
-namespace Utilities.OffensiveUnits
+namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    class Goblin : IOffensiveUnit
+    class MyLittlePony : IOffensiveUnit
     {
-        public Goblin(int startTile, int endTile, int offensiveTiles)
+        public MyLittlePony(int startTile, int endTile, int offensiveTiles)
         {
-            nameOffensiveUnit = "Goblin";
-            runSpeed = 1;
-            reward = 10;
-            hitPoints = 100;
+            nameOffensiveUnit = "MyLittelPony";
+            runSpeed = 2;
+            reward = 15;
+            hitPoints = 150;
             Immunites();
             Path(startTile, endTile, offensiveTiles);
-
         }
 
         public void Path(int startTile, int endTile, int offensiveTiles)
@@ -39,4 +37,3 @@ namespace Utilities.OffensiveUnits
         public int endTile { get; set; }
     }
 }
-

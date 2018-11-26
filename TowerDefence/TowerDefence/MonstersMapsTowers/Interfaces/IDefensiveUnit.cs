@@ -1,10 +1,13 @@
-﻿namespace Utilities.Interfaces
+﻿using System.Collections.Generic;
+using MonstersMapsTowers.Class;
+
+namespace MonstersMapsTowers.Interfaces
 {
     public interface IDefensiveUnit//Tower
     {
-
-        void upgradUnit(double price, IDefensiveUnit unit);
-        void downgradeUnit(int price, IDefensiveUnit unit);
+        List<IDefensiveUnit> placeDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player);
+        void upgradUnit(IDefensiveUnit unit, IPlayer player);
+        void downgradeUnit(IDefensiveUnit unit, IPlayer player);
         void location(int tiles);
 
         string nameDefensiveUnit { get; set; } //
@@ -15,6 +18,7 @@
         double unitValue { get; set; }
         int defensiveTiles { get; set; }//where to place?
         int defensiveLevel { get; set; }
+        double unitCost { get; set; }
 
     }
 }

@@ -3,30 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Utilities.Interfaces;
+using MonstersMapsTowers.Interfaces;
 
-namespace Utilities.Class
+namespace MonstersMapsTowers.Class
 {
     public class DefensiveUnit : IDefensiveUnit
     {
-        public DefensiveUnit(string name = "", int hitpower = 0, int type = 0, int atteckrange = 0, double upprice = 0, double downprice = 0, int tiles = 0, int level = 0)
+        public DefensiveUnit(int unitId = 0)
         {
-            name = nameDefensiveUnit;
-            hitpower = defensivePower;
-            type = defenseType;
-            atteckrange = defenseRange;
-            upprice = upgradeCost;
-            downprice = unitValue;//is this a + or -? 
-            tiles = defensiveTiles;
-            level = defensiveLevel;
+            nameDefensiveUnit = "";
+            defensivePower = 0;
+            defenseType = 0;
+            defenseRange = 0;
+            upgradeCost = 0;
+            unitValue = 0;//is this a + or -? skulle den måske hedde downgradcost?
+            defensiveTiles = 0;
+            defensiveLevel = 0;
+            unitCost = 0;
+            unitId = defensUnitId;
         }
 
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
-        //private double downgradeReturnValueFactor =  
+                                                //private double downgradeReturnValueFactor =  
 
+        public List<IDefensiveUnit> placeDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        {
+            DefensiveUnit tower = new DefensiveUnit();
+            //add to maps def list
+            player.updateBank(type.unitCost);//update bank
+            return null; //List<DefensiveUnit>; ikke null! 
+        }
 
-        public void upgradUnit(double price, IDefensiveUnit unit)
+        public void upgradUnit(IDefensiveUnit unit, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
 
@@ -40,8 +49,12 @@ namespace Utilities.Class
             tower.defenseType = unit.defenseType;           // only necessary if we actually change the tower type when upgrading
             tower.defenseRange = unit.defenseRange + 1;
             tower.defensiveTiles = unit.defensiveTiles;     //  What is this for ? 
-            tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;
+            tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;//new upprice  
             tower.unitValue = unit.unitValue + unit.upgradeCost;
+
+            player.updateBank(unit.upgradeCost);//subtrac the price from user bank
+            unit = tower;//add overwrit the old tower
+            //add the tower to the map list of towers
 
             //needs the 
 
@@ -57,7 +70,7 @@ namespace Utilities.Class
             //add the tower to the map list of towers
         }
 
-        public void downgradeUnit(int price, IDefensiveUnit unit)
+        public void downgradeUnit(IDefensiveUnit unit, IPlayer player)
         {
             ///<summary>
             /// when this feature is calles, we check the towers level.
@@ -78,7 +91,9 @@ namespace Utilities.Class
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
                 tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
-                tower.unitValue = unit.unitValue / defensiveLevel;
+                tower.unitValue = unit.unitValue / defensiveLevel;//ikke brug for en downgrad. 
+                player.updateBank(unit.unitValue);
+                unit = tower;
             }
             if (tower.defensiveLevel == 1)
             {
@@ -88,8 +103,10 @@ namespace Utilities.Class
                 tower.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
-                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
+                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
                 tower.unitValue = unit.unitValue / defensiveLevel;
+                player.updateBank(unit.unitValue);
+                unit = tower;//overskriver den her?
             }
             else
             {
@@ -113,5 +130,7 @@ namespace Utilities.Class
         public double unitValue { get; set; }
         public int defensiveTiles { get; set; }//where to place?
         public int defensiveLevel { get; set; }
+        public double unitCost { get; set; }
+        public int defensUnitId { get; set; }
     }
 }
