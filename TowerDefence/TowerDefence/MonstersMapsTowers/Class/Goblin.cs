@@ -4,9 +4,9 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
-using Utilities.Interfaces;
+using MonstersMapsTowers.Interfaces;
 
-namespace Utilities.OffensiveUnits
+namespace MonstersMapsTowers.OffensiveUnits
 {
     class Goblin : IOffensiveUnit
     {

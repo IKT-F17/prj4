@@ -1,7 +1,7 @@
 ﻿using System.Dynamic;
-using Utilities.Interfaces;
+using MonstersMapsTowers.Interfaces;
 
-namespace Utilities.Interfaces
+namespace MonstersMapsTowers.Interfaces
 {
     public interface IMaps
     {
