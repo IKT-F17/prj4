@@ -9,7 +9,7 @@ namespace MonstersMapsTowers.Class
 {
     public class DefensiveUnit : IDefensiveUnit
     {
-        public DefensiveUnit(string name = "", int hitpower = 0, int type = 0, int atteckrange = 0, double upprice = 0, double downprice = 0, int tiles = 0, int level = 0)
+        public DefensiveUnit(string name = "", int hitpower = 0, int type = 0, int atteckrange = 0, double upprice = 0, double downprice = 0, int tiles = 0, int level = 0, double price = 0, int unitId = 0)
         {
             name = nameDefensiveUnit;
             hitpower = defensivePower;
@@ -19,20 +19,20 @@ namespace MonstersMapsTowers.Class
             downprice = unitValue;//is this a + or -? skulle den måske hedde downgradcost?
             tiles = defensiveTiles;
             level = defensiveLevel;
+            price = unitCost;
+            unitId = defensUnitId;
         }
 
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public void placeDefensivUnit(IDefensiveUnit unit, IMaps map, IPlayer player)
+        public List<IDefensiveUnit> placeDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
-            //set type
-            //get location
             //add to maps def list
-            //player.updateBank(unit.unitPrice);//update bank
-
+            player.updateBank(type.unitCost);//update bank
+            return null; //List<DefensiveUnit>; ikke null! 
         }
 
         public void upgradUnit(IDefensiveUnit unit, IPlayer player)
@@ -90,8 +90,8 @@ namespace MonstersMapsTowers.Class
                 tower.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
-                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
-                tower.unitValue = unit.unitValue / defensiveLevel;
+                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
+                tower.unitValue = unit.unitValue / defensiveLevel;//ikke brug for en downgrad. 
                 player.updateBank(unit.unitValue);
                 unit = tower;
             }
@@ -130,5 +130,7 @@ namespace MonstersMapsTowers.Class
         public double unitValue { get; set; }
         public int defensiveTiles { get; set; }//where to place?
         public int defensiveLevel { get; set; }
+        public double unitCost { get; set; }
+        public int defensUnitId { get; set; }
     }
 }
