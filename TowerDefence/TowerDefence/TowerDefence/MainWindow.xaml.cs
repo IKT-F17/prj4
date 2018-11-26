@@ -11,7 +11,7 @@ namespace TowerDefence
 {
     public partial class MainWindow : Window
     {
-        private int MOVE = 10;
+        private int MOVE = 32;
 
         private Rect Mob;
         private List<Rect> MobList;
@@ -58,7 +58,7 @@ namespace TowerDefence
             {
                 //MessageBox.Show(_collision.ToString());
                 //TODO: Call function to damage the mob.
-                Shoot();
+                //Shoot();
             }
 
             // Mob movement (change the conditions equals number to influence mob speed):
@@ -66,18 +66,18 @@ namespace TowerDefence
             if (counter == 8 && mobSpawned) MobMove();
         }
 
-        private void Shoot()
-        {
-            if ((int) MobHP.Content != 0) 
-            {
-                MobHP.Content = ((int) (HP - 0.1)).ToString();
-            }
-            else
-            {
-                MobHP.Content = "0";
-                Mob2.Visibility = Visibility.Hidden;
-            }
-        }
+        //private void Shoot()
+        //{
+        //    if ((int) MobHP.Content != 0)   // <---- CAST ERROR (NOT VALID). TODO: NEEDS A FIX!
+        //    {
+        //        MobHP.Content = ((int) (HP - 0.1)).ToString();
+        //    }
+        //    else
+        //    {
+        //        MobHP.Content = "0";
+        //        Mob2.Visibility = Visibility.Hidden;
+        //    }
+        //}
 
         private void MobMove()
         {
@@ -92,13 +92,13 @@ namespace TowerDefence
         #region SELECT & PLACE:
 
         // RED TOWER:
-        private void NewRedTower_MouseDown(object sender, MouseButtonEventArgs e)
+        private void NewTowerType1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
 
         // BLUE TOWER:
-        private void NewBlueTower_MouseDown(object sender, MouseButtonEventArgs e)
+        private void NewTowerType2_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
@@ -112,54 +112,25 @@ namespace TowerDefence
             // Hides the tower placement graphics.
             TowerPlacement1.Visibility = Visibility.Collapsed;
 
-            Tower = new Rect(Canvas.GetLeft(NewRedTowerCoverAreaPlacement1), Canvas.GetTop(NewRedTowerCoverAreaPlacement1), NewRedTowerCoverAreaPlacement1.Width, NewRedTowerCoverAreaPlacement1.Height);
+            Tower = new Rect(Canvas.GetLeft(NewTowerType1Placement1CoverArea), Canvas.GetTop(NewTowerType1Placement1CoverArea), NewTowerType1Placement1CoverArea.Width, NewTowerType1Placement1CoverArea.Height);
             //Towers.Add(Tower);
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
-            NewRedTower.Stroke = null;
+            NewTowerType1.Stroke = null;
             _isClicked = false;
 
-            NewRedTowerPlacement1.Visibility = Visibility.Visible;
+            NewTowerType1Placement1.Visibility = Visibility.Visible;
         }
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Visible;
+            NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
         }
 
         private void NewRedTowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Hidden;
-        }
-
-        // TOWER PLACEMENT 2:
-        private void TowerPlacement2_OnMouseDown(object sender, MouseButtonEventArgs e)
-        {
-            // Prevents event handler from going any future, when no tower is selected.
-            if (_towerSelected == null) return;
-
-            // Hides the tower placement graphics.
-            TowerPlacement2.Visibility = Visibility.Collapsed;
-
-            //Tower = new Rect(Canvas.GetLeft(NewRedTowerCoverAreaPlacement2), Canvas.GetTop(NewRedTowerCoverAreaPlacement2), NewRedTowerCoverAreaPlacement2.Width, NewRedTowerCoverAreaPlacement2.Height);
-
-            // Resetting variables, so a new tower can be selected and placed.
-            _towerSelected = null;
-            NewRedTower.Stroke = null;
-            _isClicked = false;
-
-            NewRedTowerPlacement2.Visibility = Visibility.Visible;
-        }
-
-        private void NewRedTowerPlacement2_OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            NewRedTowerCoverAreaPlacement2.Visibility = Visibility.Visible;
-        }
-
-        private void NewRedTowerPlacement2_OnMouseLeave(object sender, MouseEventArgs e)
-        {
-            NewRedTowerCoverAreaPlacement2.Visibility = Visibility.Hidden;
+            NewTowerType1Placement1CoverArea.Visibility = Visibility.Hidden;
         }
 
         // GENERAL TOWER FUNCTIONS:
