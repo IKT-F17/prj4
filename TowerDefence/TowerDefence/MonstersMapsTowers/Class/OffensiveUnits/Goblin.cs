@@ -1,34 +1,33 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using MonstersMapsTowers.Interfaces;
 
-namespace MonstersMapsTowers.Class
+namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    public class OffensiveUnit : IOffensiveUnit
+    class Goblin : IOffensiveUnit
     {
-        public OffensiveUnit(int start, int end, int tiles)//Bliver start og end ikke fastsat af maps?
+        public Goblin(int startTile, int endTile, int offensiveTiles)
         {
-            string OffensiveUnit = nameOffensiveUnit;
-            int run = runSpeed;
-            int profit = reward;
-            start = startTile;
-            end = endTile;
-            tiles = offensiveTiles;
+            nameOffensiveUnit = "Goblin";
+            runSpeed = 1;
+            reward = 10;
+            hitPoints = 100;
+            Immunites();
+            Path(startTile, endTile, offensiveTiles);
 
         }
+
         public void Path(int startTile, int endTile, int offensiveTiles)
         {
-            //    //pseudo Code
-            //    //IOffensiveUnit Mop;
-            //    //Mop.Pathfinder(Mop.startTile, Mop.endTile, Mop.offensiveTiles );
-        }
 
+        }
         public void Immunites()
         {
-            //  Will not be made in this project  
+
         }
 
         public string nameOffensiveUnit { get; set; }//gobil, ponys,cats, Orgs
@@ -40,3 +39,4 @@ namespace MonstersMapsTowers.Class
         public int endTile { get; set; }
     }
 }
+

@@ -42,9 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\DefensiveUnit.cs" />
-    <Compile Include="Class\Goblin.cs" />
+    <Compile Include="Class\OffensiveUnits\Goblin.cs" />
     <Compile Include="Class\Maps.cs" />
     <Compile Include="Class\OffensiveUnit.cs" />
+    <Compile Include="Class\OffensiveUnits\MyLittelPony.cs" />
     <Compile Include="Class\Pathfinder.cs" />
     <Compile Include="Class\Player.cs" />
     <Compile Include="Interfaces\IDefensiveUnit.cs" />
