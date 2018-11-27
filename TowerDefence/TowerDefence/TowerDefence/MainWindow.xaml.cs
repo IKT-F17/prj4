@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -18,6 +19,8 @@ namespace TowerDefence
         private Rect Tower;
         private List<Rect> TowerList;
 
+        private Stack<string> Path;
+
         private bool _isClicked;
         private Rectangle _towerSelected;
         private bool _collision = false;
@@ -29,7 +32,78 @@ namespace TowerDefence
         public MainWindow()
         {
             InitializeComponent();
+
+            GeneratePath();
             GameTickSetup();
+        }
+
+        private void GeneratePath()
+        {
+            var stack = new Stack<string>();
+
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("right");
+            stack.Push("right");
+            stack.Push("right");
+            stack.Push("right");
+            stack.Push("right");
+            stack.Push("right");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("down");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("up");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+            stack.Push("left");
+
+            Path = stack;
         }
 
         #region GAME TICKS:
@@ -49,9 +123,6 @@ namespace TowerDefence
 
             // TODO: Collision detection check pr. tick.
             //foreach (var Mob in Mobs)
-            //{
-
-            //}
 
             _collision = Tower.IntersectsWith(Mob);
             if (_collision)
@@ -62,8 +133,11 @@ namespace TowerDefence
             }
 
             // Mob movement (change the conditions equals number to influence mob speed):
-            counter++;
-            if (counter == 8 && mobSpawned) MobMove();
+            if (mobSpawned)
+            {
+                counter++;
+                if (counter == 4) MobMove();
+            }
         }
 
         //private void Shoot()
@@ -78,14 +152,6 @@ namespace TowerDefence
         //        Mob2.Visibility = Visibility.Hidden;
         //    }
         //}
-
-        private void MobMove()
-        {
-            counter = 0;
-            
-            Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - 20);
-            Mob.X = Mob.X - 20;
-        }
 
         #endregion
 
@@ -145,26 +211,64 @@ namespace TowerDefence
         #endregion
 
         #region MOB SPAWNS:
-        private void BtnSpawnNewMob_OnClick(object sender, RoutedEventArgs e)
+
+        private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
-            Mob = new Rect(1020, 140, 20, 20);
+            Mob = new Rect(1056, 297, 20, 20);
             mobSpawned = true;
         }
 
         #endregion
 
         #region MOB MOVEMENT CONTROLS:
+        private void MobMove()
+        {
+            var dir = "";
+            counter = 0;                                          // Used for animation movement delay
+
+            if (Path.Count != 0)
+                dir = Path.Pop();
+
+            switch (dir.ToLower())
+            {
+                case "left":
+                    Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - MOVE);
+                    Mob.X = Mob.X - MOVE;
+                    break;
+
+                case "right":
+                    Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) + MOVE);
+                    Mob.X = Mob.X - MOVE;
+                    break;
+
+                case "up":
+                    Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) - MOVE);
+                    Mob.Y = Mob.Y - MOVE;
+                    break;
+
+                case "down":
+                    Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) + MOVE);
+                    Mob.Y = Mob.Y + MOVE;
+                    break;
+
+                default:
+                    MessageBox.Show("No moves made!");
+                    break;
+            }
+
+            //Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - MOVE);  // Movement for mob.
+            //Mob.X = Mob.X - MOVE;                               // Movement for mob hit box.
+        }
+
         private void Mob1_KeyDown(object sender, KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Key.Left:
-                    //Canvas.SetLeft(Mob1, 224);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - MOVE);
                     Mob.X = Mob.X - MOVE;
                     break;
                 case Key.Right:
-                    //Canvas.SetLeft(Mob1, 264);
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) + MOVE);
                     Mob.X = Mob.X + MOVE;
                     break;

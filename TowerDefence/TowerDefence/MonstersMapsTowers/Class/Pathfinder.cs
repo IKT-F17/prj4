@@ -1,10 +1,57 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Security.Cryptography.X509Certificates;
-//using System.Text;
-//using System.Threading.Tasks;
-//using Utilities.Pathing;
+﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Security.Cryptography.X509Certificates;
+using System.Text;
+using System.Threading.Tasks;
+
+
+
+
+
+
+
+///<Summary>
+///
+/// Takes:
+/// Returns: Stack<nodes>
+///
+/// </Summary>
+
+
+namespace MonstersMapsTowers.Class
+{
+    class Node
+    {
+        public Node(string direction)
+        {
+        }
+        //public string node { get; set; }
+    }
+
+    public class Pathfinder
+    {
+        private Stack<Node> nodes;
+
+        void AddNodeToStack(string direction)
+        {
+            var node = new Node(direction);
+            nodes.Push(node);
+        }
+        
+        ///TODO: læs ind fra MapFile hvilken sekvens af movements (Up, Down Left eller Right(U,D,L,R)) der skal tages. af den enkelte mob. iterer igennem sekvensen og opret nodes til stacken.
+        ///TODO: returner stack af nodes til caller
+         
+
+        
+    }
+}
+
+
+
+
+
 
 //namespace Utilities.Pathing
 //{

@@ -44,7 +44,7 @@ namespace UserControl
 
             _collision = _hitBoxTp1.IntersectsWith(_hitBoxMob1);
 
-            if (_collision) HitDetected();
+            //if (_collision) HitDetected();
         }
 
         #region SELECT & PLACE:
