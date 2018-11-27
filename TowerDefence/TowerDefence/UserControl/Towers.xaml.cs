@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using MonstersMapsTowers.Class;
 namespace UserControl
 {
     /// <summary>
@@ -20,29 +20,32 @@ namespace UserControl
     /// </summary>
     public partial class Towers : System.Windows.Controls.UserControl
     {
+        //Rect for collision detection
+        public Rect CoverArea = new Rect(0,0,142,142);
 
-        private Rect CoverArea;
-        private bool _isClicked;
-        private Rectangle _towerSelected;
-        private bool _collision = false;
+        //Creates a defensiveunit object
+        public DefensiveUnit Tower = new DefensiveUnit();
 
         public Towers()
         {
             InitializeComponent();
+            //CoverArea = new Rect(Canvas.GetLeft(NewRedTowerCoverAreaPlacement1), Canvas.GetTop(NewRedTowerCoverAreaPlacement1), NewRedTowerCoverAreaPlacement1.Width, NewRedTowerCoverAreaPlacement1.Height);
         }
-        
+
 
         private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            CoverArea = new Rect(Canvas.GetLeft(NewRedTowerCoverAreaPlacement1), Canvas.GetTop(NewRedTowerCoverAreaPlacement1), NewRedTowerCoverAreaPlacement1.Width, NewRedTowerCoverAreaPlacement1.Height);
-        
             MessageBox.Show("JAJA");
         }
 
         private void TowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            
+            NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Visible;
+        }
 
+        private void TowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
+        {
+            NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Hidden;
         }
     }
 }

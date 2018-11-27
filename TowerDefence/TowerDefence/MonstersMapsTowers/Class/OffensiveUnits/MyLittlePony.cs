@@ -7,22 +7,20 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    class MyLittlePony : IOffensiveUnit
+    public class MyLittlePony : IOffensiveUnit
     {
-        public MyLittlePony(int startTile, int endTile, int offensiveTiles)
+        public MyLittlePony(Stack<string> path)
         {
-            nameOffensiveUnit = "MyLittelPony";
+            nameOffensiveUnit = "MyLittlePony";
             runSpeed = 2;
             reward = 15;
             hitPoints = 150;
+            attackPower = 1;
             Immunites();
-            Path(startTile, endTile, offensiveTiles);
+            //_path = path;
         }
 
-        public void Path(int startTile, int endTile, int offensiveTiles)
-        {
 
-        }
         public void Immunites()
         {
 
@@ -32,8 +30,8 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int runSpeed { get; set; }//offensive unit speed on map
         public int reward { get; set; }//reward for killing an offensive unit
         public int hitPoints { get; set; }//attack power
-        public int startTile { get; set; }
-        public int offensiveTiles { get; set; }
-        public int endTile { get; set; }
+        public int offensiveUnitID { get; set; }
+        public Stack<string> path { get; set; }
+        public int attackPower { get; set; }
     }
 }
