@@ -9,21 +9,15 @@ namespace MonstersMapsTowers.Class
 {
     public class OffensiveUnit : IOffensiveUnit
     {
-        public OffensiveUnit(int start, int end, int tiles)//Bliver start og end ikke fastsat af maps?
+        public OffensiveUnit(Stack<string> path)//Bliver start og end ikke fastsat af maps?
         {
             string OffensiveUnit = nameOffensiveUnit;
             int run = runSpeed;
             int profit = reward;
-            start = startTile;
-            end = endTile;
-            tiles = offensiveTiles;
-
-        }
-        public void Path(int startTile, int endTile, int offensiveTiles)
-        {
-            //    //pseudo Code
-            //    //IOffensiveUnit Mop;
-            //    //Mop.Pathfinder(Mop.startTile, Mop.endTile, Mop.offensiveTiles );
+            Stack<string> path_ = path;
+            int ID = offensiveUnitID;
+            int Hit = hitPoints;
+            int Attack = attackPower;
         }
 
         public void Immunites()
@@ -35,8 +29,8 @@ namespace MonstersMapsTowers.Class
         public int runSpeed { get; set; }//offensive unit speed on map
         public int reward { get; set; }//reward for killing an offensive unit
         public int hitPoints { get; set; }//attack power
-        public int startTile { get; set; }
-        public int offensiveTiles { get; set; }
-        public int endTile { get; set; }
+        public int offensiveUnitID { get; set; }
+        public Stack<string> path { get; set; }
+        public int attackPower { get; set; }
     }
 }
