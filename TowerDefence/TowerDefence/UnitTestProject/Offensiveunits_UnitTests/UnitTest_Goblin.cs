@@ -9,7 +9,7 @@ using Assert = NUnit.Framework.Assert;
 using MonstersMapsTowers.Class.OffensiveUnits;
 using MonstersMapsTowers.Interfaces;
 
-
+/*
 namespace UnitTestProject
 {
     [TestClass]
@@ -30,6 +30,7 @@ namespace UnitTestProject
             Assert.That(_uut.runSpeed, Is.EqualTo(1));
             Assert.That(_uut.reward, Is.EqualTo(10));
             Assert.That(_uut.hitPoints, Is.EqualTo(100));
+            Assert.That(_uut.attackPower, Is.EqualTo(1));
         }
 
         [Test]
@@ -42,8 +43,9 @@ namespace UnitTestProject
             Assert.That(goblin1.runSpeed, Is.EqualTo(goblin2.runSpeed));
             Assert.That(goblin1.reward, Is.EqualTo(goblin2.reward));
             Assert.That(goblin1.hitPoints, Is.EqualTo(goblin2.hitPoints));
+            Assert.That(goblin1.attackPower, Is.EqualTo(goblin2.attackPower));
         }
-
+        
         [Test]
         public void CheckingForFalse()
         {
@@ -53,7 +55,10 @@ namespace UnitTestProject
             Assert.AreNotEqual(_uut.reward, 11);
             Assert.AreNotEqual(_uut.hitPoints, 99);
             Assert.AreNotEqual(_uut.hitPoints, 101);
+            Assert.AreNotEqual(_uut.attackPower, 0);
+            Assert.AreNotEqual(_uut.attackPower, 2);
         }
 
     }
 }
+*/
