@@ -20,6 +20,11 @@ namespace MonstersMapsTowers.Class
             int Attack = attackPower;
         }
 
+        public void TakeDamage(int damage)
+        {
+            this.hitPoints -= damage;
+        }
+
         public void Immunites()
         {
             //  Will not be made in this project  

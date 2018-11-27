@@ -12,15 +12,16 @@ namespace MonstersMapsTowers.Class
         public DefensiveUnit(int unitId = 0)
         {
             nameDefensiveUnit = "";
-            defensivePower = 0;
+            defensivePower = 0;//damage un offensiveUnit
             defenseType = 0;
             defenseRange = 0;
             upgradeCost = 0;
-            unitValue = 0;//is this a + or -? skulle den måske hedde downgradcost?
+            unitValue = 0;
             defensiveTiles = 0;
             defensiveLevel = 0;
             unitCost = 0;
             unitId = defensUnitId;
+
         }
 
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
