@@ -8,7 +8,7 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    class Goblin : IOffensiveUnit
+    public class Goblin : IOffensiveUnit
     {
         public Goblin(int startTile, int endTile, int offensiveTiles)
         {
