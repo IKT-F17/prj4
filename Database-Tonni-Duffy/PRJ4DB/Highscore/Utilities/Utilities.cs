@@ -92,11 +92,6 @@ namespace Highscore.Utilities
         }
 
 
-        void CreateAccount(ref User user) //if username exists don't create
-        {
-
-        }
-
         void DeleteAccount(ref User user) //delete only if username exists
         {
             string DeleteString = @"DELETE FROM User WHERE (Username=@Username)";
