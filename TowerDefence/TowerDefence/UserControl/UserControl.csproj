@@ -101,5 +101,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonstersMapsTowers\MonstersMapsTowers.csproj">
+      <Project>{0b401dde-efbc-4e7d-a303-ff2e11ffc598}</Project>
+      <Name>MonstersMapsTowers</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
