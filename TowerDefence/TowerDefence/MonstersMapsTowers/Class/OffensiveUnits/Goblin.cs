@@ -10,21 +10,19 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
 {
     public class Goblin : IOffensiveUnit
     {
-        public Goblin(int startTile, int endTile, int offensiveTiles)
+        public Goblin(Stack<string> path)
         {
             nameOffensiveUnit = "Goblin";
             runSpeed = 1;
             reward = 10;
             hitPoints = 100;
+            attackPower = 1;
             Immunites();
-            Path(startTile, endTile, offensiveTiles);
+            //_path = path;
 
         }
 
-        public void Path(int startTile, int endTile, int offensiveTiles)
-        {
-
-        }
+        
         public void Immunites()
         {
 
@@ -34,9 +32,9 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int runSpeed { get; set; }//offensive unit speed on map
         public int reward { get; set; }//reward for killing an offensive unit
         public int hitPoints { get; set; }//attack power
-        public int startTile { get; set; }
-        public int offensiveTiles { get; set; }
-        public int endTile { get; set; }
+        public int offensiveUnitID { get; set; }
+        public Stack<string> path { get; set; }
+        public int attackPower { get; set; }
     }
 }
 
