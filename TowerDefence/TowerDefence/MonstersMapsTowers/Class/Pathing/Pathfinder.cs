@@ -1,15 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Dynamic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-
-
-
-
-
+﻿using System.Collections.Generic;
 
 
 ///<Summary>
@@ -20,7 +9,7 @@ using System.Threading.Tasks;
 /// </Summary>
 
 
-namespace MonstersMapsTowers.Class
+namespace MonstersMapsTowers.Class.Pathing
 {
     class Node
     {
@@ -39,6 +28,8 @@ namespace MonstersMapsTowers.Class
             var node = new Node(direction);
             nodes.Push(node);
         }
+
+
         
         ///TODO: læs ind fra MapFile hvilken sekvens af movements (Up, Down Left eller Right(U,D,L,R)) der skal tages. af den enkelte mob. iterer igennem sekvensen og opret nodes til stacken.
         ///TODO: returner stack af nodes til caller
