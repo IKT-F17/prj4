@@ -27,7 +27,7 @@ namespace MonstersMapsTowers.Class
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public List<IDefensiveUnit> placeDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        public List<IDefensiveUnit> SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
             //add to maps def list
@@ -114,13 +114,13 @@ namespace MonstersMapsTowers.Class
             }
         }
 
-        public void location(int tiles)
-        {
-            //  this will not be implemented. the gamelogic is responsible for placing and keeping track of each and every tower. also when calling up- or down-grade 
-            //  functions the object is sent, and because of this the tower itself do not care about placement/location
-            //location of what?
+        //public void location(int tiles)
+        //{
+        //    //  this will not be implemented. the gamelogic is responsible for placing and keeping track of each and every tower. also when calling up- or down-grade 
+        //    //  functions the object is sent, and because of this the tower itself do not care about placement/location
+        //    //location of what?
 
-        }
+        //}
 
         public string nameDefensiveUnit { get; set; } //
         public int defensivePower { get; set; }//How hard can it hit
