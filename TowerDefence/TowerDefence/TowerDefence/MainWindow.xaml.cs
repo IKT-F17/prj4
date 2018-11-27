@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -12,21 +12,24 @@ namespace TowerDefence
 {
     public partial class MainWindow : Window
     {
-        private int MOVE = 32;
+        // Constant variable:
+        private int MOVE = 32;      // Grid size = 32x32.
 
-        private Rect Mob;
-        private List<Rect> MobList;
-        private Rect Tower;
-        private List<Rect> TowerList;
+        private Rect MobHitBox;
+        private List<Rect> MobHitBoxList = new List<Rect>();
+        private Rect TowerHitBox;
+        private List<Rect> TowerHitBoxList = new List<Rect>();
 
-        private Stack<string> Path;
+        private Stack<string> Path = new Stack<string>();
 
         private bool _isClicked;
         private Rectangle _towerSelected;
-        private bool _collision = false;
+        //private bool _collision = false;
 
+        private bool _mobSpawned = false;
         private int counter = 0;
-        private bool mobSpawned = false;
+
+        // Test/Temp game attributes:
         private double HP = 100;
 
         public MainWindow()
@@ -35,75 +38,78 @@ namespace TowerDefence
 
             GeneratePath();
             GameTickSetup();
+
+            //MobHitBox = new Rect(1056, 297, 20, 20);
+            //MobHitBoxList.Add(MobHitBox);
         }
 
         private void GeneratePath()
         {
-            var stack = new Stack<string>();
+            //var stack = new Stack<string>();
 
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("right");
-            stack.Push("right");
-            stack.Push("right");
-            stack.Push("right");
-            stack.Push("right");
-            stack.Push("right");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("down");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("up");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
-            stack.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("right");
+            Path.Push("right");
+            Path.Push("right");
+            Path.Push("right");
+            Path.Push("right");
+            Path.Push("right");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("down");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("up");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
+            Path.Push("left");
 
-            Path = stack;
+            //Path = stack;
         }
 
         #region GAME TICKS:
@@ -119,39 +125,43 @@ namespace TowerDefence
         // GAME TIMER LOOP:
         private void TimerTick(object sender, EventArgs e)
         {
-            //lblTime.Content = DateTime.Now.ToString("HH:mm:ss.fff");
+            // TODO: What needs to run pr. Tick?
+            // 1. MobMove();        // Skal vel engentlig ske via "spawn wave"!?
+            // 2. HitDetection();   
 
-            // TODO: Collision detection check pr. tick.
-            //foreach (var Mob in Mobs)
+            // 1.
+            if (_mobSpawned) MobMove();
 
-            _collision = Tower.IntersectsWith(Mob);
-            if (_collision)
+            // 2.
+            //if (TowerHitBoxList.Count != 0) Task.Run(()=>CheckHit());   // Forsøg på at løse threading problem.
+            if (TowerHitBoxList.Count != 0) CheckHit();
+        }
+
+        private void CheckHit()
+        {
+            foreach (var towerHb in TowerHitBoxList)
             {
-                //MessageBox.Show(_collision.ToString());
-                //TODO: Call function to damage the mob.
-                //Shoot();
-            }
-
-            // Mob movement (change the conditions equals number to influence mob speed):
-            if (mobSpawned)
-            {
-                counter++;
-                if (counter == 4) MobMove();
+                foreach (var mobHb in MobHitBoxList)
+                {
+                        if (towerHb.IntersectsWith(mobHb)) Shoot(/*towerHb, mobHb*/);   // Tænker det måske kunne være super smart hvis man istedet for bare at give hitboxen med videre til Shoot(), så giver både selve tower & mob og deres tilhørende hitboxes?
+                }
             }
         }
 
-        //private void Shoot()
-        //{
-        //    if ((int) MobHP.Content != 0)   // <---- CAST ERROR (NOT VALID). TODO: NEEDS A FIX!
-        //    {
-        //        MobHP.Content = ((int) (HP - 0.1)).ToString();
-        //    }
-        //    else
-        //    {
-        //        MobHP.Content = "0";
-        //        Mob2.Visibility = Visibility.Hidden;
-        //    }
-        //}
+        private void Shoot(/*Rect CurrTower, Rect CurrMob*/)
+        {
+            /// Forsøg på at fixe threading problem. Give af vores vejleder.
+            //Dispatcher.BeginInvoke(new Action(() =>
+            //{
+            //    int.TryParse(MobHP.Content.ToString(), out var hp);
+            //    MobHP.Content = (hp - 1).ToString();
+            //}));
+            
+            //MessageBox.Show("Tower Shooting...");
+
+            int.TryParse(MobHP.Content.ToString(), out var hp);
+            MobHP.Content = (hp - 1).ToString();
+        }
 
         #endregion
 
@@ -178,8 +188,8 @@ namespace TowerDefence
             // Hides the tower placement graphics.
             TowerPlacement1.Visibility = Visibility.Collapsed;
 
-            Tower = new Rect(Canvas.GetLeft(NewTowerType1Placement1CoverArea), Canvas.GetTop(NewTowerType1Placement1CoverArea), NewTowerType1Placement1CoverArea.Width, NewTowerType1Placement1CoverArea.Height);
-            //Towers.Add(Tower);
+            TowerHitBox = new Rect(Canvas.GetLeft(NewTowerType1Placement1CoverArea), Canvas.GetTop(NewTowerType1Placement1CoverArea), NewTowerType1Placement1CoverArea.Width, NewTowerType1Placement1CoverArea.Height);
+            TowerHitBoxList.Add(TowerHitBox);
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
@@ -191,12 +201,20 @@ namespace TowerDefence
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
+            /// OBS. VIRKER IKKE - Får gameticket til at stoppe. Vores vejleder kan heller ikke løsse problemet.
+            //if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Visible)
+            //{
+            //    NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
+            //}
         }
 
         private void NewRedTowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            NewTowerType1Placement1CoverArea.Visibility = Visibility.Hidden;
+            /// OBS. VIRKER IKKE - Får gameticket til at stoppe. Vores vejleder kan heller ikke løsse problemet.
+            //if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Collapsed)
+            //{
+            //    NewTowerType1Placement1CoverArea.Visibility = Visibility.Collapsed;
+            //}
         }
 
         // GENERAL TOWER FUNCTIONS:
@@ -214,8 +232,10 @@ namespace TowerDefence
 
         private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
-            Mob = new Rect(1056, 297, 20, 20);
-            mobSpawned = true;
+            MobHitBox = new Rect(1056, 297, 20, 20);
+            MobHitBoxList.Add(MobHitBox);
+
+            _mobSpawned = true;
         }
 
         #endregion
@@ -224,40 +244,60 @@ namespace TowerDefence
         private void MobMove()
         {
             var dir = "";
-            counter = 0;                                          // Used for animation movement delay
+            counter = 0;        // Used for animation movement delay, if it is enabled future up.
 
             if (Path.Count != 0)
                 dir = Path.Pop();
 
             switch (dir.ToLower())
             {
+                // Bliver selvfølgelig nød til at lave en liste med mobs generelt, så hver move kan gå igennem denne pr tick.
+                // Kan man updatere en liste? Ville være smart hvis man kunne undgå at fjerne fra listen og added igen. Sikkert super simpelt, men kan ikke se det lige nu.
+
                 case "left":
                     Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - MOVE);
-                    Mob.X = Mob.X - MOVE;
+                    for (var i = 0; i < MobHitBoxList.Count; i++)
+                    {
+                        var m = MobHitBoxList[i];
+                        MobHitBoxList.Remove(MobHitBoxList[i]);
+                        m.X = m.X - MOVE;
+                        MobHitBoxList.Add(m);
+                    }
                     break;
 
                 case "right":
                     Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) + MOVE);
-                    Mob.X = Mob.X - MOVE;
+                    for (var i = 0; i < MobHitBoxList.Count; i++)
+                    {
+                        var m = MobHitBoxList[i];
+                        MobHitBoxList.Remove(MobHitBoxList[i]);
+                        m.X = m.X + MOVE;
+                        MobHitBoxList.Add(m);
+                    }
                     break;
 
                 case "up":
                     Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) - MOVE);
-                    Mob.Y = Mob.Y - MOVE;
+                    for (var i = 0; i < MobHitBoxList.Count; i++)
+                    {
+                        var m = MobHitBoxList[i];
+                        MobHitBoxList.Remove(MobHitBoxList[i]);
+                        m.Y = m.Y - MOVE;
+                        MobHitBoxList.Add(m);
+                    }
                     break;
 
                 case "down":
                     Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) + MOVE);
-                    Mob.Y = Mob.Y + MOVE;
-                    break;
-
-                default:
-                    MessageBox.Show("No moves made!");
+                    for (var i = 0; i < MobHitBoxList.Count; i++)
+                    {
+                        var m = MobHitBoxList[i];
+                        MobHitBoxList.Remove(MobHitBoxList[i]);
+                        m.Y = m.Y + MOVE;
+                        MobHitBoxList.Add(m);
+                    }
                     break;
             }
-
-            //Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - MOVE);  // Movement for mob.
-            //Mob.X = Mob.X - MOVE;                               // Movement for mob hit box.
         }
 
         private void Mob1_KeyDown(object sender, KeyEventArgs e)
@@ -266,19 +306,19 @@ namespace TowerDefence
             {
                 case Key.Left:
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - MOVE);
-                    Mob.X = Mob.X - MOVE;
+                    MobHitBox.X = MobHitBox.X - MOVE;
                     break;
                 case Key.Right:
                     Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) + MOVE);
-                    Mob.X = Mob.X + MOVE;
+                    MobHitBox.X = MobHitBox.X + MOVE;
                     break;
                 case Key.Up:
                     Canvas.SetTop(Mob1, Canvas.GetTop(Mob1) - MOVE);
-                    Mob.Y = Mob.Y - MOVE;
+                    MobHitBox.Y = MobHitBox.Y - MOVE;
                     break;
                 case Key.Down:
                     Canvas.SetTop(Mob1, Canvas.GetTop(Mob1) + MOVE);
-                    Mob.Y = Mob.Y + MOVE;
+                    MobHitBox.Y = MobHitBox.Y + MOVE;
                     break;
             }
         }
