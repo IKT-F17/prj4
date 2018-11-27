@@ -7,8 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="142" d:DesignWidth="142">
     <Canvas>
-        <Rectangle x:Name="TowerPlacement1" Panel.ZIndex="99" Fill="DarkGray" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown="TowerPlacement1_OnMouseDown" MouseEnter="TowerPlacement1_OnMouseEnter"/>
-        <Rectangle x:Name="NewRedTowerPlacement1" Visibility="Collapsed" Panel.ZIndex="98" Fill="Red" Width="42" Height="42" StrokeThickness="2" Canvas.Left="184" Canvas.Top="80" />
+        <Rectangle x:Name="TowerPlacement1" Panel.ZIndex="99" Fill="DarkGray" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown="TowerPlacement1_OnMouseDown" MouseEnter="TowerPlacement1_OnMouseEnter" MouseLeave="TowerPlacement1_OnMouseLeave"/>
+        <Rectangle x:Name="NewRedTowerPlacement1" Visibility="Collapsed" Panel.ZIndex="98" Fill="Red" Width="42" Height="42" StrokeThickness="2" Canvas.Left="50" Canvas.Top="50" />
         <Rectangle x:Name="NewRedTowerCoverAreaPlacement1" Visibility="Collapsed" Panel.ZIndex="97" Width="142" Height="142" Canvas.Left="0" Canvas.Top="0" Stroke="#3F000000" Fill="#260000FF"/>
         <!--<Rectangle x:Name="NewRedTower" Fill="Red" Visibility="Collapsed" Width="42" Height="42" StrokeThickness="2" Canvas.Left="50" Canvas.Top="50" MouseDown="NewRedTower_MouseDown"/>-->
 
