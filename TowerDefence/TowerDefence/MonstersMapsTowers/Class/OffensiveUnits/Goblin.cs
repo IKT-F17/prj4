@@ -28,6 +28,11 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
 
         }
 
+        public void TakeDamage(int damage)
+        {
+            this.hitPoints -= damage;
+        }
+
         public string nameOffensiveUnit { get; set; }//gobil, ponys,cats, Orgs
         public int runSpeed { get; set; }//offensive unit speed on map
         public int reward { get; set; }//reward for killing an offensive unit

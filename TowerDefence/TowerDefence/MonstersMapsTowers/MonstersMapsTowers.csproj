@@ -50,12 +50,15 @@
     <Compile Include="Class\Pathing\Pathfinder.cs" />
     <Compile Include="Class\Player.cs" />
     <Compile Include="Interfaces\IDefensiveUnit.cs" />
+    <Compile Include="Interfaces\IMapFileReader.cs" />
     <Compile Include="Interfaces\IMaps.cs" />
     <Compile Include="Interfaces\IOffensiveUnit.cs" />
     <Compile Include="Interfaces\IPathfinder.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MapFiles\Map01.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

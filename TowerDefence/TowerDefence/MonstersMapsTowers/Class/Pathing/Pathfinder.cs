@@ -11,7 +11,7 @@
 
 namespace MonstersMapsTowers.Class.Pathing
 {
-    class Node
+    public class Node
     {
         public Node(string direction)
         {
