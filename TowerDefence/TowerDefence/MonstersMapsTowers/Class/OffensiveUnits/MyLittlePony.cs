@@ -7,11 +7,11 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.OffensiveUnits
 {
-    class MyLittlePony : IOffensiveUnit
+    public class MyLittlePony : IOffensiveUnit
     {
         public MyLittlePony(int startTile, int endTile, int offensiveTiles)
         {
-            nameOffensiveUnit = "MyLittelPony";
+            nameOffensiveUnit = "MyLittlePony";
             runSpeed = 2;
             reward = 15;
             hitPoints = 150;
