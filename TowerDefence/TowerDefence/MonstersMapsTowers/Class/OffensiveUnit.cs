@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
 {
     public class OffensiveUnit : IOffensiveUnit
     {
-        public OffensiveUnit(Stack<string> path)//Bliver start og end ikke fastsat af maps?
+
+        private int offensiveUnitXSize, offensiveUnitYSize = 20; // Graphic size and hitbox size of the unit
+
+        public OffensiveUnit(Stack<string> _path, int _xPos, int _Ypos) 
         {
             string OffensiveUnit = nameOffensiveUnit;
             int run = runSpeed;
@@ -18,6 +22,12 @@ namespace MonstersMapsTowers.Class
             int ID = offensiveUnitID;
             int Hit = hitPoints;
             int Attack = attackPower;
+            xSize = offensiveUnitXSize;
+            ySize = offensiveUnitYSize;
+            xPos = _xPos;
+            yPos = _Ypos;
+            hitBox = new Rect(xPos, yPos, xSize, ySize);
+            path = _path;
         }
 
         public void TakeDamage(int damage)
@@ -25,7 +35,7 @@ namespace MonstersMapsTowers.Class
             this.hitPoints -= damage;
         }
 
-        public void Immunites()
+        public void Immunites(string type)
         {
             //  Will not be made in this project  
         }
@@ -36,5 +46,11 @@ namespace MonstersMapsTowers.Class
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
        public int attackPower { get; set; }
+        private int xSize { get; set; }
+        private int ySize { get; set; }
+        private int xPos { get; set; }
+        private int yPos { get; set; }
+        private Rect hitBox { get; set; }
+        private Stack<string> path { get; set; }
     }
 }
