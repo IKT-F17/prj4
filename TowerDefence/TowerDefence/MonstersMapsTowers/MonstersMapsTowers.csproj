@@ -45,6 +45,7 @@
     <Compile Include="Class\DefensiveUnit.cs" />
     <Compile Include="Class\DefensiveUnits\GoblinKiller.cs" />
     <Compile Include="Class\DefensiveUnits\PonyKiller.cs" />
+    <Compile Include="Class\DefensiveUnitUtilities.cs" />
     <Compile Include="Class\OffensiveUnits\Goblin.cs" />
     <Compile Include="Class\Maps.cs" />
     <Compile Include="Class\OffensiveUnit.cs" />
@@ -53,6 +54,7 @@
     <Compile Include="Class\Pathing\Pathfinder.cs" />
     <Compile Include="Class\Player.cs" />
     <Compile Include="Interfaces\IDefensiveUnit.cs" />
+    <Compile Include="Interfaces\IDefensiveUnitUtilities.cs" />
     <Compile Include="Interfaces\IMapFileReader.cs" />
     <Compile Include="Interfaces\IMaps.cs" />
     <Compile Include="Interfaces\IOffensiveUnit.cs" />
