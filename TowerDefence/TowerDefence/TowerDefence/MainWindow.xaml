@@ -47,16 +47,16 @@
         </Rectangle>
 
         <!-- Tower type 1 -->
-        <Rectangle x:Name="NewTowerType1Placement1" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="165" Canvas.Top="174" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
+        <Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="165" Canvas.Top="174" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Resources/Tower1_42x42.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Visibility="Hidden" Width="128" Height="128" Canvas.Left="122" Canvas.Top="130" Stroke="#6F000000" Fill="#260000FF"/>
+        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Hidden" Width="128" Height="128" Canvas.Left="122" Canvas.Top="130" Stroke="#6F000000" Fill="#260000FF"/>
 
         <!-- Mobs -->
-        <Rectangle x:Name="Mob1" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
-        <Rectangle x:Name="Mob2" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
+        <Rectangle x:Name="MobX"    Panel.ZIndex="98" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
+        <Rectangle x:Name="Goblin1" Panel.ZIndex="98" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
 
     </Canvas>
 
