@@ -58,6 +58,9 @@
     <Compile Include="Tower1.xaml.cs">
       <DependentUpon>Tower1.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Goblin.xaml.cs">
+      <DependentUpon>Goblin.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -71,6 +74,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Tower1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Goblin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -106,6 +113,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Tower1_42x42.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MonstersMapsTowers\MonstersMapsTowers.csproj">
+      <Project>{0b401dde-efbc-4e7d-a303-ff2e11ffc598}</Project>
+      <Name>MonstersMapsTowers</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

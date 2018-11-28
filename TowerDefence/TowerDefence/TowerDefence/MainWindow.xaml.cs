@@ -7,18 +7,23 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
+using MonstersMapsTowers.Class.OffensiveUnits;
 
 namespace TowerDefence
 {
     public partial class MainWindow : Window
     {
-        // Constant variable:
+        #region VARIABLES:
         private int MOVE = 32;      // Grid size = 32x32.
 
         private Rect MobHitBox;
         private List<Rect> MobHitBoxList = new List<Rect>();
+
         private Rect TowerHitBox;
         private List<Rect> TowerHitBoxList = new List<Rect>();
+
+        private Goblin _newGoblin;
+        private List<Goblin> MobsList = new List<Goblin>();
 
         private Stack<string> Path = new Stack<string>();
 
@@ -31,6 +36,8 @@ namespace TowerDefence
 
         // Test/Temp game attributes:
         private double HP = 100;
+        #endregion
+
 
         public MainWindow()
         {
@@ -112,6 +119,7 @@ namespace TowerDefence
             //Path = stack;
         }
 
+
         #region GAME TICKS:
         private void GameTickSetup()
         {
@@ -121,6 +129,7 @@ namespace TowerDefence
             timer.Tick += TimerTick;
             timer.Start();
         }
+
 
         // GAME TIMER LOOP:
         private void TimerTick(object sender, EventArgs e)
@@ -136,7 +145,11 @@ namespace TowerDefence
             //if (TowerHitBoxList.Count != 0) Task.Run(()=>CheckHit());   // Forsøg på at løse threading problem.
             if (TowerHitBoxList.Count != 0) CheckHit();
         }
+        #endregion
 
+
+        #region ACTIONS:
+        // HIT DETECTION:
         private void CheckHit()
         {
             foreach (var towerHb in TowerHitBoxList)
@@ -148,6 +161,8 @@ namespace TowerDefence
             }
         }
 
+
+        // TOWER SHOOTING:
         private void Shoot(/*Rect CurrTower, Rect CurrMob*/)
         {
             /// Forsøg på at fixe threading problem. Give af vores vejleder.
@@ -162,11 +177,10 @@ namespace TowerDefence
             int.TryParse(MobHP.Content.ToString(), out var hp);
             MobHP.Content = (hp - 1).ToString();
         }
-
         #endregion
 
-        #region SELECT & PLACE:
 
+        #region SELECT & PLACE:
         // RED TOWER:
         private void NewTowerType1_MouseDown(object sender, MouseButtonEventArgs e)
         {
@@ -201,20 +215,18 @@ namespace TowerDefence
 
         private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
         {
-            /// OBS. VIRKER IKKE - Får gameticket til at stoppe. Vores vejleder kan heller ikke løsse problemet.
-            //if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Visible)
-            //{
-            //    NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
-            //}
+            if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Visible)
+            {
+                NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
+            }
         }
 
         private void NewRedTowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
         {
-            /// OBS. VIRKER IKKE - Får gameticket til at stoppe. Vores vejleder kan heller ikke løsse problemet.
-            //if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Collapsed)
-            //{
-            //    NewTowerType1Placement1CoverArea.Visibility = Visibility.Collapsed;
-            //}
+            if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Collapsed)
+            {
+                NewTowerType1Placement1CoverArea.Visibility = Visibility.Collapsed;
+            }
         }
 
         // GENERAL TOWER FUNCTIONS:
@@ -225,20 +237,22 @@ namespace TowerDefence
             _isClicked = !_isClicked;
             _towerSelected.Stroke = _isClicked ? Brushes.Black : null;
         }
-
         #endregion
 
-        #region MOB SPAWNS:
 
+        #region MOB SPAWNS:
         private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
+            _newGoblin = new Goblin(Path, 1056, 297);
+            MobsList.Add(_newGoblin);
+
             MobHitBox = new Rect(1056, 297, 20, 20);
             MobHitBoxList.Add(MobHitBox);
 
             _mobSpawned = true;
         }
-
         #endregion
+
 
         #region MOB MOVEMENT CONTROLS:
         private void MobMove()
@@ -255,7 +269,7 @@ namespace TowerDefence
                 // Kan man updatere en liste? Ville være smart hvis man kunne undgå at fjerne fra listen og added igen. Sikkert super simpelt, men kan ikke se det lige nu.
 
                 case "left":
-                    Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) - MOVE);
+                    Canvas.SetLeft(Goblin1, Canvas.GetLeft(Goblin1) - MOVE);
                     for (var i = 0; i < MobHitBoxList.Count; i++)
                     {
                         var m = MobHitBoxList[i];
@@ -266,7 +280,7 @@ namespace TowerDefence
                     break;
 
                 case "right":
-                    Canvas.SetLeft(Mob2, Canvas.GetLeft(Mob2) + MOVE);
+                    Canvas.SetLeft(Goblin1, Canvas.GetLeft(Goblin1) + MOVE);
                     for (var i = 0; i < MobHitBoxList.Count; i++)
                     {
                         var m = MobHitBoxList[i];
@@ -277,7 +291,7 @@ namespace TowerDefence
                     break;
 
                 case "up":
-                    Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) - MOVE);
+                    Canvas.SetTop(Goblin1, Canvas.GetTop(Goblin1) - MOVE);
                     for (var i = 0; i < MobHitBoxList.Count; i++)
                     {
                         var m = MobHitBoxList[i];
@@ -288,7 +302,7 @@ namespace TowerDefence
                     break;
 
                 case "down":
-                    Canvas.SetTop(Mob2, Canvas.GetTop(Mob2) + MOVE);
+                    Canvas.SetTop(Goblin1, Canvas.GetTop(Goblin1) + MOVE);
                     for (var i = 0; i < MobHitBoxList.Count; i++)
                     {
                         var m = MobHitBoxList[i];
@@ -297,6 +311,13 @@ namespace TowerDefence
                         MobHitBoxList.Add(m);
                     }
                     break;
+
+                //default:
+                //    // Når man kommer hertil er Path stacken tom og moben har gået banen igennem.
+                //    // TODO: Kald en funktion der skal arbejde med hvad der skal ske med moben nu.
+                //    MessageBox.Show("Mob move done.");
+                //    _mobSpawned = false;
+                //    break;
             }
         }
 
@@ -305,24 +326,23 @@ namespace TowerDefence
             switch (e.Key)
             {
                 case Key.Left:
-                    Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) - MOVE);
+                    Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) - MOVE);
                     MobHitBox.X = MobHitBox.X - MOVE;
                     break;
                 case Key.Right:
-                    Canvas.SetLeft(Mob1, Canvas.GetLeft(Mob1) + MOVE);
+                    Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) + MOVE);
                     MobHitBox.X = MobHitBox.X + MOVE;
                     break;
                 case Key.Up:
-                    Canvas.SetTop(Mob1, Canvas.GetTop(Mob1) - MOVE);
+                    Canvas.SetTop(MobX, Canvas.GetTop(MobX) - MOVE);
                     MobHitBox.Y = MobHitBox.Y - MOVE;
                     break;
                 case Key.Down:
-                    Canvas.SetTop(Mob1, Canvas.GetTop(Mob1) + MOVE);
+                    Canvas.SetTop(MobX, Canvas.GetTop(MobX) + MOVE);
                     MobHitBox.Y = MobHitBox.Y + MOVE;
                     break;
             }
         }
-
         #endregion
     }
 }
