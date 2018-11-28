@@ -38,10 +38,11 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
 
 
             tower.defensiveLevel = unit.defensiveLevel + 1;
+             
             //  if we need to be upgrade levels , we'd need the name to be something like: 
             //  unit.nameDefensiveUnit + ($" Level {defensiveLevel} ");
             //tower.nameDefensiveUnit = unit.nameDefensiveUnit + (" upgraded,");//rename the unit
-            tower.nameDefensiveUnit = unit.nameDefensiveUnit + ($"Level {defensiveLevel}");
+            tower.nameDefensiveUnit = unit.nameDefensiveUnit + " Level " + tower.defensiveLevel;
             tower.defensivePower = unit.defensivePower + 2; // think we should keep this to addition        
             tower.defenseType = unit.defenseType;           // only necessary if we actually change the tower type when upgrading
             tower.defenseRange = unit.defenseRange + 1;
