@@ -7,7 +7,7 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
 {
-    class Player : IPlayer
+   public class Player : IPlayer
     {
         public Player(string userName)
         {
