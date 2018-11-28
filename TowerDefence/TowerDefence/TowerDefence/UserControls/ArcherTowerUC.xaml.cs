@@ -22,14 +22,16 @@ namespace TowerDefence.UserControls
     public partial class ArcherTowerUC : UserControl
     {
         //Rect used for collision detection
-        public Rect TowerHitBox = new Rect(0,0,142,142);
+        public Rect TowerHitBox;
 
         //linking Tower class object
-        public GoblinKiller _currentTower = new GoblinKiller();
+        public GoblinKiller currentTower;
 
         public ArcherTowerUC()
         {
             InitializeComponent();
+            TowerHitBox = new Rect(0, 0, 142, 142);
+            currentTower = new GoblinKiller();
         }
 
         //Method that shows tower attributes

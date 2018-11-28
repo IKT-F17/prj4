@@ -22,14 +22,16 @@ namespace TowerDefence.UserControls
     public partial class CannonTowerUC : UserControl
     {
         //Rect used for collision detection
-        public Rect TowerHitBox = new Rect(0, 0, 142, 142);
+        public Rect TowerHitBox;
 
         //Linking tower class object
-        public PonyKiller _currentTower = new PonyKiller();
+        private PonyKiller _currentTower;
 
         public CannonTowerUC()
         {
             InitializeComponent();
+            _currentTower = new PonyKiller();
+
         }
 
         //Method that shows tower attributes
