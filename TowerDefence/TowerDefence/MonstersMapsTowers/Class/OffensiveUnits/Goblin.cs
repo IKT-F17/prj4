@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices;
-using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,30 +11,24 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
 {
     public class Goblin : IOffensiveUnit
     {
-        private int offensiveUnitXSize = 20;
-        private int offensiveUnitYSize = 20;
 
-
-        public Goblin(Stack<string> _path, int _xPos,int _Ypos)
+        public Goblin(Stack<string> _path)
         {
             nameOffensiveUnit = "Goblin";
             runSpeed = 1;
             reward = 10;
             hitPoints = 100;
             attackPower = 1;
-            Immunites();
-            xSize = offensiveUnitXSize;
-            ySize = offensiveUnitYSize;
-            xPos = _xPos;
-            yPos = _Ypos;
-            hitBox = new Rect(xPos, yPos, xSize, ySize);
+            Immunites("");
             path = _path;
         }
 
-
-        public void Immunites()
+        /// <summary>
+        /// Immunities is not implemented at this point in time, it is not pivotal to out understanding og the project as a whole.
+        /// IF implemented the purpose is to remove or lessen the damage taken by an offensive unit of a specific type. 
+        /// </summary>
+        public void Immunites(string type)
         {
-            
         }
 
         public void TakeDamage(int damage)
@@ -49,11 +42,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
         public int attackPower { get; set; }
-        private int xSize { get; set; }
-        private int ySize { get; set; }
-        private int xPos { get; set; }
-        private int yPos { get; set; }
-        private Rect hitBox { get; set; }
         private Stack<string> path { get; set; }
 
     }

@@ -8,8 +8,8 @@
     <ProjectGuid>{10658E04-2FE0-49FF-92D8-8916CA21243D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ClassLibrary1</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>TowerDefenceUnitTest</RootNamespace>
+    <AssemblyName>TowerDefenceUnitTest</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -59,6 +59,8 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="DefensiveUnits\GoblinKillerUnitTest.cs" />
+    <Compile Include="DefensiveUnits\PonyKillerUnitTest.cs" />
+    <Compile Include="DefensiveUnitUtillitiesUnitTest.cs" />
     <Compile Include="OffensiveUnits\GoblinUnitTests.cs" />
     <Compile Include="OffensiveUnits\MyLittlePonyUnitTest.cs" />
     <Compile Include="Pathing\MapFileReaderUnitTests.cs" />

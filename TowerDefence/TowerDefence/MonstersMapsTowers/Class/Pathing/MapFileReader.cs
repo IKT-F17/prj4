@@ -14,15 +14,13 @@ namespace MonstersMapsTowers.Class.Pathing
     /// </summary>
     public class MapFileReader
     {
-        ///TODO: function to access database to retrieve filename based on the Mapname in question.
 
-        ///TODO: function to parse the Mapfile so as to extract the needed informations about a map.
 
 
 
         public void LoadMapFile(string mapName)
         {
-            //    /// TODO: code database Filename/path retriever
+            //    /// TODO: code database Filename/path retriever - Need help from Andreas - but lower priority
             
             ReadMapFile(@"\MapFiles\Map01.txt");    // the string needs to be the real path from the database. this is just the temporary hardcoded path and filename. 
 
