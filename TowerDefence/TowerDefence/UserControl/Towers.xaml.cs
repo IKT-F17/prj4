@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MonstersMapsTowers.Class;
+
 namespace UserControl
 {
     /// <summary>
@@ -30,8 +31,7 @@ namespace UserControl
         {
             InitializeComponent();
         }
-
-
+        
         private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             //TODO
@@ -44,6 +44,7 @@ namespace UserControl
         {
             NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Visible;
         }
+
         //Hides the cover area
         private void TowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
         {
