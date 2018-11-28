@@ -11,9 +11,8 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
 {
     public class Goblin : IOffensiveUnit
     {
-        private int offensiveUnitXSize, offensiveUnitYSize = 20; // Graphic size and hitbox size of the unit
 
-        public Goblin(Stack<string> _path, int _xPos,int _Ypos)
+        public Goblin(Stack<string> _path)
         {
             nameOffensiveUnit = "Goblin";
             runSpeed = 1;
@@ -21,11 +20,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             hitPoints = 100;
             attackPower = 1;
             Immunites("");
-            xSize = offensiveUnitXSize;
-            ySize = offensiveUnitYSize;
-            xPos = _xPos;
-            yPos = _Ypos;
-            hitBox = new Rect(xPos, yPos, xSize, ySize);
             path = _path;
         }
 
@@ -35,8 +29,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         /// </summary>
         public void Immunites(string type)
         {
-            
-            
         }
 
         public void TakeDamage(int damage)
@@ -50,11 +42,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
         public int attackPower { get; set; }
-        private int xSize { get; set; }
-        private int ySize { get; set; }
-        private int xPos { get; set; }
-        private int yPos { get; set; }
-        private Rect hitBox { get; set; }
         private Stack<string> path { get; set; }
 
     }
