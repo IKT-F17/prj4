@@ -20,6 +20,11 @@ namespace MonstersMapsTowers.Class
             int Attack = attackPower;
         }
 
+        public void TakeDamage(int damage)
+        {
+            this.hitPoints -= damage;
+        }
+
         public void Immunites()
         {
             //  Will not be made in this project  
@@ -30,7 +35,6 @@ namespace MonstersMapsTowers.Class
         public int reward { get; set; }//reward for killing an offensive unit
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
-        public Stack<string> path { get; set; }
-        public int attackPower { get; set; }
+       public int attackPower { get; set; }
     }
 }

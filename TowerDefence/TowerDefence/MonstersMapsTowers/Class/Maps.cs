@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Timers;
+using MonstersMapsTowers.Class.OffensiveUnits;
 using MonstersMapsTowers.Interfaces;
+using MonstersMapsTowers.Class.Pathing;
 
 namespace MonstersMapsTowers.Class
 {
@@ -18,6 +20,19 @@ namespace MonstersMapsTowers.Class
 
         public List<IOffensiveUnit> offensiveUnitList { get; private set; }
         #region IMaps
+
+
+        
+
+        public void LoadMap(string mapName)
+        {
+            var _mapFileReader = new MapFileReader();
+            _mapFileReader.LoadMapFile(mapName);
+
+
+
+        }
+
 
         public void makeOffensiveUnitPath()
         {
@@ -45,8 +60,9 @@ namespace MonstersMapsTowers.Class
 
         public void spawnMob(IOffensiveUnit unit)
         {
-            unit = new OffensiveUnit(0, 0, 0);
-            offensiveUnitList.Add(unit); 
+            //var _unit = ;
+            //unit = new OffensiveUnit(0, 0, 0);
+            //offensiveUnitList.Add(unit); 
         }
 
         public void callWave()

@@ -39,22 +39,29 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\DefensiveUnit.cs" />
+    <Compile Include="Class\DefensiveUnits\GoblinKiller.cs" />
+    <Compile Include="Class\DefensiveUnits\PonyKiller.cs" />
     <Compile Include="Class\OffensiveUnits\Goblin.cs" />
     <Compile Include="Class\Maps.cs" />
     <Compile Include="Class\OffensiveUnit.cs" />
     <Compile Include="Class\OffensiveUnits\MyLittlePony.cs" />
-    <Compile Include="Class\Pathfinder.cs" />
+    <Compile Include="Class\Pathing\MapFileReader.cs" />
+    <Compile Include="Class\Pathing\Pathfinder.cs" />
     <Compile Include="Class\Player.cs" />
     <Compile Include="Interfaces\IDefensiveUnit.cs" />
+    <Compile Include="Interfaces\IMapFileReader.cs" />
     <Compile Include="Interfaces\IMaps.cs" />
     <Compile Include="Interfaces\IOffensiveUnit.cs" />
     <Compile Include="Interfaces\IPathfinder.cs" />
     <Compile Include="Interfaces\IPlayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="MapFiles\Map01.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

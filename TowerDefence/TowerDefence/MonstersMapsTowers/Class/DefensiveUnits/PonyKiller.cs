@@ -5,21 +5,21 @@ using System.Text;
 using System.Threading.Tasks;
 using MonstersMapsTowers.Interfaces;
 
-namespace MonstersMapsTowers.Class
+namespace MonstersMapsTowers.Class.DefensiveUnits
 {
-    public class DefensiveUnit : IDefensiveUnit
+   public class PonyKiller:IDefensiveUnit
     {
-        public DefensiveUnit(int unitId = 0)
+        public PonyKiller(int unitId = 0)
         {
-            nameDefensiveUnit = "";
-            defensivePower = 0;//damage un offensiveUnit
-            defenseType = 0;
-            defenseRange = 0;
-            upgradeCost = 0;
-            unitValue = 0;
-            defensiveTiles = 0;
-            defensiveLevel = 0;
-            unitCost = 0;
+            nameDefensiveUnit = "PonyKiller";
+            defensivePower = 30;//damage un offensiveUnit
+            defenseType = 50;
+            defenseRange = 1;
+            upgradeCost = -40;
+            unitValue = 40;
+            defensiveTiles = 1;
+            defensiveLevel = 1;
+            unitCost = -50;
             unitId = defensUnitId;
 
         }
@@ -28,16 +28,16 @@ namespace MonstersMapsTowers.Class
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)//det er ikke bare et object er skal retur? 
         {
-            DefensiveUnit tower = new DefensiveUnit();
+            PonyKiller tower = new PonyKiller();
             player.updateBank(type.unitCost);//update bank
-            return tower;  
+            return tower; 
         }
 
         public void upgradUnit(IDefensiveUnit unit, IPlayer player)
         {
-            DefensiveUnit tower = new DefensiveUnit();
+            PonyKiller tower = new PonyKiller();
 
 
             tower.defensiveLevel = unit.defensiveLevel + 1;
@@ -79,7 +79,7 @@ namespace MonstersMapsTowers.Class
             /// if the level is >1 the tower should be downgraded to current level -1, appropiate subtractions are made from the towers defensive prpoerties, and the name is adjusted to "plain name + "level XX" - 1"
             /// </summary>
 
-            DefensiveUnit tower = new DefensiveUnit();
+            PonyKiller tower = new PonyKiller();
 
 
             if (tower.defensiveLevel > 0)
@@ -91,7 +91,7 @@ namespace MonstersMapsTowers.Class
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
                 tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
-                tower.unitValue = unit.unitValue / defensiveLevel;//ikke brug for en downgrad. 
+                tower.unitValue = unit.unitValue / defensiveLevel; 
                 player.updateBank(unit.unitValue);
                 unit = tower;
             }
@@ -103,7 +103,7 @@ namespace MonstersMapsTowers.Class
                 tower.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
-                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
+                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
                 tower.unitValue = unit.unitValue / defensiveLevel;
                 player.updateBank(unit.unitValue);
                 unit = tower;//overskriver den her?

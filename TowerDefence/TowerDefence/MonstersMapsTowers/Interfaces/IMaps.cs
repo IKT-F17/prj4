@@ -5,6 +5,7 @@ namespace MonstersMapsTowers.Interfaces
 {
     public interface IMaps
     {
+        void LoadMap(string mapName);
         void makeOffensiveUnitPath();
         void wave(IOffensiveUnit unit, int amount, int time);
         void callWave();

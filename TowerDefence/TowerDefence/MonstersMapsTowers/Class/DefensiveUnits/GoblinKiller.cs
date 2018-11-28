@@ -1,25 +1,22 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using MonstersMapsTowers.Interfaces;
 
-namespace MonstersMapsTowers.Class
+namespace MonstersMapsTowers.Class.DefensiveUnits
 {
-    public class DefensiveUnit : IDefensiveUnit
+    public class GoblinKiller : IDefensiveUnit
     {
-        public DefensiveUnit(int unitId = 0)
+
+        public GoblinKiller(int unitId = 0)
         {
-            nameDefensiveUnit = "";
-            defensivePower = 0;//damage un offensiveUnit
-            defenseType = 0;
-            defenseRange = 0;
-            upgradeCost = 0;
-            unitValue = 0;
-            defensiveTiles = 0;
-            defensiveLevel = 0;
-            unitCost = 0;
+            nameDefensiveUnit = "GoblinKiller";
+            defensivePower = 20;//damage un offensiveUnit
+            defenseType = 1;
+            defenseRange = 1;
+            upgradeCost = -20;
+            unitValue = 20;
+            defensiveTiles = 1;
+            defensiveLevel = 1;
+            unitCost = -20;
             unitId = defensUnitId;
 
         }
@@ -30,21 +27,22 @@ namespace MonstersMapsTowers.Class
 
         public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
         {
-            DefensiveUnit tower = new DefensiveUnit();
+            GoblinKiller tower = new GoblinKiller();
             player.updateBank(type.unitCost);//update bank
-            return tower;  
+            return tower; 
         }
 
         public void upgradUnit(IDefensiveUnit unit, IPlayer player)
         {
-            DefensiveUnit tower = new DefensiveUnit();
+            GoblinKiller tower = new GoblinKiller();
 
 
             tower.defensiveLevel = unit.defensiveLevel + 1;
+             
             //  if we need to be upgrade levels , we'd need the name to be something like: 
             //  unit.nameDefensiveUnit + ($" Level {defensiveLevel} ");
             //tower.nameDefensiveUnit = unit.nameDefensiveUnit + (" upgraded,");//rename the unit
-            tower.nameDefensiveUnit = unit.nameDefensiveUnit + ($"Level {defensiveLevel}");
+            tower.nameDefensiveUnit = unit.nameDefensiveUnit + " Level " + tower.defensiveLevel;
             tower.defensivePower = unit.defensivePower + 2; // think we should keep this to addition        
             tower.defenseType = unit.defenseType;           // only necessary if we actually change the tower type when upgrading
             tower.defenseRange = unit.defenseRange + 1;
@@ -54,7 +52,7 @@ namespace MonstersMapsTowers.Class
 
             player.updateBank(unit.upgradeCost);//subtrac the price from user bank
             unit = tower;//add overwrit the old tower
-            //add the tower to the map list of towers
+                         //add the tower to the map list of towers
 
             //needs the 
 
@@ -79,7 +77,7 @@ namespace MonstersMapsTowers.Class
             /// if the level is >1 the tower should be downgraded to current level -1, appropiate subtractions are made from the towers defensive prpoerties, and the name is adjusted to "plain name + "level XX" - 1"
             /// </summary>
 
-            DefensiveUnit tower = new DefensiveUnit();
+            GoblinKiller tower = new GoblinKiller();
 
 
             if (tower.defensiveLevel > 0)

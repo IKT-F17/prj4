@@ -13,7 +13,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControl", "UserControl\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonstersMapsTowers", "MonstersMapsTowers\MonstersMapsTowers.csproj", "{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{148448E7-3715-4F9C-AF45-47FAE7EAE383}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towerdefense.Unit.Test", "ClassLibrary1\Towerdefense.Unit.Test.csproj", "{10658E04-2FE0-49FF-92D8-8916CA21243D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -41,10 +41,10 @@ Global
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Release|Any CPU.Build.0 = Release|Any CPU
-		{148448E7-3715-4F9C-AF45-47FAE7EAE383}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{148448E7-3715-4F9C-AF45-47FAE7EAE383}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{148448E7-3715-4F9C-AF45-47FAE7EAE383}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{148448E7-3715-4F9C-AF45-47FAE7EAE383}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

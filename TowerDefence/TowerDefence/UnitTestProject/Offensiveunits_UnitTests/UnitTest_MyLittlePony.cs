@@ -1,12 +1,13 @@
-﻿using System;
-using System.Diagnostics.Tracing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MonstersMapsTowers.Class.OffensiveUnits;
-using MonstersMapsTowers.Class;
-using NUnit.Framework;
-using Assert = NUnit.Framework.Assert;
+﻿//using System;
+//using System.Collections.Generic;
+//using System.Diagnostics.Tracing;
+//using Microsoft.VisualStudio.TestTools.UnitTesting;
+//using MonstersMapsTowers.Class.OffensiveUnits;
+//using MonstersMapsTowers.Class;
+//using NUnit.Framework;
+//using Assert = NUnit.Framework.Assert;
 
-
+/*
 namespace UnitTestProject.Offensiveunits_UnitTests
 {
     [TestClass]
@@ -26,6 +27,7 @@ namespace UnitTestProject.Offensiveunits_UnitTests
             Assert.That(_uut.runSpeed, Is.EqualTo(2));
             Assert.That(_uut.hitPoints, Is.EqualTo(150));
             Assert.That(_uut.reward, Is.EqualTo(15));
+            Assert.That(_uut.attackPower, Is.EqualTo(1));
         }
 
         [Test]
@@ -37,6 +39,7 @@ namespace UnitTestProject.Offensiveunits_UnitTests
             Assert.That(pony1.runSpeed, Is.EqualTo(pony2.runSpeed));
             Assert.That(pony1.hitPoints, Is.EqualTo(pony2.hitPoints));
             Assert.That(pony1.reward, Is.EqualTo(pony2.reward));
+            Assert.That(pony1.attackPower, Is.EqualTo(pony2.attackPower));
         }
         [Test]
         public void TestConstructor_false()
@@ -47,7 +50,10 @@ namespace UnitTestProject.Offensiveunits_UnitTests
             Assert.AreNotEqual(_uut.runSpeed, 1);
             Assert.AreNotEqual(_uut.hitPoints, 151);
             Assert.AreNotEqual(_uut.hitPoints, 149);
+            Assert.AreNotEqual(_uut.attackPower, 0);
+            Assert.AreNotEqual(_uut.attackPower, 2);
 
         }
     }
 }
+*/
