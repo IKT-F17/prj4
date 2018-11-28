@@ -41,7 +41,7 @@ namespace MonstersMapsTowers.Class.Pathing
             //  Using mapfile to set Map Settings
 
             var mapName = mapFileLines[0];
-            var mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image
+            var mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
             var initialPlayerBank = Int32.Parse(mapFileLines[2]); // Starting gold 
 
             var rawPathString = mapFileLines[3];    // The raw string containing the offensive unit path. 
@@ -50,6 +50,8 @@ namespace MonstersMapsTowers.Class.Pathing
             var numberOfOffensiveUnits = Int32.Parse(mapFileLines[5]); // # offensive units pr. Wave
             var timeDelaybetweenSpawns = Int32.Parse(mapFileLines[6]);  // time delay before the next offensive unit is spawned. 
             var offensiveUnitType = mapFileLines[7]; // type of offensive unit in the wave. 
+
+            #region Debug writelines.
 
             Debug.WriteLine($"content of vars");
             Debug.WriteLine($"Map name: {mapName}");
@@ -60,14 +62,23 @@ namespace MonstersMapsTowers.Class.Pathing
             Debug.WriteLine($"Numbers of Units in each Wave: {numberOfOffensiveUnits}");
             Debug.WriteLine($"Delay 'Tween units: {timeDelaybetweenSpawns}");
             Debug.WriteLine($"Unit Type: {offensiveUnitType}");
+            
 
-            var path = new Stack<String>(rawPathString.Split(';')); // Splitting the raw string path into bits, and packing them into the stack.
+            #endregion
 
-            foreach (var node in path)
+            var rawPath = new Stack<String>(rawPathString.Split(';')); // Splitting the raw string path into bits, and packing them into the stack.
+            foreach (var node in rawPath)
             {
                 Debug.WriteLine(node);
                 
             }
+
+                //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
+                //  
+            var path = new Pathfinder().CalculatePath(rawPath);
+
+
+            return;
 
 
 
