@@ -243,8 +243,8 @@ namespace TowerDefence
         #region MOB SPAWNS:
         private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
-            _newGoblin = new Goblin(Path, 1056, 297);
-            MobsList.Add(_newGoblin);
+            //_newGoblin = new Goblin(Path, 1056, 297);
+            //MobsList.Add(_newGoblin);
 
             MobHitBox = new Rect(1056, 297, 20, 20);
             MobHitBoxList.Add(MobHitBox);
