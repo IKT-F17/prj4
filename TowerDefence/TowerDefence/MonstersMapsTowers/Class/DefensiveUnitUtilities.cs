@@ -7,7 +7,7 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
 {
-    class DefensiveUnitUtilities
+  public  class DefensiveUnitUtilities
     {
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
@@ -20,7 +20,7 @@ namespace MonstersMapsTowers.Class
             return tower;
         }
 
-        public void upgradUnit(ref IDefensiveUnit unit, IPlayer player)
+        public void UpgradeUnit(ref IDefensiveUnit unit, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
 
@@ -34,9 +34,9 @@ namespace MonstersMapsTowers.Class
             tower.defenseRange = unit.defenseRange + 1;
             tower.defensiveTiles = unit.defensiveTiles;     //  What is this for ? 
             tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;//new upprice  
-            tower.unitValue = unit.unitValue + unit.upgradeCost;
+            tower.unitValue += unit.upgradeCost;
 
-            player.updateBank(unit.upgradeCost);//subtrac the price from user bank
+            player.updateBank(-unit.upgradeCost);//subtrac the price from user bank
             unit = tower;//add overwrit the old tower
             //add the tower to the map list of towers
 

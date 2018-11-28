@@ -28,11 +28,11 @@ namespace ClassLibrary1.DefensiveUnits
             Assert.That(_uut.defensivePower, Is.EqualTo(30));
             Assert.That(_uut.defenseType, Is.EqualTo(2));
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
-            Assert.That(_uut.upgradeCost, Is.EqualTo(-40));
+            Assert.That(_uut.upgradeCost, Is.EqualTo(40));
             Assert.That(_uut.unitValue, Is.EqualTo(40));
             Assert.That(_uut.defensiveTiles, Is.EqualTo(1));
             Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
-            Assert.That(_uut.unitCost, Is.EqualTo(-50));
+            Assert.That(_uut.unitCost, Is.EqualTo(50));
         }
     }
 }
