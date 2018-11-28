@@ -21,7 +21,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
 
         }
 
-      public string nameDefensiveUnit { get; set; } //
+        public string nameDefensiveUnit { get; set; } //
         public int defensivePower { get; set; }//How hard can it hit
         public int defenseType { get; set; }//What type of defense
         public int defenseRange { get; set; }//How far

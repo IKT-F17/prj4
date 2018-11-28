@@ -12,6 +12,6 @@ namespace MonstersMapsTowers.Interfaces
         int reward { get; set; }//reward for killing an offensive unit
         int hitPoints { get; set; }//attack power
         int offensiveUnitID { get; set; }
-       int attackPower { get; set; }
+        int attackPower { get; set; }
     }
 }
