@@ -42,9 +42,8 @@
 
     <Canvas x:Name="Map" Background="LightGray">
 
-        <local:Towers>
 
-        </local:Towers>
+
         <!-- For Testing: Tick Timer-->
         <Label Name="lblTime" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
 

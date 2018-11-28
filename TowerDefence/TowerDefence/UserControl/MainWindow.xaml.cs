@@ -18,7 +18,15 @@ namespace UserControl
         public MainWindow()
         {
             InitializeComponent();
-            var tower = new Towers();
+            var tower1 = new Towers();
+            Canvas.SetLeft(tower1,150);
+            Canvas.SetTop(tower1, 150);
+            Map.Children.Add(tower1);
+            
+            var tower2 = new Towers();
+            Canvas.SetLeft(tower2,0);
+            Canvas.SetTop(tower2,0);
+            Map.Children.Add(tower2);
         }
 
     }

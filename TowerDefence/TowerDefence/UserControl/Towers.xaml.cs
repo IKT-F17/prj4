@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using MonstersMapsTowers.Class;
+
 namespace UserControl
 {
     /// <summary>
@@ -23,26 +24,28 @@ namespace UserControl
         //Rect for collision detection
         public Rect CoverArea = new Rect(0,0,142,142);
 
-        //Creates a defensiveunit object
+        //Creates a DefensiveUnit object 
         public DefensiveUnit Tower = new DefensiveUnit();
 
         public Towers()
         {
             InitializeComponent();
-            //CoverArea = new Rect(Canvas.GetLeft(NewRedTowerCoverAreaPlacement1), Canvas.GetTop(NewRedTowerCoverAreaPlacement1), NewRedTowerCoverAreaPlacement1.Width, NewRedTowerCoverAreaPlacement1.Height);
         }
-
-
+        
         private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
+            //TODO
+            //Event that shows tower attributes on game screen
             MessageBox.Show("JAJA");
         }
 
+        //Shows the cover area
         private void TowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
         {
             NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Visible;
         }
 
+        //Hides the cover area
         private void TowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
         {
             NewRedTowerCoverAreaPlacement1.Visibility = Visibility.Hidden;
