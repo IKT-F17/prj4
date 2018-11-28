@@ -13,7 +13,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         {
             nameDefensiveUnit = "PonyKiller";
             defensivePower = 30;//damage un offensiveUnit
-            defenseType = 50;
+            defenseType = 2;
             defenseRange = 1;
             upgradeCost = -40;
             unitValue = 40;

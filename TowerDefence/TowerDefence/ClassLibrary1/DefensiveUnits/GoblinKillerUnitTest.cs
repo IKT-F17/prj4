@@ -15,9 +15,9 @@ namespace ClassLibrary1.DefensiveUnits
     public class GoblinKillerUnitTest
     {
         GoblinKiller _uut;
-        IPlayer fakePlayer;
+        
 
-        //IMaps fakeMap;
+        
 
         [SetUp]
         public void Setup()

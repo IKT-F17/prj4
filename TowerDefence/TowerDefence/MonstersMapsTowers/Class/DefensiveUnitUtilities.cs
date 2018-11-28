@@ -75,7 +75,7 @@ namespace MonstersMapsTowers.Class
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
                 tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
-                tower.unitValue = unit.unitValue / defensiveLevel;//ikke brug for en downgrad. 
+                tower.unitValue = unit.unitValue / unit.defensiveLevel;//ikke brug for en downgrad. 
                 player.updateBank(unit.unitValue);
                 unit = tower;
             }
@@ -88,9 +88,9 @@ namespace MonstersMapsTowers.Class
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
                 tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
-                tower.unitValue = unit.unitValue / defensiveLevel;
+                tower.unitValue = unit.unitValue / unit.defensiveLevel;
                 player.updateBank(unit.unitValue);
-                unit = tower;//overskriver den her?
+                unit = tower;
             }
             else
             {
