@@ -32,13 +32,13 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             return tower; 
         }
 
-        public void upgradUnit(IDefensiveUnit unit, IPlayer player)
+        public void upgradUnit(ref IDefensiveUnit unit, IPlayer player)//hvis jeg laver den om til goblinkiller class, har jeg ikke den med fra Interfacet, men skriver jeg den ikke om, og prøver at teste min goblin, passer typerne ikke sammen :/ 
         {
-            GoblinKiller tower = new GoblinKiller();
+           GoblinKiller tower = new GoblinKiller();
 
 
             tower.defensiveLevel = unit.defensiveLevel + 1;
-             
+
             //  if we need to be upgrade levels , we'd need the name to be something like: 
             //  unit.nameDefensiveUnit + ($" Level {defensiveLevel} ");
             //tower.nameDefensiveUnit = unit.nameDefensiveUnit + (" upgraded,");//rename the unit
@@ -49,9 +49,9 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             tower.defensiveTiles = unit.defensiveTiles;     //  What is this for ? 
             tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;//new upprice  
             tower.unitValue = unit.unitValue + unit.upgradeCost;
-
+            unit = tower;
             player.updateBank(unit.upgradeCost);//subtrac the price from user bank
-            unit = tower;//add overwrit the old tower
+           //add overwrit the old tower
                          //add the tower to the map list of towers
 
             //needs the 

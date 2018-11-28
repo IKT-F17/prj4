@@ -35,7 +35,7 @@ namespace MonstersMapsTowers.Class
             return tower;  
         }
 
-        public void upgradUnit(IDefensiveUnit unit, IPlayer player)
+        public void upgradUnit(ref IDefensiveUnit unit, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
 
