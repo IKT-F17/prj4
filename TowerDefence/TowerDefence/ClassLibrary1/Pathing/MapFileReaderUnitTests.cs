@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using NUnit.Framework;
-using NUnit.Framework.Internal;
+﻿using System.IO;
 using MonstersMapsTowers.Class.Pathing;
+using NUnit.Framework;
 
-
-namespace ClassLibrary1.Pathing
+namespace TowerDefenceUnitTest.Pathing
 {
 
     [TestFixture]
