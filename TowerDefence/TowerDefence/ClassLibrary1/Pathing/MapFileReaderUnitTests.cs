@@ -1,16 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
-using MonstersMapsTowers.Class.Pathing;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
+using NUnit.Framework.Internal;
+using MonstersMapsTowers.Class.Pathing;
 
-namespace UnitTestProject
+
+namespace ClassLibrary1.Pathing
 {
-    [TestClass]
-    public class MapFileReaderTest
+
+    [TestFixture]
+
+
+    public class MapFileReaderUnitTests
     {
-        [TestMethod]
+        [Test]
         public void ShouldLoadMapFile()
         {
             var filename = @"MapFiles\Map01.txt";
@@ -19,5 +26,8 @@ namespace UnitTestProject
 
             reader.ReadMapFile(filename);
         }
+
+
+
     }
 }
