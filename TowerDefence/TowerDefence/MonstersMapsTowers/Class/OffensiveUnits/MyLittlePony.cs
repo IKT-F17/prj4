@@ -11,7 +11,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
 {
     public class MyLittlePony : IOffensiveUnit
     {
-        private int offensiveUnitXSize, offensiveUnitYSize = 20; // Graphic size and hitbox size of the unit
 
         public MyLittlePony(Stack<string> _path, int _xPos, int _Ypos)
         {
@@ -21,12 +20,7 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             hitPoints = 150;
             attackPower = 1;
             Immunites("");
-            xSize = offensiveUnitXSize;
-            ySize = offensiveUnitYSize;
-            xPos = _xPos;
-            yPos = _Ypos;
-            hitBox = new Rect(xPos, yPos, xSize, ySize);
-            path = _path;
+            
         }
 
 
@@ -46,11 +40,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
         public int attackPower { get; set; }
-        private int xSize { get; set; }
-        private int ySize { get; set; }
-        private int xPos { get; set; }
-        private int yPos { get; set; }
-        private Rect hitBox { get; set; }
         private Stack<string> path { get; set; }
     }
 }
