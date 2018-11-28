@@ -9,12 +9,12 @@
 //using MonstersMapsTowers.Class.OffensiveUnits;
 //using MonstersMapsTowers.Interfaces;
 
-//namespace ClassLibrary1.OffensiveUnits
+//namespace TowerDefenceUnitTest.OffensiveUnits
 //{
 //    [TestFixture]
 
-    
-//   public class GoblinUnitTests
+
+//    public class GoblinUnitTests
 //    {
 //        Goblin _uut;
 
@@ -62,5 +62,5 @@
 
 //    }
 //}
-    
+
 

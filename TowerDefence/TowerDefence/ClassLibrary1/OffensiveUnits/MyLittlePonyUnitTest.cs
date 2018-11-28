@@ -9,10 +9,10 @@
 //using MonstersMapsTowers.Class.OffensiveUnits;
 //using MonstersMapsTowers.Class;
 
-//namespace ClassLibrary1.OffensiveUnits
+//namespace TowerDefenceUnitTest.OffensiveUnits
 //{
 //    [TestFixture]
-//  public  class MyLittlePonyUnitTest
+//    public class MyLittlePonyUnitTest
 //    {
 //        MyLittlePony _uut;
 
