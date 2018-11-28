@@ -7,39 +7,53 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
 {
-  public  class DefensiveUnitUtilities
+    public class DefensiveUnitUtilities
     {
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit tower, IMaps map, IPlayer player)
         {
-            DefensiveUnit tower = new DefensiveUnit();
-            player.updateBank(type.unitCost);//update bank
-            return tower;
+            if (tower.unitCost < player.bank)
+            {
+                player.updateBank(tower.unitCost);//update bank
+                return tower;
+            }
+            else
+            {
+                return null;
+            }
         }
 
         public void UpgradeUnit(ref IDefensiveUnit unit, IPlayer player)
         {
-            DefensiveUnit tower = new DefensiveUnit();
+            if (unit.upgradeCost < player.bank)
+            {
+                DefensiveUnit tower = new DefensiveUnit();
 
-            tower.defensiveLevel = unit.defensiveLevel + 1;
-            //  if we need to be upgrade levels , we'd need the name to be something like: 
-            //  unit.nameDefensiveUnit + ($" Level {defensiveLevel} ");
-            //tower.nameDefensiveUnit = unit.nameDefensiveUnit + (" upgraded,");//rename the unit
-            tower.nameDefensiveUnit = unit.nameDefensiveUnit + "Level "+ tower.defensiveLevel;
-            tower.defensivePower = unit.defensivePower + 2; // think we should keep this to addition        
-            tower.defenseType = unit.defenseType;           // only necessary if we actually change the tower type when upgrading
-            tower.defenseRange = unit.defenseRange + 1;
-            tower.defensiveTiles = unit.defensiveTiles;     //  What is this for ? 
-            tower.upgradeCost = unit.upgradeCost * upgradeCostFactor;//new upprice  
-            tower.unitValue += unit.upgradeCost;
+                tower.defensiveLevel = unit.defensiveLevel + 1;
+                //  if we need to be upgrade levels , we'd need the name to be something like: 
+                //  unit.nameDefensiveUnit + ($" Level {defensiveLevel} ");
+                //tower.nameDefensiveUnit = unit.nameDefensiveUnit + (" upgraded,");//rename the unit
+                tower.nameDefensiveUnit = unit.nameDefensiveUnit + "Level " + tower.defensiveLevel;
+                tower.defensivePower = unit.defensivePower + 2; // think we should keep this to addition        
+                tower.defenseType =
+                    unit.defenseType; // only necessary if we actually change the tower type when upgrading
+                tower.defenseRange = unit.defenseRange + 1;
+                tower.defensiveTiles = unit.defensiveTiles; //  What is this for ? 
+                tower.upgradeCost = unit.upgradeCost * upgradeCostFactor; //new upprice  
+                tower.unitValue += unit.upgradeCost;
 
-            player.updateBank(-unit.upgradeCost);//subtrac the price from user bank
-            unit = tower;//add overwrit the old tower
-            //add the tower to the map list of towers
-
+                player.updateBank(-unit.upgradeCost); //subtrac the price from user bank
+                unit = tower; //add overwrit the old tower
+                //add the tower to the map list of towers
+            }
+            else
+            {
+                return;
+                
+            }
             //needs the 
 
             //When this feature is called, adding to
@@ -54,7 +68,7 @@ namespace MonstersMapsTowers.Class
             //add the tower to the map list of towers
         }
 
-        public void downgradeUnit(IDefensiveUnit unit, IPlayer player)
+        public void DowngradeUnit(IDefensiveUnit unit, IPlayer player)
         {
             ///<summary>
             /// when this feature is calles, we check the towers level.

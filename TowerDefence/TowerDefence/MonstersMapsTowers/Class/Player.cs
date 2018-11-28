@@ -19,9 +19,13 @@ namespace MonstersMapsTowers.Class
         public double updateBank(double sum)
         {
             double newsum = 0;
-                       
+            
             newsum = this.bank + sum;
-            bank = newsum;
+
+            if (newsum >= 0)
+            {
+                bank = newsum;
+            }
                        
             return bank;
         }
