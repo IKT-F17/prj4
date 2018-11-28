@@ -12,11 +12,11 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             defensivePower = 20;//damage un offensiveUnit
             defenseType = 1;
             defenseRange = 1;
-            upgradeCost = -20;
+            upgradeCost = 20;
             unitValue = 20;
             defensiveTiles = 1;
             defensiveLevel = 1;
-            unitCost = -20;
+            unitCost = 20;
             unitId = defensUnitId;
 
         }

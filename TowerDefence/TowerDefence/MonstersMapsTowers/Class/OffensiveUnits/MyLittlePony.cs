@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
-using MonstersMapsTowers.Interfaces;;
+using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.OffensiveUnits
 {
@@ -20,7 +20,7 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             reward = 15;
             hitPoints = 150;
             attackPower = 1;
-            Immunites();
+            Immunites("");
             xSize = offensiveUnitXSize;
             ySize = offensiveUnitYSize;
             xPos = _xPos;
