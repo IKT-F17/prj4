@@ -5,11 +5,7 @@ namespace MonstersMapsTowers.Interfaces
 {
     public interface IDefensiveUnit//Tower
     {
-        IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player);
-        void upgradUnit(IDefensiveUnit unit, IPlayer player);
-        void downgradeUnit(IDefensiveUnit unit, IPlayer player);
-        
-        string nameDefensiveUnit { get; set; } //
+       string nameDefensiveUnit { get; set; } //
         int defensivePower { get; set; }//How hard can it hit
         int defenseType { get; set; }//What type of deffens
         int defenseRange { get; set; }//How far
