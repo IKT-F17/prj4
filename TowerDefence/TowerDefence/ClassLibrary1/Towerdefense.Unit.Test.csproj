@@ -58,6 +58,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.cs" />
+    <Compile Include="OffensiveUnits\GoblinUnitTests.cs" />
+    <Compile Include="OffensiveUnits\MyLittlePonyUnitTest.cs" />
     <Compile Include="Pathing\MapFileReaderUnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
