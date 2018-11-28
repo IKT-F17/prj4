@@ -28,12 +28,11 @@ namespace MonstersMapsTowers.Class
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public List<IDefensiveUnit> SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
         {
             DefensiveUnit tower = new DefensiveUnit();
-            //add to maps def list
             player.updateBank(type.unitCost);//update bank
-            return null; //List<DefensiveUnit>; ikke null! 
+            return tower;  
         }
 
         public void upgradUnit(IDefensiveUnit unit, IPlayer player)

@@ -1,22 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.DefensiveUnits
 {
-    public class GoblinKiller : IDefensiveUnit
+   public class PonyKiller:IDefensiveUnit
     {
-
-        public GoblinKiller(int unitId = 0)
+        public PonyKiller(int unitId = 0)
         {
-            nameDefensiveUnit = "GoblinKiller";
-            defensivePower = 20;//damage un offensiveUnit
-            defenseType = 1;
+            nameDefensiveUnit = "PonyKiller";
+            defensivePower = 30;//damage un offensiveUnit
+            defenseType = 50;
             defenseRange = 1;
-            upgradeCost = -20;
-            unitValue = 20;
+            upgradeCost = -40;
+            unitValue = 40;
             defensiveTiles = 1;
             defensiveLevel = 1;
-            unitCost = -20;
+            unitCost = -50;
             unitId = defensUnitId;
 
         }
@@ -25,16 +28,16 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  
                                                 //private double downgradeReturnValueFactor =  
 
-        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)
+        public IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player)//det er ikke bare et object er skal retur? 
         {
-            GoblinKiller tower = new GoblinKiller();
+            PonyKiller tower = new PonyKiller();
             player.updateBank(type.unitCost);//update bank
             return tower; 
         }
 
         public void upgradUnit(IDefensiveUnit unit, IPlayer player)
         {
-            GoblinKiller tower = new GoblinKiller();
+            PonyKiller tower = new PonyKiller();
 
 
             tower.defensiveLevel = unit.defensiveLevel + 1;
@@ -51,7 +54,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
 
             player.updateBank(unit.upgradeCost);//subtrac the price from user bank
             unit = tower;//add overwrit the old tower
-                         //add the tower to the map list of towers
+            //add the tower to the map list of towers
 
             //needs the 
 
@@ -76,7 +79,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             /// if the level is >1 the tower should be downgraded to current level -1, appropiate subtractions are made from the towers defensive prpoerties, and the name is adjusted to "plain name + "level XX" - 1"
             /// </summary>
 
-            GoblinKiller tower = new GoblinKiller();
+            PonyKiller tower = new PonyKiller();
 
 
             if (tower.defensiveLevel > 0)
@@ -88,7 +91,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
                 tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
-                tower.unitValue = unit.unitValue / defensiveLevel;//ikke brug for en downgrad. 
+                tower.unitValue = unit.unitValue / defensiveLevel; 
                 player.updateBank(unit.unitValue);
                 unit = tower;
             }
@@ -100,7 +103,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
                 tower.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 tower.defenseRange = unit.defenseRange - 1;
                 tower.defensiveTiles = unit.defensiveTiles;
-                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
+                tower.upgradeCost = unit.upgradeCost / upgradeCostFactor;
                 tower.unitValue = unit.unitValue / defensiveLevel;
                 player.updateBank(unit.unitValue);
                 unit = tower;//overskriver den her?
