@@ -31,8 +31,7 @@ namespace MonstersMapsTowers.Class.Pathing
 
 
         
-        ///TODO: læs ind fra MapFile hvilken sekvens af movements (Up, Down Left eller Right(U,D,L,R)) der skal tages. af den enkelte mob. iterer igennem sekvensen og opret nodes til stacken.
-        ///TODO: returner stack af nodes til caller
+  
          
 
         
