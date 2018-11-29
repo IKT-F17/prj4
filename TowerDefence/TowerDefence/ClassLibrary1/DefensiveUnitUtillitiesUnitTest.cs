@@ -23,6 +23,7 @@ namespace ClassLibrary1
             _uut = new DefensiveUnitUtilities();
             fakePlayer = Substitute.For<IPlayer>();
             fakeDefensiveUnit = Substitute.For<IDefensiveUnit>();
+            
         }
 
         [Test]
@@ -37,7 +38,7 @@ namespace ClassLibrary1
             fakeDefensiveUnit.upgradeCost = 20;
             fakeDefensiveUnit.defensiveTiles = 1;
             
-            _uut.UpgradeUnit(ref fakeDefensiveUnit, fakePlayer);//goblinkiller eller IDefensiveUnit
+            _uut.UpgradeUnit(ref fakeDefensiveUnit, ref fakePlayer);//goblinkiller eller IDefensiveUnit
 
             Assert.That(fakeDefensiveUnit.defensiveLevel, Is.EqualTo(2));
            Assert.That(fakeDefensiveUnit.nameDefensiveUnit, Is.EqualTo("DefensiveUnit Level 2"));
@@ -48,7 +49,7 @@ namespace ClassLibrary1
             Assert.That(fakeDefensiveUnit.unitValue, Is.EqualTo(30));
 
            Assert.That(fakeDefensiveUnit.defensiveTiles, Is.EqualTo(1));
-          // Assert.That(fakePlayer.bank,Is.EqualTo(80)); 
+        //  Assert.That(fakePlayer.bank,Is.EqualTo(80)); 
         }
 
         [Test]

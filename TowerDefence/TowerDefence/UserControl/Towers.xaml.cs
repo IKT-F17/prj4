@@ -25,7 +25,7 @@ namespace UserControl
         public Rect CoverArea = new Rect(0,0,142,142);
 
         //Creates a DefensiveUnit object 
-        public DefensiveUnit Tower = new DefensiveUnit();
+        //public DefensiveUnit Tower = new DefensiveUnit();
 
         public Towers()
         {
