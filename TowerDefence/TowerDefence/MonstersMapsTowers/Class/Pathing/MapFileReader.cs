@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Management.Instrumentation;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,7 +15,17 @@ namespace MonstersMapsTowers.Class.Pathing
     /// </summary>
     public class MapFileReader
     {
-
+        public MapFileReader()
+        {
+            mapName = "";
+            mapImageFilepath = "";
+            initialPlayerBank = 0;
+            numberOfWaves = 0;
+            numberOfOffensiveUnits = 0;
+            timeDelaybetweenSpawns = 0;
+            offensiveUnitType = "";
+            rawPath = null;
+        }
 
 
 
@@ -22,6 +33,7 @@ namespace MonstersMapsTowers.Class.Pathing
         {
             //    /// TODO: code database Filename/path retriever - Need help from Andreas - but lower priority
             
+
             ReadMapFile(@"\MapFiles\Map01.txt");    // the string needs to be the real path from the database. this is just the temporary hardcoded path and filename. 
 
 
@@ -40,16 +52,16 @@ namespace MonstersMapsTowers.Class.Pathing
 
             //  Using mapfile to set Map Settings
 
-            var mapName = mapFileLines[0];
-            var mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
-            var initialPlayerBank = Int32.Parse(mapFileLines[2]); // Starting gold 
+            mapName = mapFileLines[0];
+             mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
+             initialPlayerBank = Int32.Parse(mapFileLines[2]); // Starting gold 
 
             var rawPathString = mapFileLines[3];    // The raw string containing the offensive unit path. 
 
-            var numberOfWaves = Int32.Parse(mapFileLines[4]); // # waves in this map
-            var numberOfOffensiveUnits = Int32.Parse(mapFileLines[5]); // # offensive units pr. Wave
-            var timeDelaybetweenSpawns = Int32.Parse(mapFileLines[6]);  // time delay before the next offensive unit is spawned. 
-            var offensiveUnitType = mapFileLines[7]; // type of offensive unit in the wave. 
+             numberOfWaves = Int32.Parse(mapFileLines[4]); // # waves in this map
+             numberOfOffensiveUnits = Int32.Parse(mapFileLines[5]); // # offensive units pr. Wave
+             timeDelaybetweenSpawns = Int32.Parse(mapFileLines[6]);  // time delay before the next offensive unit is spawned. 
+             offensiveUnitType = mapFileLines[7]; // type of offensive unit in the wave. 
 
             #region Debug writelines.
 
@@ -66,7 +78,7 @@ namespace MonstersMapsTowers.Class.Pathing
 
             #endregion
 
-            var rawPath = new Stack<String>(rawPathString.Split(';')); // Splitting the raw string path into bits, and packing them into the stack.
+            rawPath = new Stack<String>(rawPathString.Split(';')); // Splitting the raw string path into bits, and packing them into the stack.
             foreach (var node in rawPath)
             {
                 Debug.WriteLine(node);
@@ -75,17 +87,28 @@ namespace MonstersMapsTowers.Class.Pathing
 
                 //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
                 //  
-            var path = new Pathfinder().CalculatePath(rawPath);
+            //var path = new Pathfinder().CalculatePath(rawPath);
 
 
             return;
-
-
-
-
         }
+        
 
+
+        public string mapName { get; set; }
+        public string mapImageFilepath { get; set; }
+        public int initialPlayerBank { get; set; }
+        public int numberOfWaves { get; set; }
+        public int numberOfOffensiveUnits { get; set; }
+        public int timeDelaybetweenSpawns { get; set; }
+        public string offensiveUnitType { get; set; }
+        public Stack<string> rawPath { get; set; }
 
 
     }
+
+
+
+
+
 }

@@ -12,7 +12,7 @@ namespace MonstersMapsTowers.Class
     {
 
 
-        public OffensiveUnit(Stack<string> _path, int _xPos, int _Ypos)
+        public OffensiveUnit(Stack<string> _path)
         {
             string OffensiveUnit = nameOffensiveUnit;
             int run = runSpeed;

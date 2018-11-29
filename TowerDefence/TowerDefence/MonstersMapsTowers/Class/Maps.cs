@@ -13,53 +13,95 @@ namespace MonstersMapsTowers.Class
 {
     public class Maps : IMaps
     {
-        /*  public Map() //constructor
-          {
 
-          }*/
+        public Maps() //constructor
+        {
+            //var mapToLoad = "_mapName";
+            //LoadMap(mapToLoad);
+
+            var mapfile = new MapFileReader();
+            mapfile.LoadMapFile(mapName);
+            mapName = mapfile.mapName;
+            mapImageFilePath = mapfile.mapImageFilepath;
+
+            initialPlayerBank = mapfile.initialPlayerBank;
+
+            numberOfWaves = mapfile.numberOfWaves;
+            numberOfOffensiveUnits = mapfile.numberOfOffensiveUnits;
+            offensiveUnitType = mapfile.offensiveUnitType;
+            timeDelaybetweenSpawns = mapfile.timeDelaybetweenSpawns;
+
+            rawPath = mapfile.rawPath;
+
+        }
+
+
 
         public List<IOffensiveUnit> offensiveUnitList { get; private set; }
         #region IMaps
 
 
-        
-
-        public void LoadMap(string mapName)
-        {
-            var _mapFileReader = new MapFileReader();
-            _mapFileReader.LoadMapFile(mapName);
 
 
-
-        }
-
-
-        public void makeOffensiveUnitPath()
+        public void LoadMap(string _mapName)
         {
 
         }
 
-        public void wave(IOffensiveUnit unit, int amount, int time)
+
+        //public void makeOffensiveUnitPath()
+        //{
+
+        //}
+
+        public void wave()
         {
 
-            var testTimer = new System.Timers.Timer(time);
-            int waveCounter = 0;
-           
+            var testTimer = new System.Timers.Timer(timeDelaybetweenSpawns);
+
 
             //Adds monsters to wave list
-            while (waveCounter < amount)
+
+            for (int i = 0; i < numberOfOffensiveUnits; i++)
             {
-                spawnMob(unit);
-                waveCounter++;
-                testTimer.Interval = time;
-                Console.WriteLine("Det virker");
-                Console.ReadLine();
+                spawnMob(offensiveUnitType);
+                testTimer.Interval = timeDelaybetweenSpawns;
             }
+
+
 
         }
 
-        public void spawnMob(IOffensiveUnit unit)
+
+        
+
+        public void spawnMob(string _offensiveUnitType)
         {
+            //var unit = new OffensiveUnit(null);
+
+            // needs to go into an foreach if we want to spawn more than one type of monster in a wave. 
+            //switch (_offensiveUnitType)
+            //{
+                
+            //    case "Goblin":
+            //        var unit = new Goblin(rawPath);
+            //        offensiveUnitList.Add(unit);
+            //        break;
+
+            //    case "MyLittlePony":
+            //        var unit = new MyLittlePony(rawPath);
+            //        offensiveUnitList.Add(unit);
+            //        break;
+
+
+            //    default:
+            //        break;
+            //}
+
+
+            
+
+
             //var _unit = ;
             //unit = new OffensiveUnit(0, 0, 0);
             //offensiveUnitList.Add(unit); 
@@ -67,6 +109,10 @@ namespace MonstersMapsTowers.Class
 
         public void callWave()
         {
+            for (int i = 0; i < numberOfWaves; i++)
+            {
+                wave();
+            }
 
         }
 
@@ -75,10 +121,16 @@ namespace MonstersMapsTowers.Class
 
         }
 
-        public string nameMap { get; set; }
-        public int tilesTypes { get; set; }
-        public int baseTile { get; set; }
-        public int spawnTile { get; set; }
+        private string mapName { get; set; }
+        private int numberOfWaves { get; set; }
+        private int numberOfOffensiveUnits { get; set; }
+        private string offensiveUnitType { get; set; }
+        private string mapImageFilePath { get; set; }
+        private int initialPlayerBank { get; set; }
+        private int timeDelaybetweenSpawns { get; set; }
+        private Stack<string> rawPath { get; set; }
+
+
         #endregion
     }
 }
