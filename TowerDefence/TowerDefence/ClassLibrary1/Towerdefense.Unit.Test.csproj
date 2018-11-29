@@ -57,9 +57,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="DefensiveUnits\GoblinKillerUnitTest.cs" />
-    <Compile Include="DefensiveUnits\PonyKillerUnitTest.cs" />
+    <Compile Include="DefensiveUnits\ArcherTowerUnitTest.cs" />
+    <Compile Include="DefensiveUnits\CannonTowerUnitTest.cs" />
     <Compile Include="DefensiveUnitUtillitiesUnitTest.cs" />
     <Compile Include="OffensiveUnits\GoblinUnitTests.cs" />
     <Compile Include="OffensiveUnits\MyLittlePonyUnitTest.cs" />
