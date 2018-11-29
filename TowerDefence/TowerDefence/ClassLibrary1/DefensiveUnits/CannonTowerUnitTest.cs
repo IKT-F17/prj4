@@ -11,7 +11,7 @@ using NUnit.Framework.Internal;
 
 namespace ClassLibrary1.DefensiveUnits
 {
-    class PonyKillerUnitTest
+    class CannonTowerUnitTest
     {
         private CannonTower _uut;
 
@@ -22,7 +22,7 @@ namespace ClassLibrary1.DefensiveUnits
         }
 
         [Test]
-        public void TestPonyKillerConstrucer()
+        public void TestCannonTowerConstrucer()
         {
             Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("CannonTower"));
             Assert.That(_uut.defensivePower, Is.EqualTo(30));
@@ -30,8 +30,7 @@ namespace ClassLibrary1.DefensiveUnits
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(40));
             Assert.That(_uut.unitValue, Is.EqualTo(40));
-            Assert.That(_uut.defensiveTiles, Is.EqualTo(1));
-            Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
+           Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
             Assert.That(_uut.unitCost, Is.EqualTo(50));
         }
     }
