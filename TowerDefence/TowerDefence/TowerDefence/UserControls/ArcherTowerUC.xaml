@@ -4,15 +4,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TowerDefence.UserControls"
-             mc:Ignorable="d" 
-             d:DesignHeight="142" d:DesignWidth="142">
-    <Canvas>
-        <Rectangle x:Name="Archer_Tower" Panel.ZIndex="99" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave">
+             mc:Ignorable="d">
+    <Canvas Width="128" Height="128">
+
+        <!--Tower-->
+        <Rectangle x:Name="Archer_Tower" Panel.ZIndex="99" Width="42" Height="42" Canvas.Left="43" Canvas.Top="43" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/TowerDefence;component/Resources/Tower1_42x42.png" Stretch="None"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="TowerCoverArea" Visibility="Collapsed" Panel.ZIndex="97" Width="142" Height="142" Canvas.Left="0" Canvas.Top="0" Stroke="#3F000000" Fill="#260000FF"/>
+
+        <!--CoverArea-->
+        <Rectangle x:Name="TowerCoverArea" Visibility="Collapsed" Panel.ZIndex="97" Width="128" Height="128" Stroke="#3F000000" Fill="#260000FF"/>
 
     </Canvas>
 </UserControl>
