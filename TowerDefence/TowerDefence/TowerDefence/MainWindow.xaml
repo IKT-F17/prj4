@@ -5,15 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TowerDefence"
         mc:Ignorable="d"
-        Title="Tower Defence" Background="DimGray" Height="520" Width="1056" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Mob1_KeyDown">
+        Title="Tower Defence" Background="DimGray" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
-    <Canvas x:Name="Map1">
+    <Canvas x:Name="Map1" Width="1056" Height="512">
         <Canvas.Background>
             <ImageBrush Stretch="None" ImageSource="Resources/map34x11.png"/>
         </Canvas.Background>
-
-        <!-- For Testing: Tick Timer-->
-        <Label Name="lblTime" FontSize="48" HorizontalAlignment="Center" VerticalAlignment="Center" />
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Mob HP:" FontWeight="Bold"/>
@@ -22,10 +19,10 @@
             <Label x:Name="PlayerHP" Content="100" />
         </StackPanel>
 
-        <Button x:Name="btnSpawnNewWave" Content="Spawn Wave" Width="90" Height="30" Canvas.Left="440" Canvas.Top="432" Click="BtnSpawnWave_OnClick"/>
+        <Button x:Name="btnSpawnNewWave" Content="Spawn Wave" Width="90" Height="30" Canvas.Left="445" Canvas.Top="460" Click="BtnSpawnWave_OnClick"/>
 
         <!-- Select Towers "Toolbox" -->
-        <StackPanel Canvas.Left="10" Canvas.Top="408">
+        <StackPanel Canvas.Left="10" Canvas.Top="432">
             <Label Content="Select Tower:" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" >
                 <Rectangle x:Name="NewTowerType1" Margin="4 0 0 0" Width="42" Height="42" StrokeThickness="2" MouseDown="NewTowerType1_MouseDown" >
@@ -40,24 +37,21 @@
         </StackPanel>
 
         <!-- Tower Placement 1 -->
-        <Rectangle x:Name="TowerPlacement1" Width="42" Height="42" Canvas.Left="165" Canvas.Top="173" MouseDown="TowerPlacement1_OnMouseDown">
+        <Rectangle x:Name="TowerPlacement1" Width="42" Height="42" Canvas.Left="171" MouseDown="TowerPlacement1_OnMouseDown" Canvas.Top="187">
             <Rectangle.Fill>
-                <SolidColorBrush Color="Yellow" Opacity="0.5"/>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
             </Rectangle.Fill>
         </Rectangle>
 
         <!-- Tower type 1 -->
-        <Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="165" Canvas.Top="174" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
+        <Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Resources/Tower1_42x42.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Hidden" Width="128" Height="128" Canvas.Left="122" Canvas.Top="130" Stroke="#6F000000" Fill="#260000FF"/>
+        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Hidden" Width="128" Height="128" Canvas.Left="128" Canvas.Top="144" Stroke="#6F000000" Fill="#260000FF"/>
 
-        <!-- Mobs -->
-        <Rectangle x:Name="MobX"    Panel.ZIndex="98" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
-        <Rectangle x:Name="Goblin1" Panel.ZIndex="98" Visibility="Visible" Fill="Black" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="297"/>
-
+        <!--<Rectangle Fill="Red" Width="32" Height="32" Canvas.Left="1056" Canvas.Top="304" />-->
     </Canvas>
 
 </Window>
