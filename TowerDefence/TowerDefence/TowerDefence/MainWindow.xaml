@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TowerDefence"
+        xmlns:userControls="clr-namespace:TowerDefence.UserControls"
         mc:Ignorable="d"
         Title="Tower Defence" Background="DimGray" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
 
@@ -12,14 +13,13 @@
             <ImageBrush Stretch="None" ImageSource="Resources/map34x11.png"/>
         </Canvas.Background>
 
+        <!--Game Info:-->
         <StackPanel Orientation="Horizontal">
-            <Label Content="Mob HP:" FontWeight="Bold"/>
-            <Label x:Name="MobHP" Content="100" />
             <Label Content="Player HP:" FontWeight="Bold"/>
             <Label x:Name="PlayerHP" Content="100" />
         </StackPanel>
 
-        <Button x:Name="btnSpawnNewWave" Content="Spawn Wave" Width="90" Height="30" Canvas.Left="445" Canvas.Top="460" Click="BtnSpawnWave_OnClick"/>
+        <Button Content="Spawn Wave" Width="90" Height="30" Canvas.Left="445" Canvas.Top="460" Click="BtnSpawnWave_OnClick"/>
 
         <!-- Select Towers "Toolbox" -->
         <StackPanel Canvas.Left="10" Canvas.Top="432">
@@ -36,20 +36,62 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Tower Placement 1 -->
-        <Rectangle x:Name="TowerPlacement1" Width="42" Height="42" Canvas.Left="171" MouseDown="TowerPlacement1_OnMouseDown" Canvas.Top="187">
+        <!-- Tower Placements: -->
+        <Rectangle Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="171" Canvas.Top="283" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="363" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="427" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="523" Canvas.Top="283" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="619" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="715" Canvas.Top="283" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="843" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
+            <Rectangle.Fill>
+                <SolidColorBrush Color="Yellow" Opacity="0.01"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle Width="42" Height="42" Canvas.Left="939" Canvas.Top="251" MouseDown="TowerPlacement_OnMouseDown" >
             <Rectangle.Fill>
                 <SolidColorBrush Color="Yellow" Opacity="0.01"/>
             </Rectangle.Fill>
         </Rectangle>
 
+        <userControls:ArcherTowerUC Canvas.Left="128" Canvas.Top="144" Visibility="Hidden"></userControls:ArcherTowerUC>
+
         <!-- Tower type 1 -->
-        <Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Collapsed" Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
+        <!--<Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Visible" Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="Resources/Tower1_42x42.png"/>
             </Rectangle.Fill>
         </Rectangle>
-        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Hidden" Width="128" Height="128" Canvas.Left="128" Canvas.Top="144" Stroke="#6F000000" Fill="#260000FF"/>
+        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Visible" Width="128" Height="128" Canvas.Left="128" Canvas.Top="144" Stroke="#6F000000" Fill="#260000FF"/>-->
 
         <!--<Rectangle Fill="Red" Width="32" Height="32" Canvas.Left="1056" Canvas.Top="304" />-->
     </Canvas>

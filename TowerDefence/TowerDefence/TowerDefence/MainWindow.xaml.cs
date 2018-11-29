@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -16,19 +17,13 @@ namespace TowerDefence
         #region VARIABLES:
         private int MOVE = 32;      // Grid size = 32x32.
         private int MAPX = 1056;
-        private int MAPY = 304;
+        private int MAPY = 300;
 
-        //private Rect MobHitBox;
-        //private List<Rect> MobHitBoxList = new List<Rect>();
-
-        private Rect _towerHitBox;
-        private List<Rect> TowerHitBoxList = new List<Rect>();
-
+        private List<ArcherTowerUC> TowersList = new List<ArcherTowerUC>();
         private List<GoblinUC> MobsList = new List<GoblinUC>();
 
         private bool _isClicked;
         private Rectangle _towerSelected;
-        //private bool _collision = false;
 
         private bool _mobSpawned = false;
         private int counter = 0;
@@ -41,7 +36,7 @@ namespace TowerDefence
             GameTickSetup();
         }
 
-        private Stack<string> GeneratePath()
+        private static Stack<string> GeneratePath()
         {
             var tempStack = new Stack<string>();
 
@@ -116,7 +111,7 @@ namespace TowerDefence
         {
             var timer = new DispatcherTimer();
 
-            timer.Interval = TimeSpan.FromMilliseconds(20); // Tweak this for performance.
+            timer.Interval = TimeSpan.FromMilliseconds(350); // Tweak this for performance.
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -125,16 +120,10 @@ namespace TowerDefence
         // GAME TIMER LOOP:
         private void TimerTick(object sender, EventArgs e)
         {
-            // TODO: What needs to run pr. Tick?
-            // 1. MobMove();        // Skal vel engentlig ske via "spawn wave"!?
-            // 2. HitDetection();   
-
-            // 1.
             if (MobsList.Count != 0) MobMove();
 
-            // 2.
             //if (TowerHitBoxList.Count != 0) Task.Run(()=>CheckHit());   // Forsøg på at løse threading problem.
-            if (TowerHitBoxList.Count != 0) CheckHit();
+            if (TowersList.Count != 0) CheckHit();
         }
         #endregion
 
@@ -143,20 +132,16 @@ namespace TowerDefence
         // HIT DETECTION:
         private void CheckHit()
         {
-            foreach (var towerHb in TowerHitBoxList)
-            {
+            foreach (var towerHb in TowersList)
                 foreach (var mobHb in MobsList)
-                {
-                    if (towerHb.IntersectsWith(mobHb.MobHitBox)) Shoot(/*towerHb, mobHb*/);   
-                }
-            }
+                    if (towerHb.TowerHitBox.IntersectsWith(mobHb.MobHitBox)) Shoot(mobHb);   
         }
 
 
         // TOWER SHOOTING:
-        private void Shoot(/*Rect CurrTower, Rect CurrMob*/)
+        private void Shoot(GoblinUC currentMob)
         {
-            /// Forsøg på at fixe threading problem. Give af vores vejleder.
+            /// Forsøg på at fixe threading problem. Givet af vores vejleder.
             //Dispatcher.BeginInvoke(new Action(() =>
             //{
             //    int.TryParse(MobHP.Content.ToString(), out var hp);
@@ -165,8 +150,8 @@ namespace TowerDefence
             
             //MessageBox.Show("Tower Shooting...");
 
-            int.TryParse(MobHP.Content.ToString(), out var hp);
-            MobHP.Content = (hp - 1).ToString();
+            currentMob.newGoblin.hitPoints -= 15;
+            currentMob.UpdateHp();
         }
         #endregion
 
@@ -184,40 +169,33 @@ namespace TowerDefence
             SelectTower(sender);
         }
 
-        // TOWER PLACEMENT 1:
-        private void TowerPlacement1_OnMouseDown(object sender, MouseButtonEventArgs e)
+        // TOWER PLACEMENT:
+        private void TowerPlacement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
             // Prevents event handler from going any future, when no tower is selected.
             if (_towerSelected == null) return;
 
-            // Hides the tower placement graphics.
-            TowerPlacement1.Visibility = Visibility.Hidden;
+            // Pattern matching:
+            if (!(sender is Rectangle s)) return;
 
-            _towerHitBox = new Rect(Canvas.GetLeft(NewTowerType1Placement1CoverArea), Canvas.GetTop(NewTowerType1Placement1CoverArea), NewTowerType1Placement1CoverArea.Width, NewTowerType1Placement1CoverArea.Height);
-            TowerHitBoxList.Add(_towerHitBox);
+            // Hides the tower placement graphics.
+            s.Visibility = Visibility.Hidden;
+
+            // Creating new Tower object and helper variables.
+            var point = new Point(Canvas.GetLeft(s) - 43, Canvas.GetTop(s) - 43);
+            var tower = new ArcherTowerUC();
+            Canvas.SetLeft(tower, point.X);
+            tower.TowerHitBox.X = point.X;
+            Canvas.SetTop(tower, point.Y);
+            tower.TowerHitBox.Y = point.Y;
+            Map1.Children.Add(tower);
+
+            TowersList.Add(tower);
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
             NewTowerType1.Stroke = null;
             _isClicked = false;
-
-            NewTowerType1Placement1.Visibility = Visibility.Visible;
-        }
-
-        private void NewRedTowerPlacement1_OnMouseEnter(object sender, MouseEventArgs e)
-        {
-            if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Visible)
-            {
-                NewTowerType1Placement1CoverArea.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void NewRedTowerPlacement1_OnMouseLeave(object sender, MouseEventArgs e)
-        {
-            if (NewTowerType1Placement1CoverArea.Visibility != Visibility.Collapsed)
-            {
-                NewTowerType1Placement1CoverArea.Visibility = Visibility.Collapsed;
-            }
         }
 
         // GENERAL TOWER FUNCTIONS:
@@ -234,16 +212,16 @@ namespace TowerDefence
         #region MOB SPAWNS:
         private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
-            var newMob = new GoblinUC(GeneratePath());
+            var mob = new GoblinUC(GeneratePath());
 
-            Canvas.SetLeft(newMob, MAPX);
-            newMob.MobHitBox.X = MAPX;
-            Canvas.SetTop(newMob, MAPY);
-            newMob.MobHitBox.Y = MAPY;
+            Canvas.SetLeft(mob, MAPX);
+            mob.MobHitBox.X = MAPX;
+            Canvas.SetTop(mob, MAPY);
+            mob.MobHitBox.Y = MAPY;
             // Drawing user control on canvas:
-            Map1.Children.Add(newMob);
+            Map1.Children.Add(mob);
 
-            MobsList.Add(newMob);
+            MobsList.Add(mob);
         }
         #endregion
 
