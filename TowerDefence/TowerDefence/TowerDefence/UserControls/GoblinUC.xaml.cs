@@ -14,18 +14,18 @@ namespace TowerDefence.UserControls
         public Rect MobHitBox = new Rect(0, 0, 2, 2);
 
         // Creating new mob of type Goblin:
-        public Goblin newGoblin;
+        public Goblin Goblin;
 
         public GoblinUC(Stack<string> path)
         {
             InitializeComponent();
-            newGoblin = new Goblin(path);
+            Goblin = new Goblin(path);
             UpdateHp();
         }
 
         public void UpdateHp()
         {
-            HpBar.Value = newGoblin.hitPoints;
+            HpBar.Value = Goblin.hitPoints;
         }
     }
 }

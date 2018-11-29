@@ -84,7 +84,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <userControls:ArcherTowerUC Canvas.Left="128" Canvas.Top="144" Visibility="Hidden"></userControls:ArcherTowerUC>
+        <!--<userControls:ArcherTowerUC Canvas.Left="128" Canvas.Top="144" Visibility="Hidden"></userControls:ArcherTowerUC>-->
         
     </Canvas>
 </Window>

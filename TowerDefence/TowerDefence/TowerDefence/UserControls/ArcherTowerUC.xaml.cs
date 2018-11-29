@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using MonstersMapsTowers.Class.DefensiveUnits;
 
 namespace TowerDefence.UserControls
@@ -25,13 +14,13 @@ namespace TowerDefence.UserControls
         public Rect TowerHitBox;
 
         //linking Tower class object
-        public ArcherTower currentTower;
+        public ArcherTower ArcherTower;
 
         public ArcherTowerUC()
         {
             InitializeComponent();
-            TowerHitBox = new Rect(0, 0, 142, 142);
-            currentTower = new ArcherTower();
+            TowerHitBox = new Rect(0, 0, 128, 128);
+            ArcherTower = new ArcherTower();
         }
 
         //Method that shows tower attributes

@@ -5,10 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:TowerDefence.UserControls"
              mc:Ignorable="d">
+
     <Canvas Width="128" Height="128">
 
         <!--Tower-->
-        <Rectangle x:Name="Archer_Tower" Panel.ZIndex="99" Width="42" Height="42" Canvas.Left="43" Canvas.Top="43" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave">
+        <Rectangle Panel.ZIndex="99" Width="42" Height="42" Canvas.Left="43" Canvas.Top="43" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave">
             <Rectangle.Fill>
                 <ImageBrush ImageSource="/TowerDefence;component/Resources/Tower1_42x42.png" Stretch="None"/>
             </Rectangle.Fill>
