@@ -17,7 +17,6 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             defenseRange = 1;
             upgradeCost = 40;
             unitValue = 40;
-            defensiveTiles = 1;
             defensiveLevel = 1;
             unitCost = 50;
             unitId = defensUnitId;

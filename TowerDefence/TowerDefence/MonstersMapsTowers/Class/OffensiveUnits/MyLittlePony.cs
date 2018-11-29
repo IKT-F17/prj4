@@ -12,7 +12,7 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
     public class MyLittlePony : IOffensiveUnit
     {
 
-        public MyLittlePony(Stack<string> _path, int _xPos, int _Ypos)
+        public MyLittlePony(Stack<string> _path)
         {
             nameOffensiveUnit = "MyLittlePony";
             runSpeed = 2;
@@ -20,7 +20,8 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             hitPoints = 150;
             attackPower = 1;
             Immunites("");
-            
+            path = _path;
+
         }
 
 

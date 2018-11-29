@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using MonstersMapsTowers.Interfaces;
 
 
 ///<Summary>
@@ -11,6 +12,14 @@
 
 namespace MonstersMapsTowers.Class.Pathing
 {
+    /// <summary>
+    /// Pathfinder class is supposed to take a "raw path" consisting of a set of coordinates and attributes to denote walkable tiles.
+    /// it should then use an A* algorithm to find the "cheapest" Path from the start to the player base. the "path" would then be returned as a stack.
+    ///
+    /// Pathfinder is NOT implemented at this time due to time constraints. 
+    /// </summary>
+
+
     public class Node
     {
         public Node(string direction)
@@ -19,8 +28,21 @@ namespace MonstersMapsTowers.Class.Pathing
         //public string node { get; set; }
     }
 
-    public class Pathfinder
+    public class Pathfinder : IPathfinder
     {
+        Stack<string> path = new Stack<string>();
+
+        public Stack<string> CalculatePath(object rawPath)
+        {
+            Stack<string> path = new Stack<string>();
+
+            
+            /// TODO: Converting the raw path to nodes by sending it through an algorithem (A*) 
+
+            return path;
+
+        }
+
         private Stack<Node> nodes;
 
         void AddNodeToStack(string direction)

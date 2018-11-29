@@ -1,0 +1,13 @@
+﻿<UserControl x:Class="TowerDefence.UserControls.CannonTowerUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TowerDefence.UserControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="142" d:DesignWidth="142">
+    <Canvas>
+        <Rectangle x:Name="Cannon_Tower" Panel.ZIndex="99" Fill="DarkGray" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown ="Cannon_Tower_OnMouseDown"  MouseEnter="Cannon_Tower_OnMouseEnter" MouseLeave="Cannon_Tower_OnMouseLeave"/>
+        <Rectangle x:Name="TowerCoverArea" Visibility="Collapsed" Panel.ZIndex="97" Width="142" Height="142" Canvas.Left="0" Canvas.Top="0" Stroke="#3F000000" Fill="#260000FF"/>
+    </Canvas>
+</UserControl>

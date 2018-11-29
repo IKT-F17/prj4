@@ -12,7 +12,7 @@ namespace MonstersMapsTowers.Class
     {
 
 
-        public OffensiveUnit(Stack<string> _path, int _xPos, int _Ypos) 
+        public OffensiveUnit(Stack<string> _path, int _xPos, int _Ypos)
         {
             string OffensiveUnit = nameOffensiveUnit;
             int run = runSpeed;
@@ -21,7 +21,7 @@ namespace MonstersMapsTowers.Class
             int ID = offensiveUnitID;
             int Hit = hitPoints;
             int Attack = attackPower;
-            
+
         }
 
         public void TakeDamage(int damage)
