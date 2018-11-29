@@ -3,12 +3,12 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.DefensiveUnits
 {
-    public class GoblinKiller : IDefensiveUnit
+    public class ArcherTower : IDefensiveUnit
     {
 
-        public GoblinKiller(int unitId = 0)
+        public ArcherTower(int unitId = 0)
         {
-            nameDefensiveUnit = "GoblinKiller";
+            nameDefensiveUnit = "ArcherTower";
             defensivePower = 20;//damage un offensiveUnit
             defenseType = 1;
             defenseRange = 1;
@@ -16,7 +16,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             unitValue = 20;
             defensiveLevel = 1;
             unitCost = 20;
-            unitId = defensUnitId;
+            unitId = defensiveUnitId;
 
         }
 
@@ -29,6 +29,6 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         public int defensiveTiles { get; set; }//where to place?
         public int defensiveLevel { get; set; }
         public double unitCost { get; set; }
-        public int defensUnitId { get; set; }
+        public int defensiveUnitId { get; set; }
     }
 }

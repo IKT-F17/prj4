@@ -7,11 +7,11 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class.DefensiveUnits
 {
-    public class PonyKiller : IDefensiveUnit
+    public class CannonTower : IDefensiveUnit
     {
-        public PonyKiller(int unitId = 0)
+        public CannonTower(int unitId = 0)
         {
-            nameDefensiveUnit = "PonyKiller";
+            nameDefensiveUnit = "CannonTower";
             defensivePower = 30;//damage un offensiveUnit
             defenseType = 2;
             defenseRange = 1;
@@ -19,7 +19,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             unitValue = 40;
             defensiveLevel = 1;
             unitCost = 50;
-            unitId = defensUnitId;
+            unitId = defensiveUnitId;
 
         }
         
@@ -32,6 +32,6 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         public int defensiveTiles { get; set; }//where to place?
         public int defensiveLevel { get; set; }
         public double unitCost { get; set; }
-        public int defensUnitId { get; set; }
+        public int defensiveUnitId { get; set; }
     }
 }

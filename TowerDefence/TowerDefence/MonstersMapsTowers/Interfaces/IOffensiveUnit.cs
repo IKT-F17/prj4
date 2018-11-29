@@ -5,7 +5,7 @@ namespace MonstersMapsTowers.Interfaces
     public interface IOffensiveUnit
     {
 
-        void Immunites(string type);
+        void Immunities(string type);
         void TakeDamage(int damage);
         string nameOffensiveUnit { get; }//gobil, ponys,cats, Orgs
         int runSpeed { get; set; }//offensive unit speed on map

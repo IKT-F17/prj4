@@ -25,13 +25,13 @@ namespace TowerDefence.UserControls
         public Rect TowerHitBox;
 
         //linking Tower class object
-        public GoblinKiller currentTower;
+        public ArcherTower currentTower;
 
         public ArcherTowerUC()
         {
             InitializeComponent();
             TowerHitBox = new Rect(0, 0, 142, 142);
-            currentTower = new GoblinKiller();
+            currentTower = new ArcherTower();
         }
 
         //Method that shows tower attributes
