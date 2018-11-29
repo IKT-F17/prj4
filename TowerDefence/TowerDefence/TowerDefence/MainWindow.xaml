@@ -13,12 +13,13 @@
             <ImageBrush Stretch="None" ImageSource="Resources/map34x11.png"/>
         </Canvas.Background>
 
-        <!--Game Info:-->
+        <!-- Game Info -->
         <StackPanel Orientation="Horizontal">
             <Label Content="Player HP:" FontWeight="Bold"/>
             <Label x:Name="PlayerHP" Content="100" />
         </StackPanel>
 
+        <!-- Spawn wave -->
         <Button Content="Spawn Wave" Width="90" Height="30" Canvas.Left="445" Canvas.Top="460" Click="BtnSpawnWave_OnClick"/>
 
         <!-- Select Towers "Toolbox" -->
@@ -36,7 +37,7 @@
             </StackPanel>
         </StackPanel>
 
-        <!-- Tower Placements: -->
+        <!-- Tower Placements -->
         <Rectangle Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >
             <Rectangle.Fill>
                 <SolidColorBrush Color="Yellow" Opacity="0.01"/>
@@ -84,16 +85,6 @@
         </Rectangle>
 
         <userControls:ArcherTowerUC Canvas.Left="128" Canvas.Top="144" Visibility="Hidden"></userControls:ArcherTowerUC>
-
-        <!-- Tower type 1 -->
-        <!--<Rectangle x:Name="NewTowerType1Placement1" Panel.ZIndex="99" Visibility="Visible" Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseEnter="NewRedTowerPlacement1_OnMouseEnter" MouseLeave="NewRedTowerPlacement1_OnMouseLeave">
-            <Rectangle.Fill>
-                <ImageBrush ImageSource="Resources/Tower1_42x42.png"/>
-            </Rectangle.Fill>
-        </Rectangle>
-        <Rectangle x:Name="NewTowerType1Placement1CoverArea" Panel.ZIndex="97" Visibility="Visible" Width="128" Height="128" Canvas.Left="128" Canvas.Top="144" Stroke="#6F000000" Fill="#260000FF"/>-->
-
-        <!--<Rectangle Fill="Red" Width="32" Height="32" Canvas.Left="1056" Canvas.Top="304" />-->
+        
     </Canvas>
-
 </Window>
