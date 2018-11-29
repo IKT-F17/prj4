@@ -42,13 +42,11 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class\DefensiveUnit.cs" />
     <Compile Include="Class\DefensiveUnits\GoblinKiller.cs" />
     <Compile Include="Class\DefensiveUnits\PonyKiller.cs" />
     <Compile Include="Class\DefensiveUnitUtilities.cs" />
     <Compile Include="Class\OffensiveUnits\Goblin.cs" />
     <Compile Include="Class\Maps.cs" />
-    <Compile Include="Class\OffensiveUnit.cs" />
     <Compile Include="Class\OffensiveUnits\MyLittlePony.cs" />
     <Compile Include="Class\Pathing\MapFileReader.cs" />
     <Compile Include="Class\Pathing\Pathfinder.cs" />
