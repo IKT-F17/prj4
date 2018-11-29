@@ -13,18 +13,18 @@ namespace ClassLibrary1.DefensiveUnits
 {
     class PonyKillerUnitTest
     {
-        private PonyKiller _uut;
+        private CannonTower _uut;
 
         [SetUp]
         public void Setup()
         {
-            _uut=new PonyKiller(1);
+            _uut=new CannonTower(1);
         }
 
         [Test]
         public void TestPonyKillerConstrucer()
         {
-            Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("PonyKiller"));
+            Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("CannonTower"));
             Assert.That(_uut.defensivePower, Is.EqualTo(30));
             Assert.That(_uut.defenseType, Is.EqualTo(2));
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
