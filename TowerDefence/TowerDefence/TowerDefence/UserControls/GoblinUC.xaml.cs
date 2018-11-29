@@ -11,7 +11,7 @@ namespace TowerDefence.UserControls
     public partial class GoblinUC : UserControl
     {
         // Mob (Goblin) HitBox (collision detection):
-        public Rect MobHitBox = new Rect(0, 0, 32, 32);
+        public Rect MobHitBox = new Rect(0, 0, 2, 2);
 
         // Creating new mob of type Goblin:
         public Goblin newGoblin;
@@ -20,6 +20,12 @@ namespace TowerDefence.UserControls
         {
             InitializeComponent();
             newGoblin = new Goblin(path);
+            UpdateHp();
+        }
+
+        public void UpdateHp()
+        {
+            HpBar.Value = newGoblin.hitPoints;
         }
     }
 }
