@@ -21,7 +21,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             attackPower = 1;
             Immunites("");
             path = _path;
-
         }
 
 

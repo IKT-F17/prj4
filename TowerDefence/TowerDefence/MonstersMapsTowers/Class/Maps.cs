@@ -32,105 +32,61 @@ namespace MonstersMapsTowers.Class
             timeDelaybetweenSpawns = mapfile.timeDelaybetweenSpawns;
 
             rawPath = mapfile.rawPath;
-
         }
 
-
-
         public List<IOffensiveUnit> offensiveUnitList { get; private set; }
-        #region IMaps
-
-
-
 
         public void LoadMap(string _mapName)
         {
 
         }
 
-
-        //public void makeOffensiveUnitPath()
-        //{
-
-        //}
-
-        public void wave()
+        public void Wave()
         {
-
             var testTimer = new System.Timers.Timer(timeDelaybetweenSpawns);
-
-
-            //Adds monsters to wave list
 
             for (int i = 0; i < numberOfOffensiveUnits; i++)
             {
                 spawnMob(offensiveUnitType);
                 testTimer.Interval = timeDelaybetweenSpawns;
             }
-
-
-
         }
-
-
-        
 
         public void spawnMob(string _offensiveUnitType)
         {
-            //var unit = new OffensiveUnit(null);
+            // needs to go into an foreach if we want to spawn more than one type of monster in a wave. + modifications to the Wave()
+            switch (_offensiveUnitType)
+            {
+                case "Goblin":
+                    var goblin = new Goblin(rawPath);
+                    offensiveUnitList.Add(goblin);
+                    break;
 
-            // needs to go into an foreach if we want to spawn more than one type of monster in a wave. 
-            //switch (_offensiveUnitType)
-            //{
-                
-            //    case "Goblin":
-            //        var unit = new Goblin(rawPath);
-            //        offensiveUnitList.Add(unit);
-            //        break;
+                case "MyLittlePony":
+                    var pony = new MyLittlePony(rawPath);
+                    offensiveUnitList.Add(pony);
+                    break;
 
-            //    case "MyLittlePony":
-            //        var unit = new MyLittlePony(rawPath);
-            //        offensiveUnitList.Add(unit);
-            //        break;
-
-
-            //    default:
-            //        break;
-            //}
-
-
-            
-
-
-            //var _unit = ;
-            //unit = new OffensiveUnit(0, 0, 0);
-            //offensiveUnitList.Add(unit); 
+                default:
+                    break;
+            }
         }
 
-        public void callWave()
+        public void CallWave()
         {
             for (int i = 0; i < numberOfWaves; i++)
             {
-                wave();
+                Wave();
             }
-
         }
-
-        public void placeDefensiveUnit()
-        {
-
-        }
-
-        private string mapName { get; set; }
-        private int numberOfWaves { get; set; }
-        private int numberOfOffensiveUnits { get; set; }
-        private string offensiveUnitType { get; set; }
-        private string mapImageFilePath { get; set; }
-        private int initialPlayerBank { get; set; }
-        private int timeDelaybetweenSpawns { get; set; }
-        private Stack<string> rawPath { get; set; }
-
-
-        #endregion
+        
+        public string mapName { get; set; }
+        public int numberOfWaves { get; set; }
+        public int numberOfOffensiveUnits { get; set; }
+        public string offensiveUnitType { get; set; }
+        public string mapImageFilePath { get; set; }
+        public int initialPlayerBank { get; set; }
+        public int timeDelaybetweenSpawns { get; set; }
+        public Stack<string> rawPath { get; set; }
     }
 }
