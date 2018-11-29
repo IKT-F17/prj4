@@ -55,6 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\ArcherTowerUC.xaml.cs">
+      <DependentUpon>ArcherTowerUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\CannonTowerUC.xaml.cs">
+      <DependentUpon>CannonTowerUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\GoblinUC.xaml.cs">
       <DependentUpon>GoblinUC.xaml</DependentUpon>
     </Compile>
@@ -70,6 +76,14 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="UserControls\ArcherTowerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CannonTowerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\GoblinUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
