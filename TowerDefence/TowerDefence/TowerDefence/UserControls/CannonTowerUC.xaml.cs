@@ -31,7 +31,7 @@ namespace TowerDefence.UserControls
         {
             InitializeComponent();
             _currentTower = new PonyKiller();
-
+            TowerHitBox = new Rect(0,0,142,142);
         }
 
         //Method that shows tower attributes
