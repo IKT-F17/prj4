@@ -9,16 +9,16 @@ namespace MonstersMapsTowers.Class
 {
     public class DefensiveUnit : IDefensiveUnit
     {
-        public DefensiveUnit(int unitId = 0)
+        public DefensiveUnit(int unitId = 1)
         {
-            nameDefensiveUnit = "";
-            defensivePower = 0;//damage un offensiveUnit
-            defenseType = 0;
-            defenseRange = 0;
-            upgradeCost = 0;
-            unitValue = 0;
-            defensiveLevel = 0;
-            unitCost = 0;
+            nameDefensiveUnit = "Test";
+            defensivePower = 1;//damage un offensiveUnit
+            defenseType = 1;
+            defenseRange = 1;
+            upgradeCost = 17;
+            unitValue = 23;
+            defensiveLevel = 2;
+            unitCost = 23;
             unitId = defensUnitId;
 
         }
