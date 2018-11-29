@@ -11,7 +11,7 @@ namespace MonstersMapsTowers.Class
     {
         public Player(string userName)
         {
-            double bank = 0;
+            bank = 0;
             string databaseUserName = userName;
         }
         public double bank { get; set; }
