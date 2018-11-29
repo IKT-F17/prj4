@@ -19,12 +19,12 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             reward = 15;
             hitPoints = 150;
             attackPower = 1;
-            Immunites("");
+            Immunities("");
             path = _path;
         }
 
 
-        public void Immunites(string type)
+        public void Immunities(string type)
         {
 
         }

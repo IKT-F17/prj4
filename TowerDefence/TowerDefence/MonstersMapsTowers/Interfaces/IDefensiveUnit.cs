@@ -14,7 +14,7 @@ namespace MonstersMapsTowers.Interfaces
         int defensiveTiles { get; set; }//where to place?
         int defensiveLevel { get; set; }
         double unitCost { get; set; }
-        int defensUnitId { get; set; }
+        int defensiveUnitId { get; set; }
 
     }
 }

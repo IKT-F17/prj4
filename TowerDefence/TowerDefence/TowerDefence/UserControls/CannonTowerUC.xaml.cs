@@ -25,12 +25,12 @@ namespace TowerDefence.UserControls
         public Rect TowerHitBox;
 
         //Linking tower class object
-        private PonyKiller _currentTower;
+        private CannonTower _currentTower;
 
         public CannonTowerUC()
         {
             InitializeComponent();
-            _currentTower = new PonyKiller();
+            _currentTower = new CannonTower();
             TowerHitBox = new Rect(0,0,142,142);
         }
 
