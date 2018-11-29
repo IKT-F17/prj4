@@ -5,16 +5,14 @@ namespace MonstersMapsTowers.Interfaces
 {
     public interface IMaps
     {
-        void LoadMap(string mapName);
-        void makeOffensiveUnitPath();
-        void wave(IOffensiveUnit unit, int amount, int time);
+        void LoadMap(string _mapName);
+        //void makeOffensiveUnitPath();
+        void wave();
         void callWave();
         void placeDefensiveUnit();
 
-        string nameMap { get; set; }
-        int tilesTypes { get; set; }
-        int baseTile { get; set; }
-        int spawnTile { get; set; }
+        //string mapName { get; set; }
+        
 
     }
 }
