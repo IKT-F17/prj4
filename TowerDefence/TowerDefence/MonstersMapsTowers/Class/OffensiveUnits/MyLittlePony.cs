@@ -40,6 +40,6 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int hitPoints { get; set; }//attack power
         public int offensiveUnitID { get; set; }
         public int attackPower { get; set; }
-        private Stack<string> path { get; set; }
+        public Stack<string> path { get; set; }
     }
 }
