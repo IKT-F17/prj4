@@ -26,11 +26,12 @@ namespace MonstersMapsTowers.Class
             }
         }
 
-        public void UpgradeUnit(ref IDefensiveUnit unit, IPlayer player)
+        public void UpgradeUnit(ref IDefensiveUnit unit, ref IPlayer player)
         {
             if (unit.upgradeCost < player.bank)
             {
-                player.updateBank(-unit.upgradeCost);
+                double valuta = unit.upgradeCost;
+                player.updateBank(- valuta);
 
                 unit.defensiveLevel = unit.defensiveLevel + 1;
                 //  if we need to be upgrade levels , we'd need the name to be something like: 
@@ -43,6 +44,7 @@ namespace MonstersMapsTowers.Class
                 unit.upgradeCost = unit.upgradeCost * upgradeCostFactor; //new upprice  
                 unit.unitValue += unit.upgradeCost;
 
+                
                 //  player.updateBank(-unit.upgradeCost); //subtrac the price from user bank
 
                 //add the tower to the map list of towers

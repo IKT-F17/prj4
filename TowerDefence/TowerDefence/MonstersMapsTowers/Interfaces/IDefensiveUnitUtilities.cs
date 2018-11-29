@@ -7,7 +7,7 @@ namespace MonstersMapsTowers.Interfaces
     public interface IDefensiveUnitUtilities
     {
         IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player);
-        void upgradUnit(ref IDefensiveUnit unit, IPlayer player);
+        void upgradUnit(ref IDefensiveUnit unit, ref IPlayer player);
         void downgradeUnit(ref IDefensiveUnit unit, IPlayer player);
     }
 }
