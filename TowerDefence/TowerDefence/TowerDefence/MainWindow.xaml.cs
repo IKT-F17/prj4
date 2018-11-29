@@ -7,7 +7,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Shapes;
 using System.Windows.Threading;
-using MonstersMapsTowers.Class.OffensiveUnits;
+using TowerDefence.UserControls;
 
 namespace TowerDefence
 {
@@ -15,15 +15,16 @@ namespace TowerDefence
     {
         #region VARIABLES:
         private int MOVE = 32;      // Grid size = 32x32.
+        private int MAPX = 1056;
+        private int MAPY = 304;
 
-        private Rect MobHitBox;
-        private List<Rect> MobHitBoxList = new List<Rect>();
+        //private Rect MobHitBox;
+        //private List<Rect> MobHitBoxList = new List<Rect>();
 
         private Rect TowerHitBox;
         private List<Rect> TowerHitBoxList = new List<Rect>();
 
-        private Goblin _newGoblin;
-        private List<Goblin> MobsList = new List<Goblin>();
+        private List<GoblinUC> MobsList = new List<GoblinUC>();
 
         private Stack<string> Path = new Stack<string>();
 
@@ -45,15 +46,10 @@ namespace TowerDefence
 
             GeneratePath();
             GameTickSetup();
-
-            //MobHitBox = new Rect(1056, 297, 20, 20);
-            //MobHitBoxList.Add(MobHitBox);
         }
 
-        private void GeneratePath()
+        public void GeneratePath()
         {
-            //var stack = new Stack<string>();
-
             Path.Push("left");
             Path.Push("left");
             Path.Push("left");
@@ -115,8 +111,6 @@ namespace TowerDefence
             Path.Push("left");
             Path.Push("left");
             Path.Push("left");
-
-            //Path = stack;
         }
 
 
@@ -154,9 +148,9 @@ namespace TowerDefence
         {
             foreach (var towerHb in TowerHitBoxList)
             {
-                foreach (var mobHb in MobHitBoxList)
+                foreach (var mobHb in MobsList)
                 {
-                        if (towerHb.IntersectsWith(mobHb)) Shoot(/*towerHb, mobHb*/);   // Tænker det måske kunne være super smart hvis man istedet for bare at give hitboxen med videre til Shoot(), så giver både selve tower & mob og deres tilhørende hitboxes?
+                        if (towerHb.IntersectsWith(mobHb.MobHitBox)) Shoot(/*towerHb, mobHb*/);   // Tænker det måske kunne være super smart hvis man istedet for bare at give hitboxen med videre til Shoot(), så giver både selve tower & mob og deres tilhørende hitboxes?
                 }
             }
         }
@@ -200,7 +194,7 @@ namespace TowerDefence
             if (_towerSelected == null) return;
 
             // Hides the tower placement graphics.
-            TowerPlacement1.Visibility = Visibility.Collapsed;
+            TowerPlacement1.Visibility = Visibility.Hidden;
 
             TowerHitBox = new Rect(Canvas.GetLeft(NewTowerType1Placement1CoverArea), Canvas.GetTop(NewTowerType1Placement1CoverArea), NewTowerType1Placement1CoverArea.Width, NewTowerType1Placement1CoverArea.Height);
             TowerHitBoxList.Add(TowerHitBox);
@@ -243,11 +237,16 @@ namespace TowerDefence
         #region MOB SPAWNS:
         private void BtnSpawnWave_OnClick(object sender, RoutedEventArgs e)
         {
-            //_newGoblin = new Goblin(Path, 1056, 297);
-            //MobsList.Add(_newGoblin);
+            var newMob = new UserControls.GoblinUC(Path);
 
-            MobHitBox = new Rect(1056, 297, 20, 20);
-            MobHitBoxList.Add(MobHitBox);
+            Canvas.SetLeft(newMob, MAPX);
+            newMob.MobHitBox.X = MAPX;
+            Canvas.SetTop(newMob, MAPY);
+            newMob.MobHitBox.Y = MAPY;
+            // Drawing user control on canvas:
+            Map1.Children.Add(newMob);
+
+            MobsList.Add(newMob);
 
             _mobSpawned = true;
         }
@@ -257,91 +256,76 @@ namespace TowerDefence
         #region MOB MOVEMENT CONTROLS:
         private void MobMove()
         {
-            var dir = "";
-            counter = 0;        // Used for animation movement delay, if it is enabled future up.
+            counter = 0; // Used for animation movement delay, if it is enabled future up.
 
-            if (Path.Count != 0)
-                dir = Path.Pop();
-
-            switch (dir.ToLower())
+            for (var i = 0; i < MobsList.Count; i++)
             {
-                // Bliver selvfølgelig nød til at lave en liste med mobs generelt, så hver move kan gå igennem denne pr tick.
-                // Kan man updatere en liste? Ville være smart hvis man kunne undgå at fjerne fra listen og added igen. Sikkert super simpelt, men kan ikke se det lige nu.
+                var dir = "";
+                var mob = MobsList[i];
+                var path = MobsList[i].newGoblin.path;
+                MobsList.Remove(MobsList[i]);
 
-                case "left":
-                    Canvas.SetLeft(Goblin1, Canvas.GetLeft(Goblin1) - MOVE);
-                    for (var i = 0; i < MobHitBoxList.Count; i++)
-                    {
-                        var m = MobHitBoxList[i];
-                        MobHitBoxList.Remove(MobHitBoxList[i]);
-                        m.X = m.X - MOVE;
-                        MobHitBoxList.Add(m);
-                    }
-                    break;
+                if (path.Count != 0)
+                    dir = path.Pop();
 
-                case "right":
-                    Canvas.SetLeft(Goblin1, Canvas.GetLeft(Goblin1) + MOVE);
-                    for (var i = 0; i < MobHitBoxList.Count; i++)
-                    {
-                        var m = MobHitBoxList[i];
-                        MobHitBoxList.Remove(MobHitBoxList[i]);
-                        m.X = m.X + MOVE;
-                        MobHitBoxList.Add(m);
-                    }
-                    break;
+                switch (dir.ToLower())
+                {
+                    // Bliver selvfølgelig nød til at lave en liste med mobs generelt, så hver move kan gå igennem denne pr tick.
+                    // Kan man updatere en liste? Ville være smart hvis man kunne undgå at fjerne fra listen og added igen. Sikkert super simpelt, men kan ikke se det lige nu.
 
-                case "up":
-                    Canvas.SetTop(Goblin1, Canvas.GetTop(Goblin1) - MOVE);
-                    for (var i = 0; i < MobHitBoxList.Count; i++)
-                    {
-                        var m = MobHitBoxList[i];
-                        MobHitBoxList.Remove(MobHitBoxList[i]);
-                        m.Y = m.Y - MOVE;
-                        MobHitBoxList.Add(m);
-                    }
-                    break;
+                    case "left":
+                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) - MOVE);
+                        mob.MobHitBox.X = mob.MobHitBox.X - MOVE;
+                        break;
 
-                case "down":
-                    Canvas.SetTop(Goblin1, Canvas.GetTop(Goblin1) + MOVE);
-                    for (var i = 0; i < MobHitBoxList.Count; i++)
-                    {
-                        var m = MobHitBoxList[i];
-                        MobHitBoxList.Remove(MobHitBoxList[i]);
-                        m.Y = m.Y + MOVE;
-                        MobHitBoxList.Add(m);
-                    }
-                    break;
+                    case "right":
+                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) + MOVE);
+                        mob.MobHitBox.X = mob.MobHitBox.X + MOVE;
+                        break;
 
-                //default:
-                //    // Når man kommer hertil er Path stacken tom og moben har gået banen igennem.
-                //    // TODO: Kald en funktion der skal arbejde med hvad der skal ske med moben nu.
-                //    MessageBox.Show("Mob move done.");
-                //    _mobSpawned = false;
-                //    break;
+                    case "up":
+                        Canvas.SetTop(mob, Canvas.GetTop(mob) - MOVE);
+                        mob.MobHitBox.Y = mob.MobHitBox.Y - MOVE;
+                        break;
+
+                    case "down":
+                        Canvas.SetTop(mob, Canvas.GetTop(mob) + MOVE);
+                        mob.MobHitBox.Y = mob.MobHitBox.Y + MOVE;
+                        break;
+
+                    //default:
+                    //    // Når man kommer hertil er Path stacken tom og moben har gået banen igennem.
+                    //    // TODO: Kald en funktion der skal arbejde med hvad der skal ske med moben nu.
+                    //    MessageBox.Show("Mob move done.");
+                    //    _mobSpawned = false;
+                    //    break;
+                }
+
+                MobsList.Add(mob);
             }
         }
 
         private void Mob1_KeyDown(object sender, KeyEventArgs e)
         {
-            switch (e.Key)
-            {
-                case Key.Left:
-                    Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) - MOVE);
-                    MobHitBox.X = MobHitBox.X - MOVE;
-                    break;
-                case Key.Right:
-                    Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) + MOVE);
-                    MobHitBox.X = MobHitBox.X + MOVE;
-                    break;
-                case Key.Up:
-                    Canvas.SetTop(MobX, Canvas.GetTop(MobX) - MOVE);
-                    MobHitBox.Y = MobHitBox.Y - MOVE;
-                    break;
-                case Key.Down:
-                    Canvas.SetTop(MobX, Canvas.GetTop(MobX) + MOVE);
-                    MobHitBox.Y = MobHitBox.Y + MOVE;
-                    break;
-            }
+            //switch (e.Key)
+            //{
+            //    case Key.Left:
+            //        Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) - MOVE);
+            //        MobHitBox.X = MobHitBox.X - MOVE;
+            //        break;
+            //    case Key.Right:
+            //        Canvas.SetLeft(MobX, Canvas.GetLeft(MobX) + MOVE);
+            //        MobHitBox.X = MobHitBox.X + MOVE;
+            //        break;
+            //    case Key.Up:
+            //        Canvas.SetTop(MobX, Canvas.GetTop(MobX) - MOVE);
+            //        MobHitBox.Y = MobHitBox.Y - MOVE;
+            //        break;
+            //    case Key.Down:
+            //        Canvas.SetTop(MobX, Canvas.GetTop(MobX) + MOVE);
+            //        MobHitBox.Y = MobHitBox.Y + MOVE;
+            //        break;
+            //}
         }
         #endregion
     }
