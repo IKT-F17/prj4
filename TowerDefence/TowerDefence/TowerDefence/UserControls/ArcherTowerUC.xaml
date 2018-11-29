@@ -7,7 +7,12 @@
              mc:Ignorable="d" 
              d:DesignHeight="142" d:DesignWidth="142">
     <Canvas>
-        <Rectangle x:Name="Archer_Tower" Panel.ZIndex="99" Fill="DarkGray" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave"/>
+        <Rectangle x:Name="Archer_Tower" Panel.ZIndex="99" Width="42" Height="42" Canvas.Left="50" Canvas.Top="50" MouseDown ="Archer_Tower_OnMouseDown"  MouseEnter="Archer_Tower_OnMouseEnter" MouseLeave="Archer_Tower_OnMouseLeave">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/TowerDefence;component/Resources/Tower1_42x42.png" Stretch="None"/>
+            </Rectangle.Fill>
+        </Rectangle>
         <Rectangle x:Name="TowerCoverArea" Visibility="Collapsed" Panel.ZIndex="97" Width="142" Height="142" Canvas.Left="0" Canvas.Top="0" Stroke="#3F000000" Fill="#260000FF"/>
+
     </Canvas>
 </UserControl>

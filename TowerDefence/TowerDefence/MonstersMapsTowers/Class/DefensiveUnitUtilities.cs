@@ -80,6 +80,7 @@ namespace MonstersMapsTowers.Class
 
             if (unit.defensiveLevel > 1)
             {
+                unit.unitValue = unit.unitValue / unit.defensiveLevel;
                 unit.defensiveLevel = unit.defensiveLevel - 1;
                 unit.nameDefensiveUnit = unit.nameDefensiveUnit + " Level " + unit.defensiveLevel; ;
                 unit.defensivePower = unit.defensivePower - 2;
@@ -87,21 +88,12 @@ namespace MonstersMapsTowers.Class
                 unit.defenseRange = unit.defenseRange - 1;
                 unit.defensiveTiles = unit.defensiveTiles;
                 unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;
-                unit.unitValue = unit.unitValue / unit.defensiveLevel;//ikke brug for en downgrad. 
-                player.updateBank(unit.unitValue);
+              player.updateBank(unit.unitValue);
 
             }
             else if (unit.defensiveLevel == 1)
             {
-                unit.defensiveLevel = unit.defensiveLevel - 1;
-                unit.nameDefensiveUnit = unit.nameDefensiveUnit;
-                unit.defensivePower = unit.defensivePower - 2;
-                unit.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
-                unit.defenseRange = unit.defenseRange - 1;
-                unit.defensiveTiles = unit.defensiveTiles;
-                unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;//Hvorfor upgrad??
-                unit.unitValue = unit.unitValue / unit.defensiveLevel;
-                player.updateBank(unit.unitValue);
+                return;
 
             }
             else
