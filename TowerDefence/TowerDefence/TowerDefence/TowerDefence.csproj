@@ -64,6 +64,9 @@
     <Compile Include="UserControls\GoblinUC.xaml.cs">
       <DependentUpon>GoblinUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\TowerSelectionToolbar.xaml.cs">
+      <DependentUpon>TowerSelectionToolbar.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -85,6 +88,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\GoblinUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\TowerSelectionToolbar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -116,16 +123,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\map34x11.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Tower1_42x42.png" />
+    <Resource Include="Resources\Map1.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MonstersMapsTowers\MonstersMapsTowers.csproj">
       <Project>{0b401dde-efbc-4e7d-a303-ff2e11ffc598}</Project>
       <Name>MonstersMapsTowers</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ArcherTower.png" />
+    <Resource Include="Resources\CannonTower.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

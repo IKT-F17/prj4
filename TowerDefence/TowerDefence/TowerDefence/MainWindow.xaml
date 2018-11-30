@@ -10,13 +10,13 @@
 
     <Canvas x:Name="Map1" Width="1056" Height="512">
         <Canvas.Background>
-            <ImageBrush Stretch="None" ImageSource="Resources/map34x11.png"/>
+            <ImageBrush Stretch="None" ImageSource="Resources/Map1.png"/>
         </Canvas.Background>
 
         <!-- Game Info -->
         <StackPanel Orientation="Horizontal">
             <Label Content="Player HP:" FontWeight="Bold"/>
-            <Label x:Name="PlayerHP" Content="100" />
+            <Label x:Name="PlayerHP" Content="-" />
         </StackPanel>
 
         <!-- Spawn wave -->
@@ -26,14 +26,18 @@
         <StackPanel Canvas.Left="10" Canvas.Top="432">
             <Label Content="Select Tower:" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" >
-                <Rectangle x:Name="NewTowerType1" Margin="4 0 0 0" Width="42" Height="42" StrokeThickness="2" MouseDown="NewTowerType1_MouseDown" >
+                <Rectangle x:Name="ArcherTowerBuy" Margin="4 0 0 0" Width="42" Height="42" StrokeThickness="2" MouseDown="ArcherTowerBuy_MouseDown" >
                     <Rectangle.Fill>
-                        <ImageBrush Stretch="None" ImageSource="Resources/Tower1_42x42.png"/>
+                        <ImageBrush Stretch="Uniform" ImageSource="Resources/ArcherTower.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
                 <!-- Spacer -->
                 <Rectangle Width="10" Visibility="Hidden"/>
-                <Rectangle x:Name="NewTowerType2" Width="42" Height="42" StrokeThickness="2" MouseDown="NewTowerType2_MouseDown" Visibility="Hidden" />
+                <Rectangle x:Name="CannonTowerBuy" Width="42" Height="42" StrokeThickness="2" MouseDown="CannonTowerBuy_MouseDown">
+                    <Rectangle.Fill>
+                        <ImageBrush Stretch="Uniform" ImageSource="Resources/CannonTower.png" />
+                    </Rectangle.Fill>
+                </Rectangle>
             </StackPanel>
         </StackPanel>
 
@@ -84,6 +88,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
+        <Rectangle x:Name="VisualHitBox" Width="20" Height="20" Canvas.Left="1056" Canvas.Top="310" Fill="#798B008B" Visibility="Hidden"/>
         <!--<userControls:ArcherTowerUC Canvas.Left="128" Canvas.Top="144" Visibility="Hidden"></userControls:ArcherTowerUC>-->
         
     </Canvas>

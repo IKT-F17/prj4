@@ -15,7 +15,7 @@ namespace TowerDefence
         #region VARIABLES:
         private int MOVE = 32;      // Grid size = 32x32.
         private int MAPX = 1056;
-        private int MAPY = 300;
+        private int MAPY = 304;
 
         private List<ArcherTowerUC> TowersList = new List<ArcherTowerUC>();
         private List<GoblinUC> MobsList = new List<GoblinUC>();
@@ -28,11 +28,17 @@ namespace TowerDefence
         #endregion
 
 
-        #region CONSTRUCTOR
+        #region CONSTRUCTOR & GAME INITIALIZERS
         public MainWindow()
         {
             InitializeComponent();
             GameTickSetup();
+            UIElementsInitializer();
+        }
+
+        private void UIElementsInitializer()
+        {
+            
         }
         #endregion
 
@@ -114,7 +120,7 @@ namespace TowerDefence
         {
             var timer = new DispatcherTimer();
 
-            timer.Interval = TimeSpan.FromMilliseconds(200); // Tweak this for performance.
+            timer.Interval = TimeSpan.FromMilliseconds(800); // Tweak this for performance.
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -169,13 +175,13 @@ namespace TowerDefence
 
         #region SELECT & PLACE:
         // ARCHER TOWER:
-        private void NewTowerType1_MouseDown(object sender, MouseButtonEventArgs e)
+        private void ArcherTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
 
         // CANON TOWER:
-        private void NewTowerType2_MouseDown(object sender, MouseButtonEventArgs e)
+        private void CannonTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
@@ -205,7 +211,7 @@ namespace TowerDefence
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
-            NewTowerType1.Stroke = null;
+            ArcherTowerBuy.Stroke = null;
             _isClicked = false;
         }
 
@@ -226,9 +232,12 @@ namespace TowerDefence
             var mob = new GoblinUC(GeneratePath());
 
             Canvas.SetLeft(mob, MAPX);
-            mob.MobHitBox.X = MAPX;
-            Canvas.SetTop(mob, MAPY);
-            mob.MobHitBox.Y = MAPY;
+            mob.MobHitBox.X = MAPX + 6;
+            //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);  // DEBUG HIT BOX
+            Canvas.SetTop(mob, MAPY - 4);
+            mob.MobHitBox.Y = MAPY + 6;
+            //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);   // DEBUG HIT BOX
+            
             // Drawing user control on canvas:
             Map1.Children.Add(mob);
 
@@ -242,44 +251,58 @@ namespace TowerDefence
         {
             counter = 0; // Used for animation movement delay, if it is enabled future up.
 
-            for (var i = 0; i < MobsList.Count; i++)
+            foreach (var mob in MobsList)
             {
-                if (MobsList[i].Goblin.path.Count == 0)
+                if (mob.Goblin.path.Count == 0)
                 {
-                    EndPath(MobsList[i]);
+                    EndPath(mob);
                     return;
                 }
 
-                if (MobsList[i].Goblin.hitPoints <= 0)
+                if (mob.Goblin.hitPoints <= 0)
                 {
-                    KillMob(MobsList[i]);
+                    KillMob(mob);
                     return;
                 }
 
-                switch (MobsList[i].Goblin.path.Pop().ToLower())
+                switch (mob.Goblin.path.Pop().ToLower())
                 {
                     case "left":
-                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) - MOVE);
-                        MobsList[i].MobHitBox.X = MobsList[i].MobHitBox.X - MOVE;
+                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) - MOVE);
+                        mob.MobHitBox.X -= MOVE;
+                        //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
+                        SetZ(mob);
                         break;
 
                     case "right":
-                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) + MOVE);
-                        MobsList[i].MobHitBox.X = MobsList[i].MobHitBox.X + MOVE;
+                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) + MOVE);
+                        mob.MobHitBox.X += MOVE;
+                        //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
+                        SetZ(mob);
                         break;
 
                     case "up":
-                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) - MOVE);
-                        MobsList[i].MobHitBox.Y = MobsList[i].MobHitBox.Y - MOVE;
+                        Canvas.SetTop(mob, Canvas.GetTop(mob) - MOVE);
+                        mob.MobHitBox.Y -= MOVE;
+                        //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
+                        SetZ(mob);
                         break;
 
                     case "down":
-                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) + MOVE);
-                        MobsList[i].MobHitBox.Y = MobsList[i].MobHitBox.Y + MOVE;
+                        Canvas.SetTop(mob, Canvas.GetTop(mob) + MOVE);
+                        mob.MobHitBox.Y += MOVE;
+                        //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
+                        SetZ(mob);
                         break;
                 }
             }
         }
+
+        private void SetZ(UIElement mob)
+        {
+            Panel.SetZIndex(mob, -2);
+        }
+
         #endregion
     }
 }
