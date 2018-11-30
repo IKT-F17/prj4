@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
@@ -120,7 +121,7 @@ namespace TowerDefence
         {
             var timer = new DispatcherTimer();
 
-            timer.Interval = TimeSpan.FromMilliseconds(800); // Tweak this for performance.
+            timer.Interval = TimeSpan.FromMilliseconds(100); // Tweak this for performance.
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -251,48 +252,52 @@ namespace TowerDefence
         {
             counter = 0; // Used for animation movement delay, if it is enabled future up.
 
-            foreach (var mob in MobsList)
+            for (var i = 0; i < MobsList.Count; i++)
             {
-                if (mob.Goblin.path.Count == 0)
-                {
-                    EndPath(mob);
-                    return;
-                }
+                if (MobsList[i].Goblin.hitPoints <= 0) MobsList[i].Goblin.path.Push("die");
 
-                if (mob.Goblin.hitPoints <= 0)
-                {
-                    KillMob(mob);
-                    return;
-                }
+                if (MobsList[i].Goblin.path.Count == 0) MobsList[i].Goblin.path.Push("end");
 
-                switch (mob.Goblin.path.Pop().ToLower())
+                switch (MobsList[i].Goblin.path.Pop().ToLower())
                 {
                     case "left":
-                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) - MOVE);
-                        mob.MobHitBox.X -= MOVE;
+                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) - MOVE);
+                        MobsList[i].MobHitBox.X -= MOVE;
                         //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
-                        SetZ(mob);
+                        SetZ(MobsList[i]);
                         break;
 
                     case "right":
-                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) + MOVE);
-                        mob.MobHitBox.X += MOVE;
+                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) + MOVE);
+                        MobsList[i].MobHitBox.X += MOVE;
                         //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
-                        SetZ(mob);
+                        SetZ(MobsList[i]);
                         break;
 
                     case "up":
-                        Canvas.SetTop(mob, Canvas.GetTop(mob) - MOVE);
-                        mob.MobHitBox.Y -= MOVE;
+                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) - MOVE);
+                        MobsList[i].MobHitBox.Y -= MOVE;
                         //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
-                        SetZ(mob);
+                        SetZ(MobsList[i]);
                         break;
 
                     case "down":
-                        Canvas.SetTop(mob, Canvas.GetTop(mob) + MOVE);
-                        mob.MobHitBox.Y += MOVE;
+                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) + MOVE);
+                        MobsList[i].MobHitBox.Y += MOVE;
                         //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
-                        SetZ(mob);
+                        SetZ(MobsList[i]);
+                        break;
+
+                    case "die":
+                        KillMob(MobsList[i]);
+                        break;
+
+                    case "end":
+                        EndPath(MobsList[i]);
+                        break;
+
+                    default:
+                        MessageBox.Show("DEBUG: You should NOT be here!");
                         break;
                 }
             }
