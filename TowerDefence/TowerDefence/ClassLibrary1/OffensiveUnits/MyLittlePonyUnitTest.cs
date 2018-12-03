@@ -9,6 +9,7 @@ using NUnit.Framework.Internal;
 using MonstersMapsTowers.Class.OffensiveUnits;
 using MonstersMapsTowers.Class;
 using MonstersMapsTowers.Class.Pathing;
+using NSubstitute;
 
 namespace TowerDefenceUnitTest.OffensiveUnits
 {
@@ -16,14 +17,17 @@ namespace TowerDefenceUnitTest.OffensiveUnits
     public class MyLittlePonyUnitTest
     {
         MyLittlePony _uut;
+       MapFileReader fakemapFile;
 
         [SetUp]
         public void Setup()
         {
-            var _path = mapFile.rawPath;
+            fakemapFile = Substitute.For<MapFileReader>();
+            var _path = fakemapFile.rawPath;
             _uut = new MyLittlePony(_path);
+            
         }
-        MapFileReader mapFile = new MapFileReader();
+        
 
         [Test]
         public void TestConstructor_true()
@@ -38,7 +42,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         [Test]
         public void TestConstrutionOnMoreMobs()
         {
-            var _path = mapFile.rawPath;
+            var _path = fakemapFile.rawPath;
 
             MyLittlePony pony1 = new MyLittlePony(_path);
             MyLittlePony pony2 = new MyLittlePony(_path);
