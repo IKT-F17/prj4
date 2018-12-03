@@ -65,6 +65,13 @@ namespace TowerDefenceUnitTest.OffensiveUnits
             Assert.AreNotEqual(_uut.attackPower, 2);
         }
 
+        [Test]
+        public void UnitTakingDamage()
+        {
+            _uut.TakeDamage(1);
+            Assert.That(_uut.hitPoints, Is.EqualTo(99));
+        }
+
     }
 }
 
