@@ -18,7 +18,7 @@ namespace ClassLibrary1.DefensiveUnits
         [SetUp]
         public void Setup()
         {
-            _uut=new CannonTower();
+            _uut = new CannonTower();
         }
 
         [Test]
@@ -30,7 +30,7 @@ namespace ClassLibrary1.DefensiveUnits
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(40));
             Assert.That(_uut.unitValue, Is.EqualTo(40));
-           Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
+            Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
             Assert.That(_uut.unitCost, Is.EqualTo(50));
         }
     }

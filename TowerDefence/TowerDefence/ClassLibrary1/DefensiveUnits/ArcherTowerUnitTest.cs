@@ -15,9 +15,6 @@ namespace ClassLibrary1.DefensiveUnits
     public class ArcherTowerUnitTest
     {
         ArcherTower _uut;
-        
-
-        
 
         [SetUp]
         public void Setup()
@@ -34,12 +31,11 @@ namespace ClassLibrary1.DefensiveUnits
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(20));
             Assert.That(_uut.unitValue, Is.EqualTo(20));
-           Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
+            Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
             Assert.That(_uut.unitCost, Is.EqualTo(20));
             Assert.That(_uut.unitValue, Is.EqualTo(20));
-        }
 
-       
+        }
 
     }
 }

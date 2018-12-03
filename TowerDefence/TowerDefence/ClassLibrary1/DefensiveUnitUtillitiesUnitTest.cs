@@ -54,7 +54,30 @@ namespace ClassLibrary1
 
             Assert.That(fakePlayer.bank, Is.EqualTo(80));
         }
+        [Test]
+        public void TestUpgradeDefensiveUnit_ArcherTower_TooExpensiveUnit()
+        {
+            fakePlayer.bank = 10;
+            fakeDefensiveUnit.defensiveLevel = 1;
+            fakeDefensiveUnit.nameDefensiveUnit = "ArcherTower";
+            fakeDefensiveUnit.defensivePower = 20;
+            fakeDefensiveUnit.defenseType = 1;
+            fakeDefensiveUnit.defenseRange = 1;
+            fakeDefensiveUnit.upgradeCost = 20;
+            fakeDefensiveUnit.unitValue = 20;
 
+            _uut.UpgradeUnit(ref fakeDefensiveUnit, ref fakePlayer);//goblinkiller eller IDefensiveUnit
+
+            Assert.That(fakeDefensiveUnit.defensiveLevel, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit.nameDefensiveUnit, Is.EqualTo("ArcherTower"));
+            Assert.That(fakeDefensiveUnit.defensivePower, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit.defenseType, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit.defenseRange, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit.upgradeCost, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit.unitValue, Is.EqualTo(20));
+
+            Assert.That(fakePlayer.bank, Is.EqualTo(10));
+        }
         [Test]
         public void TestDowngradeDefensiveUnit_ArcherTower()
         {
@@ -178,6 +201,30 @@ namespace ClassLibrary1
             Assert.That(fakeDefensiveUnit1.unitValue, Is.EqualTo(30));
 
            Assert.That(fakePlayer.bank, Is.EqualTo(100));
+        }
+        [Test]
+        public void TestUpgradeDefensiveUnit_CannonTower_TooExpensiveUnit()
+        {
+            fakePlayer.bank = 10;
+            fakeDefensiveUnit1.defensiveLevel = 1;
+            fakeDefensiveUnit1.nameDefensiveUnit = "CannonTower";
+            fakeDefensiveUnit1.defensivePower = 20;
+            fakeDefensiveUnit1.defenseType = 1;
+            fakeDefensiveUnit1.defenseRange = 1;
+            fakeDefensiveUnit1.upgradeCost = 20;
+            fakeDefensiveUnit1.unitValue = 20;
+
+            _uut.UpgradeUnit(ref fakeDefensiveUnit1, ref fakePlayer);//goblinkiller eller IDefensiveUnit
+
+            Assert.That(fakeDefensiveUnit1.defensiveLevel, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit1.nameDefensiveUnit, Is.EqualTo("CannonTower"));
+            Assert.That(fakeDefensiveUnit1.defensivePower, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit1.defenseType, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit1.defenseRange, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit1.upgradeCost, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit1.unitValue, Is.EqualTo(20));
+
+            Assert.That(fakePlayer.bank, Is.EqualTo(10));
         }
     }
 }
