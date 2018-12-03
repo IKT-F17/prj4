@@ -64,6 +64,9 @@
     <Compile Include="UserControls\GoblinUC.xaml.cs">
       <DependentUpon>GoblinUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\PlayerUC.xaml.cs">
+      <DependentUpon>PlayerUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\TowerSelectionToolbar.xaml.cs">
       <DependentUpon>TowerSelectionToolbar.xaml</DependentUpon>
     </Compile>
@@ -88,6 +91,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\GoblinUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\PlayerUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +141,9 @@
   <ItemGroup>
     <Resource Include="Resources\ArcherTower.png" />
     <Resource Include="Resources\CannonTower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\heart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
