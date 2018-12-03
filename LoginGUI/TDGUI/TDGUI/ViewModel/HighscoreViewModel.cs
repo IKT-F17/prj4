@@ -10,14 +10,13 @@ using TDGUI.ViewModel;
 
 namespace TDGUI.ViewModel
 {
-    class PersonalHighscoreViewModel : BaseViewModel
+    class HighscoreViewModel : BaseViewModel
     {
-        public PersonalHighscoreViewModel(Account acc, INavigationService n)
+        public HighscoreViewModel(Account acc, INavigationService n)
         {
             _acc = acc;
-            _nav = n; 
+            _nav = n;
         }
-
 
         //database opslag
 
@@ -45,16 +44,17 @@ namespace TDGUI.ViewModel
         //    }
         //}
 
-        public int somescore = 10;
 
-        public int mapscore
+        public int someHighscore = 100;
+
+        public int somemapscore
         {
-            get { return somescore; }
+            get { return someHighscore; }
             set
             {
-                if (value != somescore)
+                if (value != someHighscore)
                 {
-                    somescore = value;
+                    someHighscore = value;
                     OnPropertyChanged();
                 }
 
@@ -62,43 +62,44 @@ namespace TDGUI.ViewModel
         }
 
 
-        public string somename = "peterpedal";
 
-        public string mapname
+        public string Othername = "soeren soerensen";
+
+        public string somemapname
         {
-            get { return somename; }
+            get { return Othername; }
             set
             {
-                if (value != somename)
+                if (value != Othername)
                 {
-                    somename = value;
+                    Othername = value;
                     OnPropertyChanged();
                 }
-                                            
+
             }
         }
 
-        private ICommand _setLabel1Command;
+        private ICommand _setLabelHS1Command;
 
-        public ICommand setLabel11Command
+        public ICommand setLabelHS1Command
         {
-            get { return _setLabel1Command ?? (_setLabel1Command = new RelayCommand(setLabel1)); }
+            get { return _setLabelHS1Command ?? (_setLabelHS1Command = new RelayCommand(setLabelHS1)); }
         }
 
-        private void setLabel1()
+        private void setLabelHS1()
         {
-            
+
 
         }
 
         private ICommand _closeView;
 
-        public ICommand closeView
+        public ICommand closesView
         {
-            get { return _closeView ?? (_closeView = new RelayCommand(closeViewer)); }
+            get { return _closeView ?? (_closeView = new RelayCommand(closesViewer)); }
         }
 
-        private void closeViewer()
+        private void closesViewer()
         {
             _nav.Close();
         }
