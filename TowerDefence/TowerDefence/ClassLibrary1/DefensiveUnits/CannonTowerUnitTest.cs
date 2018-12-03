@@ -22,10 +22,10 @@ namespace ClassLibrary1.DefensiveUnits
         }
 
         [Test]
-        public void TestCannonTowerConstrucer()
+        public void TestCannonTowerConstructer()
         {
             Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("CannonTower"));
-            Assert.That(_uut.defensivePower, Is.EqualTo(30));
+            Assert.That(_uut.defensivePower, Is.EqualTo(10));
             Assert.That(_uut.defenseType, Is.EqualTo(2));
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(40));
