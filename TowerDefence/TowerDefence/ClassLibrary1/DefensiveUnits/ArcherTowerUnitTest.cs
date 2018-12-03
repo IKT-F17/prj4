@@ -15,31 +15,27 @@ namespace ClassLibrary1.DefensiveUnits
     public class ArcherTowerUnitTest
     {
         ArcherTower _uut;
-        
-
-        
 
         [SetUp]
         public void Setup()
         {
-            _uut = new ArcherTower(1);
+            _uut = new ArcherTower();
         }
 
         [Test]
-        public void TestArcherTowerConstrucer()
+        public void TestArcherTowerConstructer()
         {
             Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("ArcherTower"));
-            Assert.That(_uut.defensivePower, Is.EqualTo(20));
+            Assert.That(_uut.defensivePower, Is.EqualTo(5));
             Assert.That(_uut.defenseType, Is.EqualTo(1));
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(20));
             Assert.That(_uut.unitValue, Is.EqualTo(20));
-           Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
+            Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
             Assert.That(_uut.unitCost, Is.EqualTo(20));
             Assert.That(_uut.unitValue, Is.EqualTo(20));
-        }
 
-       
+        }
 
     }
 }

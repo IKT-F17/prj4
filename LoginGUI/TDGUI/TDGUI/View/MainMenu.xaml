@@ -1,0 +1,55 @@
+﻿<Window x:Class="TDGUI.View.MainMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TDGUI.View"
+        mc:Ignorable="d"
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainMenuVM}"
+        Title="MainMenu" Height="600" Width="400">
+    <Grid>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+         
+        <!--playtower defence button-->
+        <Button x:Name="PlayTDbtn"  Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
+                    <TextBlock Text="Play Tower defence" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+         <!--See personal highscore button-->
+        <Button x:Name="seePrHighbtn" Command="{Binding CreateHighscoreView }"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
+                    <TextBlock Text="See Personal Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+         <!--see highscore button-->
+        <Button x:Name="seeHighscbtn"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
+                    <TextBlock Text="See Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+        <!--Logout button-->
+        <Button x:Name="logoutbtn"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
+                    <TextBlock Text="Log out" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+    </Grid>
+</Window>

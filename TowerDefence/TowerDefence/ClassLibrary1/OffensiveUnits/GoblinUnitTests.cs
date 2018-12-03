@@ -9,6 +9,7 @@ using NUnit.Framework.Internal;
 using MonstersMapsTowers.Class.OffensiveUnits;
 using MonstersMapsTowers.Class.Pathing;
 using MonstersMapsTowers.Interfaces;
+using NSubstitute;
 
 namespace TowerDefenceUnitTest.OffensiveUnits
 {
@@ -18,14 +19,16 @@ namespace TowerDefenceUnitTest.OffensiveUnits
     public class GoblinUnitTests
     {
         Goblin _uut;
+        MapFileReader fakemapFile;
 
         [SetUp]
         public void Setup()
         {
-            var _path = mapFile.rawPath;
+            fakemapFile = Substitute.For<MapFileReader>();
+            var _path = fakemapFile.rawPath;
             _uut = new Goblin(_path);
         }
-        MapFileReader mapFile = new MapFileReader();
+        
 
         [Test]
         public void CreatingGoblinUnit()
@@ -40,7 +43,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         [Test]
         public void CreatingMultipleGoblins()
         {
-            var _path = mapFile.rawPath;
+            var _path = fakemapFile.rawPath;
 
             Goblin goblin1 = new Goblin(_path);
             Goblin goblin2 = new Goblin(_path);
@@ -63,6 +66,13 @@ namespace TowerDefenceUnitTest.OffensiveUnits
             Assert.AreNotEqual(_uut.hitPoints, 101);
             Assert.AreNotEqual(_uut.attackPower, 0);
             Assert.AreNotEqual(_uut.attackPower, 2);
+        }
+
+        [Test]
+        public void UnitTakingDamage()
+        {
+            _uut.TakeDamage(1);
+            Assert.That(_uut.hitPoints, Is.EqualTo(99));
         }
 
     }

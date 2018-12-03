@@ -11,10 +11,9 @@ namespace MonstersMapsTowers.Interfaces
         int defenseRange { get; set; }//How far
         double upgradeCost { get; set; }//How much
         double unitValue { get; set; }
-        int defensiveTiles { get; set; }//where to place?
         int defensiveLevel { get; set; }
         double unitCost { get; set; }
-        int defensiveUnitId { get; set; }
+        
 
     }
 }

@@ -6,7 +6,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
     public class ArcherTower : IDefensiveUnit
     {
 
-        public ArcherTower(int unitId = 0)
+        public ArcherTower()
         {
             nameDefensiveUnit = "ArcherTower";
             defensivePower = 5;//damage un offensiveUnit
@@ -16,9 +16,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
             unitValue = 20;
             defensiveLevel = 1;
             unitCost = 20;
-            unitId = defensiveUnitId;
-
-        }
+           }
 
         public string nameDefensiveUnit { get; set; } //
         public int defensivePower { get; set; }//How hard can it hit
@@ -26,9 +24,8 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         public int defenseRange { get; set; }//How far
         public double upgradeCost { get; set; }//How much
         public double unitValue { get; set; }
-        public int defensiveTiles { get; set; }//where to place?
         public int defensiveLevel { get; set; }
         public double unitCost { get; set; }
-        public int defensiveUnitId { get; set; }
+        
     }
 }

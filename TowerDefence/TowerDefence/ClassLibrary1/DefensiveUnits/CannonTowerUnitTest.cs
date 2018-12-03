@@ -18,19 +18,19 @@ namespace ClassLibrary1.DefensiveUnits
         [SetUp]
         public void Setup()
         {
-            _uut=new CannonTower(1);
+            _uut = new CannonTower();
         }
 
         [Test]
-        public void TestCannonTowerConstrucer()
+        public void TestCannonTowerConstructer()
         {
             Assert.That(_uut.nameDefensiveUnit, Is.EqualTo("CannonTower"));
-            Assert.That(_uut.defensivePower, Is.EqualTo(30));
+            Assert.That(_uut.defensivePower, Is.EqualTo(10));
             Assert.That(_uut.defenseType, Is.EqualTo(2));
             Assert.That(_uut.defenseRange, Is.EqualTo(1));
             Assert.That(_uut.upgradeCost, Is.EqualTo(40));
             Assert.That(_uut.unitValue, Is.EqualTo(40));
-           Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
+            Assert.That(_uut.defensiveLevel, Is.EqualTo(1));
             Assert.That(_uut.unitCost, Is.EqualTo(50));
         }
     }

@@ -1,0 +1,74 @@
+﻿<Window x:Class="TDGUI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="TD GUI ver.0.1" Height="600" Width="400"
+        DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowVM}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="61*"/>
+            <ColumnDefinition Width="70*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <!--<Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>-->
+
+        <!--Sign in control-->
+        <!--<controls:signinINFO Grid.Row="0" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Width="245"
+         x:Name="signinINFO"/>-->
+
+
+        <TextBlock Text="Username:" Grid.Row="0" Grid.Column="0" Margin="64,67,63.333,107" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="56"/>
+        <TextBox x:Name="Username" Width="150" Margin="169,62,74.333,102" Grid.Row="0" HorizontalAlignment="Center" Text="{Binding Username}" Grid.ColumnSpan="2"/>
+
+        <TextBlock Text="Password:" Grid.Row="0" Grid.Column="0" Margin="66,100,65.333,75" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="52"/>
+        <TextBox x:Name="Password" Width="150" Margin="169,95,74.333,70" Grid.Row="0" HorizontalAlignment="Center"   Grid.ColumnSpan="2" Text="{Binding Path=Password}"/>
+
+        <!--Sign in as user-->
+
+        <Button x:Name="signInAsUSer"  Grid.Row="1" Grid.Column="0" Margin="10,34,56.333,116.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
+                    <TextBlock Text="Log in as User" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+
+        <!--Sign in as guest button-->
+
+        <Button x:Name="signInAsGuest" Grid.Row="1" Grid.Column="0" Margin="10,63,55.333,70.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Command="{Binding logOnAsGuestCommand}">
+            <Button.Content>
+                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
+                    <TextBlock Text="Log in as Guest" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+
+        <!--Register new user button-->
+
+        <Button Command="{Binding RegisterUserCommand}" x:Name="regNewUser" Grid.Row="1" Margin="10,109,56.333,41.667" Grid.Column="0" Height="40" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+            <Button.Content>
+                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
+                    <TextBlock Text="Register new user" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+            </Button.Content>
+        </Button>
+
+
+
+    </Grid>
+</Window>
