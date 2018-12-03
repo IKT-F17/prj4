@@ -24,14 +24,12 @@ namespace TowerDefenceUnitTest
         public void TestPlayerConstrukter()
         {
             Assert.That(_uut.bank, Is.EqualTo(0));
-
         }
 
         [Test]
         public void TestPlayerBankSet()
         {
             _uut.bank = 100;
-
             Assert.That(_uut.bank, Is.EqualTo(100));
         }
 
@@ -62,14 +60,14 @@ namespace TowerDefenceUnitTest
         [Test]
         public void TestPlayerUpdateBank_pos0inBank()
         {
-
+            _uut.bank = 0;
             _uut.updateBank(300);
             Assert.That(_uut.bank, Is.EqualTo(300));
         }
         [Test]
         public void TestPlayerUpdateBank_neg0inBank()
         {
-
+            _uut.bank = 0;
             _uut.updateBank(-300);
 
             Assert.That(_uut.bank, Is.EqualTo(0));
