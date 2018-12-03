@@ -8,7 +8,7 @@
     <Canvas Width="32" Height="36">
         <!--Placeholder for vores Goblin mob-->
         <StackPanel>
-            <ProgressBar x:Name="HpBar" Margin="0 0 0 2" Minimum="0" Maximum="100" Value="100" Foreground="Red" Background="{x:Null}" BorderBrush="{x:Null}" ></ProgressBar>
+            <ProgressBar x:Name="HpBar" Margin="0 0 0 2" Minimum="0" Foreground="#FF00D200" BorderBrush="Red" Background="{x:Null}" />
             <Rectangle Width="32" Height="32">
                 <Rectangle.Fill>
                     <RadialGradientBrush>

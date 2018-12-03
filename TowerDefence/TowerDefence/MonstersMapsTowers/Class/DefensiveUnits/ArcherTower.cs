@@ -9,7 +9,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         public ArcherTower(int unitId = 0)
         {
             nameDefensiveUnit = "ArcherTower";
-            defensivePower = 20;//damage un offensiveUnit
+            defensivePower = 5;//damage un offensiveUnit
             defenseType = 1;
             defenseRange = 1;
             upgradeCost = 20;

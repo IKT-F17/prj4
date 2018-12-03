@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -17,7 +16,7 @@ namespace TowerDefence
         #region VARIABLES:
         private int MOVE = 32;      // Grid size = 32x32.
         private int MAPX = 1056;
-        private int MAPY = 300;
+        private int MAPY = 304;
 
         private List<ArcherTowerUC> TowersList = new List<ArcherTowerUC>();
         private List<GoblinUC> MobsList = new List<GoblinUC>();
@@ -30,12 +29,22 @@ namespace TowerDefence
         #endregion
 
 
+        #region CONSTRUCTOR & GAME INITIALIZERS
         public MainWindow()
         {
             InitializeComponent();
             GameTickSetup();
+            UIElementsInitializer();
         }
 
+        private void UIElementsInitializer()
+        {
+            
+        }
+        #endregion
+
+
+        #region PATH GENERATOR
         private static Stack<string> GeneratePath()
         {
             var tempStack = new Stack<string>();
@@ -104,6 +113,7 @@ namespace TowerDefence
             
             return tempStack;
         }
+        #endregion
 
 
         #region GAME TICKS:
@@ -111,7 +121,7 @@ namespace TowerDefence
         {
             var timer = new DispatcherTimer();
 
-            timer.Interval = TimeSpan.FromMilliseconds(350); // Tweak this for performance.
+            timer.Interval = TimeSpan.FromMilliseconds(100); // Tweak this for performance.
             timer.Tick += TimerTick;
             timer.Start();
         }
@@ -122,7 +132,6 @@ namespace TowerDefence
         {
             if (MobsList.Count != 0) MobMove();
 
-            //if (TowerHitBoxList.Count != 0) Task.Run(()=>CheckHit());   // Forsøg på at løse threading problem.
             if (TowersList.Count != 0) CheckHit();
         }
         #endregion
@@ -132,39 +141,48 @@ namespace TowerDefence
         // HIT DETECTION:
         private void CheckHit()
         {
-            foreach (var towerHb in TowersList)
-                foreach (var mobHb in MobsList)
-                    if (towerHb.TowerHitBox.IntersectsWith(mobHb.MobHitBox)) Shoot(mobHb);   
+            foreach (var currentTower in TowersList)
+                foreach (var currentMob in MobsList)
+                    if (currentTower.TowerHitBox.IntersectsWith(currentMob.MobHitBox)) Shoot(currentMob, currentTower);   
         }
 
-
         // TOWER SHOOTING:
-        private void Shoot(GoblinUC currentMob)
+        private void Shoot(GoblinUC currentMob, ArcherTowerUC currentTower)
+                          // TODO: Vil det ikke give mere mening om både tower og mob var en template?
         {
-            /// Forsøg på at fixe threading problem. Givet af vores vejleder.
-            //Dispatcher.BeginInvoke(new Action(() =>
-            //{
-            //    int.TryParse(MobHP.Content.ToString(), out var hp);
-            //    MobHP.Content = (hp - 1).ToString();
-            //}));
-            
-            //MessageBox.Show("Tower Shooting...");
-
-            currentMob.newGoblin.hitPoints -= 15;
+            currentMob.Goblin.hitPoints -= currentTower.ArcherTower.defensivePower;
             currentMob.UpdateHp();
+        }
+
+        // END OF PATH:
+        private void EndPath(GoblinUC mob)
+        {
+            KillMob(mob);
+
+            // Removes 1 life from the players HP pool:
+            int.TryParse(PlayerHP.Content.ToString(), out var hp);
+            PlayerHP.Content = (hp - 1).ToString();
+        }
+
+        // MOB IS KILLED:
+        private void KillMob(GoblinUC mob)
+        {
+            // Remove mob object from canvas (map) and MobsList.
+            Map1.Children.Remove(mob);
+            MobsList.Remove(mob);
         }
         #endregion
 
 
         #region SELECT & PLACE:
-        // RED TOWER:
-        private void NewTowerType1_MouseDown(object sender, MouseButtonEventArgs e)
+        // ARCHER TOWER:
+        private void ArcherTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
 
-        // BLUE TOWER:
-        private void NewTowerType2_MouseDown(object sender, MouseButtonEventArgs e)
+        // CANON TOWER:
+        private void CannonTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
         {
             SelectTower(sender);
         }
@@ -194,7 +212,7 @@ namespace TowerDefence
 
             // Resetting variables, so a new tower can be selected and placed.
             _towerSelected = null;
-            NewTowerType1.Stroke = null;
+            ArcherTowerBuy.Stroke = null;
             _isClicked = false;
         }
 
@@ -215,9 +233,12 @@ namespace TowerDefence
             var mob = new GoblinUC(GeneratePath());
 
             Canvas.SetLeft(mob, MAPX);
-            mob.MobHitBox.X = MAPX;
-            Canvas.SetTop(mob, MAPY);
-            mob.MobHitBox.Y = MAPY;
+            mob.MobHitBox.X = MAPX + 6;
+            //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);  // DEBUG HIT BOX
+            Canvas.SetTop(mob, MAPY - 4);
+            mob.MobHitBox.Y = MAPY + 6;
+            //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);   // DEBUG HIT BOX
+            
             // Drawing user control on canvas:
             Map1.Children.Add(mob);
 
@@ -233,62 +254,60 @@ namespace TowerDefence
 
             for (var i = 0; i < MobsList.Count; i++)
             {
-                // Kan man updatere en liste? Ville være smart hvis man kunne undgå at fjerne fra listen og added igen. Sikkert super simpelt, men kan ikke se det lige nu.
+                if (MobsList[i].Goblin.hitPoints <= 0) MobsList[i].Goblin.path.Push("die");
 
-                var dir = "";
-                var mob = MobsList[i];
-                var path = MobsList[i].newGoblin.path;
-                MobsList.Remove(MobsList[i]);
+                if (MobsList[i].Goblin.path.Count == 0) MobsList[i].Goblin.path.Push("end");
 
-                if (path.Count != 0)
-                    dir = path.Pop();
-
-                switch (dir.ToLower())
+                switch (MobsList[i].Goblin.path.Pop().ToLower())
                 {
                     case "left":
-                        //Dispatcher.BeginInvoke(new Action(() =>
-                        //{
-                        //    int.TryParse(MobHP.Content.ToString(), out var hp);
-                        //    MobHP.Content = (hp - 1).ToString();
-                        //}));
-                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) - MOVE);
-                        mob.MobHitBox.X = mob.MobHitBox.X - MOVE;
-                        MobsList.Add(mob);
+                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) - MOVE);
+                        MobsList[i].MobHitBox.X -= MOVE;
+                        //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
+                        SetZ(MobsList[i]);
                         break;
 
                     case "right":
-                        Canvas.SetLeft(mob, Canvas.GetLeft(mob) + MOVE);
-                        mob.MobHitBox.X = mob.MobHitBox.X + MOVE;
-                        MobsList.Add(mob);
+                        Canvas.SetLeft(MobsList[i], Canvas.GetLeft(MobsList[i]) + MOVE);
+                        MobsList[i].MobHitBox.X += MOVE;
+                        //Canvas.SetLeft(VisualHitBox, mob.MobHitBox.X);    // DEBUG HIT BOX
+                        SetZ(MobsList[i]);
                         break;
 
                     case "up":
-                        Canvas.SetTop(mob, Canvas.GetTop(mob) - MOVE);
-                        mob.MobHitBox.Y = mob.MobHitBox.Y - MOVE;
-                        MobsList.Add(mob);
+                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) - MOVE);
+                        MobsList[i].MobHitBox.Y -= MOVE;
+                        //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
+                        SetZ(MobsList[i]);
                         break;
 
                     case "down":
-                        Canvas.SetTop(mob, Canvas.GetTop(mob) + MOVE);
-                        mob.MobHitBox.Y = mob.MobHitBox.Y + MOVE;
-                        MobsList.Add(mob);
+                        Canvas.SetTop(MobsList[i], Canvas.GetTop(MobsList[i]) + MOVE);
+                        MobsList[i].MobHitBox.Y += MOVE;
+                        //Canvas.SetTop(VisualHitBox, mob.MobHitBox.Y);    // DEBUG HIT BOX
+                        SetZ(MobsList[i]);
+                        break;
+
+                    case "die":
+                        KillMob(MobsList[i]);
+                        break;
+
+                    case "end":
+                        EndPath(MobsList[i]);
                         break;
 
                     default:
-                        // Når man kommer hertil er Path stacken tom og moben har gået banen igennem.
-                        // TODO: Kald evt. en funktion der skal arbejde med hvad der skal ske med moben nu.
-
-                        // Fjerner mob grafikken fra canvas.
-                        Map1.Children.Remove(mob);
-
-                        // Removes 1 life from the players HP pool:
-                        int.TryParse(PlayerHP.Content.ToString(), out var hp);
-                        PlayerHP.Content = (hp - 1).ToString();
-
+                        MessageBox.Show("DEBUG: You should NOT be here!");
                         break;
                 }
             }
         }
+
+        private void SetZ(UIElement mob)
+        {
+            Panel.SetZIndex(mob, -2);
+        }
+
         #endregion
     }
 }

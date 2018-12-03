@@ -5,12 +5,6 @@ VisualStudioVersion = 15.0.28010.2003
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefence", "TowerDefence\TowerDefence.csproj", "{C359650B-453C-4AC3-9A78-CCD824D7D1AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaceTower", "PlaceTower\PlaceTower.csproj", "{792E65D6-012C-4FA7-A876-967B7131207B}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollisionDetection", "CollisionDetection\CollisionDetection.csproj", "{B5590B9D-D130-47CD-9AD3-C12BA21DF6A2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserControl", "UserControl\UserControl.csproj", "{9B3FB0DB-9C25-4398-ACEE-6647C6FDED18}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonstersMapsTowers", "MonstersMapsTowers\MonstersMapsTowers.csproj", "{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towerdefense.Unit.Test", "ClassLibrary1\Towerdefense.Unit.Test.csproj", "{10658E04-2FE0-49FF-92D8-8916CA21243D}"
@@ -25,18 +19,6 @@ Global
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C359650B-453C-4AC3-9A78-CCD824D7D1AB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{792E65D6-012C-4FA7-A876-967B7131207B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{792E65D6-012C-4FA7-A876-967B7131207B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{792E65D6-012C-4FA7-A876-967B7131207B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{792E65D6-012C-4FA7-A876-967B7131207B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B5590B9D-D130-47CD-9AD3-C12BA21DF6A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B5590B9D-D130-47CD-9AD3-C12BA21DF6A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B5590B9D-D130-47CD-9AD3-C12BA21DF6A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B5590B9D-D130-47CD-9AD3-C12BA21DF6A2}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9B3FB0DB-9C25-4398-ACEE-6647C6FDED18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9B3FB0DB-9C25-4398-ACEE-6647C6FDED18}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9B3FB0DB-9C25-4398-ACEE-6647C6FDED18}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9B3FB0DB-9C25-4398-ACEE-6647C6FDED18}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B401DDE-EFBC-4E7D-A303-FF2E11FFC598}.Release|Any CPU.ActiveCfg = Release|Any CPU

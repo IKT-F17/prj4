@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C359650B-453C-4AC3-9A78-CCD824D7D1AB}</ProjectGuid>
+    <ProjectGuid>{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>TowerDefence</RootNamespace>
-    <AssemblyName>TowerDefence</AssemblyName>
+    <RootNamespace>TDGUI</RootNamespace>
+    <AssemblyName>TDGUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -55,19 +55,25 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\ArcherTowerUC.xaml.cs">
-      <DependentUpon>ArcherTowerUC.xaml</DependentUpon>
+    <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\MainMenuViewModel.cs" />
+    <Compile Include="ViewModel\MainWindowViewModel.cs" />
+    <Compile Include="ViewModel\PersonalHighscoreViewModel.cs" />
+    <Compile Include="ViewModel\RegisterUserViewModel.cs" />
+    <Compile Include="View\INavigationService.cs" />
+    <Compile Include="View\Locator.cs" />
+    <Compile Include="View\NavigationService.cs" />
+    <Compile Include="View\PersonalHighscore.xaml.cs">
+      <DependentUpon>PersonalHighscore.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\CannonTowerUC.xaml.cs">
-      <DependentUpon>CannonTowerUC.xaml</DependentUpon>
+    <Compile Include="View\RegisterUserView.xaml.cs">
+      <DependentUpon>RegisterUserView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\GoblinUC.xaml.cs">
-      <DependentUpon>GoblinUC.xaml</DependentUpon>
+    <Compile Include="View\RelayCommand.cs" />
+    <Compile Include="View\MainMenu.xaml.cs">
+      <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TowerSelectionToolbar.xaml.cs">
-      <DependentUpon>TowerSelectionToolbar.xaml</DependentUpon>
-    </Compile>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -75,23 +81,21 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Model\Account.cs" />
+    <Compile Include="Model\IAccount.cs" />
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UserControls\ArcherTowerUC.xaml">
+    <Page Include="View\PersonalHighscore.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\CannonTowerUC.xaml">
+    <Page Include="View\RegisterUserView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\GoblinUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="UserControls\TowerSelectionToolbar.xaml">
+    <Page Include="View\MainMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -121,19 +125,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\Map1.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\MonstersMapsTowers\MonstersMapsTowers.csproj">
-      <Project>{0b401dde-efbc-4e7d-a303-ff2e11ffc598}</Project>
-      <Name>MonstersMapsTowers</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\ArcherTower.png" />
-    <Resource Include="Resources\CannonTower.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

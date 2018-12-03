@@ -12,7 +12,7 @@ namespace MonstersMapsTowers.Class.DefensiveUnits
         public CannonTower(int unitId = 0)
         {
             nameDefensiveUnit = "CannonTower";
-            defensivePower = 30;//damage un offensiveUnit
+            defensivePower = 10;//damage un offensiveUnit
             defenseType = 2;
             defenseRange = 1;
             upgradeCost = 40;

@@ -1,6 +1,7 @@
 ﻿using System.Windows;
 using System.Windows.Controls;
 using System.Collections.Generic;
+using System.Windows.Shapes;
 using MonstersMapsTowers.Class.OffensiveUnits;
 
 namespace TowerDefence.UserControls
@@ -11,21 +12,23 @@ namespace TowerDefence.UserControls
     public partial class GoblinUC : UserControl
     {
         // Mob (Goblin) HitBox (collision detection):
-        public Rect MobHitBox = new Rect(0, 0, 2, 2);
+        public Rect MobHitBox = new Rect(0, 0, 20, 20);
 
         // Creating new mob of type Goblin:
-        public Goblin newGoblin;
+        public Goblin Goblin;
 
         public GoblinUC(Stack<string> path)
         {
             InitializeComponent();
-            newGoblin = new Goblin(path);
+            Goblin = new Goblin(path);
+            HpBar.Maximum = Goblin.hitPoints;
+            
             UpdateHp();
         }
 
         public void UpdateHp()
         {
-            HpBar.Value = newGoblin.hitPoints;
+            HpBar.Value = Goblin.hitPoints;
         }
     }
 }
