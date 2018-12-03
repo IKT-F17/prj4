@@ -18,7 +18,7 @@ namespace ClassLibrary1.DefensiveUnits
         [SetUp]
         public void Setup()
         {
-            _uut=new CannonTower(1);
+            _uut=new CannonTower();
         }
 
         [Test]

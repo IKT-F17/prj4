@@ -22,7 +22,7 @@ namespace ClassLibrary1.DefensiveUnits
         [SetUp]
         public void Setup()
         {
-            _uut = new ArcherTower(1);
+            _uut = new ArcherTower();
         }
 
         [Test]

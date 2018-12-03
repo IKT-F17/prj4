@@ -83,8 +83,7 @@ namespace MonstersMapsTowers.Class
                 //tower.defenseType =
                 //    unit.defenseType; // only necessary if we actually change the tower type when upgrading
                 unit.defenseRange = unit.defenseRange + 1;
-                unit.defensiveTiles = unit.defensiveTiles; //  What is this for ? 
-                unit.unitValue += unit.upgradeCost;
+               unit.unitValue += unit.upgradeCost;
                 unit.upgradeCost = unit.upgradeCost * upgradeCostFactor; //new upprice  
                
                 //  player.updateBank(-unit.upgradeCost); //subtrac the price from user bank
@@ -110,7 +109,6 @@ namespace MonstersMapsTowers.Class
                 //tower.defenseType =
                 //    unit.defenseType; // only necessary if we actually change the tower type when upgrading
                 unit.defenseRange = unit.defenseRange + 1;
-                unit.defensiveTiles = unit.defensiveTiles; //  What is this for ? 
                 unit.unitValue += unit.upgradeCost;
                 unit.upgradeCost = unit.upgradeCost * upgradeCostFactor; //new upprice  
 
@@ -139,12 +137,11 @@ namespace MonstersMapsTowers.Class
                 player.updateBank(unit.unitValue);
                 unit.unitValue = unit.unitValue / unit.defensiveLevel;
                 unit.defensiveLevel = unit.defensiveLevel - 1;
-                unit.nameDefensiveUnit = unit.nameDefensiveUnit + " Level " + unit.defensiveLevel; ;
+                unit.nameDefensiveUnit = "ArcherTower Level " + unit.defensiveLevel; 
                 unit.defensivePower = unit.defensivePower - 2;
                 unit.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 unit.defenseRange = unit.defenseRange - 1;
-                unit.defensiveTiles = unit.defensiveTiles;
-                unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;
+               unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;
                 
 
             }
@@ -172,12 +169,11 @@ namespace MonstersMapsTowers.Class
                 player.updateBank(unit.unitValue);
                 unit.unitValue = unit.unitValue / unit.defensiveLevel;
                 unit.defensiveLevel = unit.defensiveLevel - 1;
-                unit.nameDefensiveUnit = unit.nameDefensiveUnit + " Level " + unit.defensiveLevel; ;
+                unit.nameDefensiveUnit = "CannonTower Level " + unit.defensiveLevel; 
                 unit.defensivePower = unit.defensivePower - 2;
                 unit.defenseType = unit.defenseType;   // only necessary if we actually change the tower type when upgrading
                 unit.defenseRange = unit.defenseRange - 1;
-                unit.defensiveTiles = unit.defensiveTiles;
-                unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;
+              unit.upgradeCost = unit.upgradeCost / upgradeCostFactor;
                 
 
             }
