@@ -1,0 +1,8 @@
+FirstMap
+\MapFiles\Map01.png
+100
+left;left;left;left;left;left;down;down;down;left;left;left;left;left;up;up;up;up;up;up;left;left;left;left;left;left;left;left;left;down;down;down;right;right;right;right;right;right;down;down;down;left;left;left;left;left;left;left;left;left;left;up;up;up;up;up;left;left;left;left
+5
+10
+2
+CRACKPOT!!!
