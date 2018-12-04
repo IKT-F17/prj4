@@ -52,9 +52,47 @@ namespace TDGUI.ViewModel
         {
             HighscoreViewModel vm = new HighscoreViewModel(_acc,_nav);
             _nav.Show(vm);
+
+        }
+
+        private ICommand _StartGameApplicationCommand;
+
+        public ICommand StartCommandApplicationCommand
+        {
+            get
+            {
+                return _StartGameApplicationCommand ??
+                       (_StartGameApplicationCommand = new RelayCommand(StartGameApplication));
+            }
+        }
+
+        private void StartGameApplication()
+        {
+            //.NET REMOTING
+            //JSON DESERIALIZER / SERIALIZER
+            System.Diagnostics.Process.Start(
+                @"C:\Users\Duffy\Desktop\Integrationsforsøg\TowerDefence\TowerDefence\TowerDefence\bin\Debug\TowerDefence.exe",
+                "Test");
+
+        }
+
+        private ICommand _LogoutCommand;
+
+        public ICommand LogoutCommand
+        {
+            get
+            {
+                return _LogoutCommand ??
+                       (_LogoutCommand = new RelayCommand(Logout));
+            }
+        }
+
+        private void Logout()
+        {
+            _nav.Close();
         }
 
 
-       
+
     }
 }

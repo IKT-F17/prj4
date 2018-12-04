@@ -4,41 +4,48 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TDGUI.View"
+        xmlns:control="clr-namespace:CustomControl"
+        Background="Black"
+ 
+        
+        
         DataContext="{Binding Source={StaticResource Locator}, Path=CreateUserVM}"
         mc:Ignorable="d"
-        Title="CreateUserView" Height="600" Width="400">
+        Title="Create User" Height="600" Width="400" MaxHeight="600" MinHeight="600" MaxWidth="400" MinWidth="400">
     <Grid>
-
+        <Grid.Background>
+            <ImageBrush ImageSource="/Resources/CannonTower.png"></ImageBrush>
+        </Grid.Background>
         <Grid.RowDefinitions>
             <RowDefinition Height="1.5*"/>
             <RowDefinition Height="1.3*"/>
             <RowDefinition Height="1.5*"/>
         </Grid.RowDefinitions>
 
-        <Label Content="Enter username and password to be registered" Grid.Row="0" HorizontalContentAlignment="Center" VerticalAlignment="Center" Margin="65,0,65,0"/>
+        <Label Content="Enter username and password to be registered" Grid.Row="0" HorizontalContentAlignment="Center" Height="199" Margin="0,0,0.333,0.333" VerticalAlignment="Bottom" Foreground="FloralWhite" FontSize="17"/>
         <!--Sign in control-->
 
-        <TextBlock Text="Username:" Grid.Row="1" Margin="50,39.333,0,118.527" HorizontalAlignment="Left"  Height="16" Width="56"/>
-        <TextBox x:Name="Username" Width="150" Height="25" Margin="169,23,74.333,98.527" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}"/>
+        <TextBlock Text="Username:" Grid.Row="1" Margin="50,39.667,0,112" HorizontalAlignment="Left" Width="68" Foreground="FloralWhite"/>
+        <TextBox x:Name="Username" Width="150" Height="25" Margin="169,23,74.333,98.527" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}" Background="DarkGray"/>
 
-        <TextBlock Text="Password:" Grid.Row="1" Margin="50,91.333,0,67.527" HorizontalAlignment="Left" Height="15" Width="52"/>
-        <TextBox x:Name="Password" Width="150" Height="25" Margin="169,75,74.333,47.333" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Password}"/>
+        <TextBlock Text="Password:" Grid.Row="1" Margin="50,91.667,0,60" HorizontalAlignment="Left" Width="68" Foreground="FloralWhite"/>
+        <control:BindablePasswordBox x:Name="Password" Width="150" Height="25" Margin="169,75,74.333,47.333" Grid.Row="1" HorizontalAlignment="Center"  Password="{Binding Password}"/>
 
 
 
 
         <Button x:Name="BackToLoginBTN" Grid.Row="2" Margin="200,20,0,100" Height="40" Width="110" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Command="{Binding backToLogin}">
             <Button.Content>
-                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
-                    <TextBlock Text="Back to login" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" Background="Black" >
+                    <TextBlock Text="Back to login" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
 
         <Button x:Name="registerUsrBTN" Grid.Row="2" Margin="20,20,250,100" Height="40" Width="110" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Command="{Binding CreateUserCommand}">
             <Button.Content>
-                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
-                    <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" Background="Black" >
+                    <TextBlock Text="Register" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>

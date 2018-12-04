@@ -3,14 +3,20 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:control="clr-namespace:CustomControl"
         mc:Ignorable="d"
-        Title="TD GUI ver.0.1" Height="600" Width="400"
+        Title="TD GUI ver.0.1" Height="600" Width="1205.332" MinHeight="600" MaxHeight="600" MaxWidth="1205.332" MinWidth="1205.332"
+
         DataContext="{Binding Source={StaticResource Locator}, Path=MainWindowVM}">
 
-    <Grid>
+    <Grid Margin="0,0,-0.333,-0.333">
+        <Grid.Background>
+            <ImageBrush ImageSource="../Resources/StartMenu.JPG"></ImageBrush>
+        </Grid.Background>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="61*"/>
-            <ColumnDefinition Width="70*"/>
+            <ColumnDefinition Width="65*"/>
+            <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -18,30 +24,24 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <!-- Game name -->
+        <Label Content="Tower Defence v. 0.1" FontFamily="Lucida Calligraphy" FontSize="35" Foreground="Goldenrod" Grid.ColumnSpan="2" Margin="412,37,320.667,96"/>
 
 
-        <!--<Grid.RowDefinitions>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="2*"/>
-        </Grid.RowDefinitions>-->
+        <!--Sign in -->
 
-        <!--Sign in control-->
-        <!--<controls:signinINFO Grid.Row="0" HorizontalAlignment="Left" Margin="20,100,0,0" VerticalAlignment="Top" Width="245"
-         x:Name="signinINFO"/>-->
+        <TextBlock Text="Username:" Grid.Row="1" Grid.Column="0" Margin="458,9,45,166.667" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="55" Foreground="FloralWhite" />
+        <TextBox x:Name="Username" Width="150" Margin="545,9,457.667,155.667" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Username}" Grid.ColumnSpan="2" Background="DarkGray"/>
 
-
-        <TextBlock Text="Username:" Grid.Row="0" Grid.Column="0" Margin="64,67,63.333,107" HorizontalAlignment="Center" VerticalAlignment="Center" Height="16" Width="56"/>
-        <TextBox x:Name="Username" Width="150" Margin="169,62,74.333,102" Grid.Row="0" HorizontalAlignment="Center" Text="{Binding Username}" Grid.ColumnSpan="2"/>
-
-        <TextBlock Text="Password:" Grid.Row="0" Grid.Column="0" Margin="66,100,65.333,75" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="52"/>
-        <TextBox x:Name="Password" Width="150" Margin="169,95,74.333,70" Grid.Row="0" HorizontalAlignment="Center"   Grid.ColumnSpan="2" Text="{Binding Path=Password}"/>
+        <TextBlock Text="Password:" Grid.Row="1" Grid.Column="0" Margin="458,41,45,134.667" HorizontalAlignment="Center" VerticalAlignment="Center" Height="15" Width="55" Foreground="FloralWhite"/>
+        <control:BindablePasswordBox x:Name="Password" Width="150" Margin="545,42,457.667,123.667" Grid.Row="1" HorizontalAlignment="Center"  Grid.ColumnSpan="2" Password="{Binding Password}"/>
 
         <!--Sign in as user-->
 
-        <Button x:Name="signInAsUSer"  Grid.Row="1" Grid.Column="0" Margin="10,34,56.333,116.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+        <Button x:Name="signInAsUSer" Margin="553,97,486.667,51.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Grid.Row="1" Grid.ColumnSpan="2">
             <Button.Content>
-                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
-                    <TextBlock Text="Log in as User" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" Background="Black">
+                    <TextBlock Text="Log in as User" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="FloralWhite" Margin="15,7,0,0"/>
                 </Border>
             </Button.Content>
         </Button>
@@ -49,10 +49,10 @@
 
         <!--Sign in as guest button-->
 
-        <Button x:Name="signInAsGuest" Grid.Row="1" Grid.Column="0" Margin="10,63,55.333,70.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Command="{Binding logOnAsGuestCommand}">
+        <Button x:Name="signInAsGuest" Grid.Row="1" Margin="551,164,483.667,173.667" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Command="{Binding logOnAsGuestCommand}" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Button.Content>
-                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
-                    <TextBlock Text="Log in as Guest" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border CornerRadius="5" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" Background="Black" >
+                    <TextBlock Text="Log in as Guest" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
@@ -60,10 +60,10 @@
 
         <!--Register new user button-->
 
-        <Button Command="{Binding RegisterUserCommand}" x:Name="regNewUser" Grid.Row="1" Margin="10,109,56.333,41.667" Grid.Column="0" Height="40" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+        <Button Command="{Binding RegisterUserCommand}" x:Name="regNewUser" Height="40" Background="Transparent" BorderThickness="0" BorderBrush="Transparent" Margin="553,38.333,484.667,111.667" Grid.Row="2" Grid.ColumnSpan="2">
             <Button.Content>
-                <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
-                    <TextBlock Text="Register new user" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Border CornerRadius="5" Height="30" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" Background="Black" RenderTransformOrigin="0.5,0.5" >
+                    <TextBlock Text="Register new user" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
