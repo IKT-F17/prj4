@@ -9,34 +9,40 @@ using MonstersMapsTowers.Class.Pathing;
 using MonstersMapsTowers.Class.OffensiveUnits;
 using NSubstitute;
 using NUnit.Framework;
+using NUnit.Framework.Interfaces;
 using NUnit.Framework.Internal;
 
 namespace TowerDefenceUnitTest
 {
     class MapsUnitTest
     {
-        /*
+        
         Maps _uut;
         private MapFileReader fakeMapFile;
-        private Player fakePlayer;
         private Goblin fakeOffensiveUnits;
 
         
         [SetUp]
         public void Setup()
         {
-            _uut = new Maps("Map 1");
+            //_uut = new Maps("Map 1");
             fakeMapFile = Substitute.For<MapFileReader>("Map 1");
-            fakePlayer = Substitute.For<Player>(); 
         }
 
  
         [Test]
-        public void TestMapBeingLoaded()
+        public void TestMapValues()
         {
-           
+            //Hardcoded test, can't pull from Map01.txt yet
+            fakeMapFile.mapName = "map 1";
+            fakeMapFile.initialPlayerBank = 100;
+            fakeMapFile.timeDelaybetweenSpawns = 10;
 
-            
+            Assert.That(fakeMapFile.mapName, Is.EqualTo("map 1"));
+            Assert.That(fakeMapFile.initialPlayerBank, Is.EqualTo(100));
+            Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(10));
+
+            /*
             fakeMapFile.LoadMapFile("map 1");
             var mapName = fakeMapFile.mapName;
             var mapImageFilePath = fakeMapFile.mapImageFilepath;
@@ -47,9 +53,9 @@ namespace TowerDefenceUnitTest
             Assert.That(fakeMapFile.mapImageFilepath, Is.EqualTo(mapImageFilePath));
             Assert.That(fakeMapFile.initialPlayerBank, Is.EqualTo(initialPlayerBank));
             Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(timeDelaybetweenSpawns));
-            
+            */
 
-        }*/
+        }
 
     }
 
