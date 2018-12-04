@@ -19,7 +19,7 @@ namespace MonstersMapsTowers.Class
             //var mapToLoad = "_mapName";
             //LoadMap(mapToLoad);
 
-            var mapfile = new MapFileReader();
+            var mapfile = new MapFileReader(mapName);
             mapfile.LoadMapFile(mapName);
             mapName = mapfile.mapName;
             mapImageFilePath = mapfile.mapImageFilepath;

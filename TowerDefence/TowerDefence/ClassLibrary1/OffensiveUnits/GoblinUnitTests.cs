@@ -25,7 +25,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
             var _path = mapFile.rawPath;
             _uut = new Goblin(_path);
         }
-        MapFileReader mapFile = new MapFileReader();
+        MapFileReader mapFile = new MapFileReader("map 1");
 
         [Test]
         public void CreatingGoblinUnit()

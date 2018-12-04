@@ -35,12 +35,9 @@ namespace MonstersMapsTowers.Class.Pathing
         public Stack<string> CalculatePath(object rawPath)
         {
             Stack<string> path = new Stack<string>();
-
-            
             /// TODO: Converting the raw path to nodes by sending it through an algorithem (A*) 
 
             return path;
-
         }
 
         private Stack<Node> nodes;
@@ -50,13 +47,6 @@ namespace MonstersMapsTowers.Class.Pathing
             var node = new Node(direction);
             nodes.Push(node);
         }
-
-
-        
-  
-         
-
-        
     }
 }
 
