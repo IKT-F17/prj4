@@ -18,5 +18,7 @@ namespace TDGUI.View
         public MainWindowViewModel MainWindowVM => new MainWindowViewModel(nav); 
         public MainMenuViewModel MainMenuVM => new MainMenuViewModel(acc, nav);
         public PersonalHighscoreViewModel PersonalHighscoreVM => new PersonalHighscoreViewModel(acc, nav);
+        public HighscoreViewModel HighscoreVM => new HighscoreViewModel(acc,nav);
+
     }
 }

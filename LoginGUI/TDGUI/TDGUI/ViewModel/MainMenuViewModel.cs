@@ -29,10 +29,32 @@ namespace TDGUI.ViewModel
             }
         }
 
+
         private void CreateHighscoreViewer()
         {
             PersonalHighscoreViewModel vm = new PersonalHighscoreViewModel(_acc, _nav);
             _nav.Show(vm);
         }
+
+
+
+        private ICommand _CreateGuestHighscoreView;
+
+        public ICommand CreateGuestHighscoreView
+        {
+            get
+            {
+                return _CreateGuestHighscoreView ?? (_CreateHighscoreView = new RelayCommand(CreateguestHighscoreViewer));
+            }
+        }
+
+        private void CreateguestHighscoreViewer()
+        {
+            HighscoreViewModel vm = new HighscoreViewModel(_acc,_nav);
+            _nav.Show(vm);
+        }
+
+
+       
     }
 }
