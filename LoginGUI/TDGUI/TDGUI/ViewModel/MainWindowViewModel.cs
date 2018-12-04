@@ -14,6 +14,7 @@ namespace TDGUI.ViewModel
         public MainWindowViewModel(INavigationService n)
         {
             _nav = n;
+
         }
         Account account = new Account();
 

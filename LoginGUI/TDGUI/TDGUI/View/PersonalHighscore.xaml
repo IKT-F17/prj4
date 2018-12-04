@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TDGUI.View"
         mc:Ignorable="d"
+        Background="Black"
          DataContext="{Binding Source={StaticResource Locator}, Path=PersonalHighscoreVM}"
-        Title="Personal Highscore" Height="600" Width="400">
+        Title="Personal Highscore" Height="600" Width="800" MinHeight="600" MaxHeight="600" MinWidth="800" MaxWidth="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -27,13 +28,27 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,0,319.667,0.333" OpacityMask="Black"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,0.333,319.667,0" OpacityMask="Black" Grid.Row="6"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,0.333,319.667,0" OpacityMask="Black" Grid.Row="2"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,0.333,0.333,0" OpacityMask="Black" Grid.Row="2" Grid.Column="1"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,0,0.333,0.333" OpacityMask="Black" Grid.Column="1"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,47.667,319.667,47.667" OpacityMask="Black" Grid.RowSpan="3" Grid.Row="9"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,0,319.667,0.333" OpacityMask="Black" Grid.Row="8"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="0,47,319.667,47.667" OpacityMask="Black" Grid.RowSpan="3" Grid.Row="3" RenderTransformOrigin="0.487,2.701"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,47,0.333,0.667" OpacityMask="Black" Grid.Row="9" Grid.Column="1" Grid.RowSpan="2"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,0.333,0.333,0" OpacityMask="Black" Grid.Row="8" Grid.Column="1"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,0.667,0.333,47" OpacityMask="Black" Grid.Row="6" Grid.Column="1" Grid.RowSpan="2"/>
+        <Image Source="../Resources/kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" Margin="319.333,0.667,0.333,47.667" OpacityMask="Black" Grid.Row="4" Grid.Column="1" Grid.RowSpan="2"/>
+
+
         <!--Titler-->
-        <Label x:Name="Label0" Content="Map" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label x:Name="Label00" Grid.Column="1" Content="Total Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="Label0" Content="Map" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Goldenrod"/>
+        <Label x:Name="Label00" Grid.Column="1" Content="Highscore" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Goldenrod"/>
 
         <!--par 1-->
-        <Label x:Name="Label1" Grid.Row="1" Height="Auto" Width="Auto" Content="{Binding Path=mapname}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
-        <Label x:Name="Label11" Grid.Column="1" Grid.Row="1" Height="Auto" Width="Auto" Content="{Binding Path=mapscore}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <Label x:Name="Label1" Grid.Row="1" Height="Auto" Width="Auto" Content="{Binding Path=mapname}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
+        <Label x:Name="Label11" Grid.Column="1" Grid.Row="1" Height="Auto" Width="Auto" Content="{Binding Path=mapscore}" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
 
         <!--par 2-->
         <!--
@@ -88,10 +103,10 @@
         <Label x:Name="Label10" Grid.Row="10" Content="{}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
         <Label x:Name="Label1010" Grid.Column="1" Grid.Row="10"  Content="{Binding Mode=TwoWay}" HorizontalAlignment="Center" VerticalAlignment="Center"/>-->
 
-        <Button x:Name="closebtn" Grid.Row="11"  Grid.Column="0" Height="40" Width="298" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" BorderBrush="Transparent" Command="{Binding closeView}" Margin="0,4.333,52.333,3.667" Grid.ColumnSpan="2">
+        <Button x:Name="closebtn" Grid.Row="10"  Grid.Column="0" Height="40" Width="298" Background="Transparent" BorderThickness="0" VerticalAlignment="Center" HorizontalAlignment="Right" BorderBrush="Transparent" Command="{Binding closeView}" Margin="0,45.667,247.333,9.667" Grid.ColumnSpan="2" Grid.RowSpan="2">
             <Button.Content>
                 <Border CornerRadius="2" Height="34" Width="108" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2" >
-                    <TextBlock Text="Close" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Close" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>

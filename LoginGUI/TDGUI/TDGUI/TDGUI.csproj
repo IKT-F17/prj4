@@ -61,6 +61,7 @@
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PersonalHighscoreViewModel.cs" />
     <Compile Include="ViewModel\RegisterUserViewModel.cs" />
+    <Compile Include="View\BindablePasswordBox.cs" />
     <Compile Include="View\Highscore.xaml.cs">
       <DependentUpon>Highscore.xaml</DependentUpon>
     </Compile>
@@ -133,6 +134,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\StartMenu.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\CannonTower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ArcherTower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\kisspng-trophy-gold-medal-clip-art-trophy-and-medals-5b17975dd00b40.1023582515282727338522.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

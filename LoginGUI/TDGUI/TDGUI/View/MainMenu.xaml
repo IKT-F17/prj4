@@ -6,48 +6,63 @@
         xmlns:local="clr-namespace:TDGUI.View"
         mc:Ignorable="d"
         DataContext="{Binding Source={StaticResource Locator}, Path=MainMenuVM}"
-        Title="MainMenu" Height="600" Width="400">
+        Title="MainMenu" Height="600" Width="400" Background="Black" MaxWidth="400" MinWidth="400" MaxHeight="600" MinHeight="600">
     <Grid>
-        
+
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-         
+
+        <Image Source="../Resources/ArcherTower.png" Margin="93,-2,157.333,28.667" OpacityMask="Black">
+            <Image.RenderTransform>
+                <ScaleTransform ScaleX="-1"/>
+            </Image.RenderTransform>
+        </Image>
+        <Image Source="../Resources/ArcherTower.png" Margin="298,0,-29.667,26.667" OpacityMask="Black"/>
+        <Image Source="../Resources/CannonTower.png" Margin="96,29,177.333,-2.333" OpacityMask="Black" Grid.Row="3">
+            <Image.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="-1"/>
+                </TransformGroup>
+            </Image.RenderTransform>
+        </Image>
+        <Image Source="../Resources/CannonTower.png" Margin="298,27,-24.667,-0.333" OpacityMask="Black" Grid.Row="3"/>
+
         <!--playtower defence button-->
-        <Button x:Name="PlayTDbtn"  Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+        <Button x:Name="PlayTDbtn" Command="{Binding StartCommandApplicationCommand}"  Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
             <Button.Content>
                 <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
-                    <TextBlock Text="Play Tower defence" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Play Tower defence" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
 
-         <!--See personal highscore button-->
+        <!--See personal highscore button-->
         <Button x:Name="seePrHighbtn" Command="{Binding CreateHighscoreView }"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
             <Button.Content>
                 <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
-                    <TextBlock Text="See Personal Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="See Personal Highscore" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
 
-         <!--see highscore button-->
+        <!--see highscore button-->
         <Button x:Name="seeHighscbtn" Command="{Binding CreateGuestHighscoreView }"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
             <Button.Content>
                 <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
-                    <TextBlock Text="See Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="See Highscore" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
 
         <!--Logout button-->
-        <Button x:Name="logoutbtn"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+        <Button x:Name="logoutbtn" Command="{Binding LogoutCommand}"  Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
             <Button.Content>
                 <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
-                    <TextBlock Text="Log out" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                    <TextBlock Text="Log out" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="FloralWhite"/>
                 </Border>
             </Button.Content>
         </Button>
