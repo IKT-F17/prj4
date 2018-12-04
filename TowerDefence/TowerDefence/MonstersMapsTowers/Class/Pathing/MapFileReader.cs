@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Management.Instrumentation;
+using System.Net.Mime;
+using System.Reflection;
 using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +18,7 @@ namespace MonstersMapsTowers.Class.Pathing
     /// </summary>
     public class MapFileReader
     {
-        public MapFileReader()
+        public MapFileReader(string _mapname)
         {
             mapName = "";
             mapImageFilepath = "";
@@ -27,25 +30,39 @@ namespace MonstersMapsTowers.Class.Pathing
             rawPath = null;
         }
 
-
-
         public void LoadMapFile(string mapName)
         {
-            //    /// TODO: code database Filename/path retriever - Need help from Andreas - but lower priority
+            /// TODO: code database Filename/path retriever - Need help from Andreas - but lower priority
+
+
+            //string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+            //string path = Path.Combine(currentDirectory, @"\MonstersMapsTowers\MapFiles\fileName.txt");
+
+            //var path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\MonstersMapsTowers\MapFiles\fileName.txt";
+            //var path = Path.Combine(Directory.GetCurrentDirectory(), "\\MonstersMapsTowers\\MapFiles\\fileName.txt");
+
+            var applicationPath = Directory.GetCurrentDirectory();
+            //string path = Application.StartupPath + @"\file.txt"
+
+            ///TODO: FIX THE FUCKING PATH TO A RELATIVE PATH! \T
+            string path = @"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt";
+
             
 
-            ReadMapFile(@"\MapFiles\Map01.txt");    // the string needs to be the real path from the database. this is just the temporary hardcoded path and filename. 
+            //"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt"
+
+            ReadMapFile(path);    // the string needs to be the real path from the database. this is just the temporary hardcoded path and filename. 
+
 
 
         }
-
 
         //  This method will only be fully implemented if time allows. 
         /// <summary>
         /// Meaning of this method is take the mapname/MapID as a parameter and use it to get the filename
         /// and filepath from the database and then parse the file
         /// </summary>
-        public void ReadMapFile(string FilePathAndName)
+        private void ReadMapFile(string FilePathAndName)
         {
             // reading the file into string array
             string[] mapFileLines = System.IO.File.ReadAllLines(FilePathAndName);
@@ -82,18 +99,14 @@ namespace MonstersMapsTowers.Class.Pathing
             foreach (var node in rawPath)
             {
                 Debug.WriteLine(node);
-                
             }
 
                 //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
                 //  
             //var path = new Pathfinder().CalculatePath(rawPath);
 
-
             return;
         }
-        
-
 
         public string mapName { get; set; }
         public string mapImageFilepath { get; set; }
@@ -103,12 +116,5 @@ namespace MonstersMapsTowers.Class.Pathing
         public int timeDelaybetweenSpawns { get; set; }
         public string offensiveUnitType { get; set; }
         public Stack<string> rawPath { get; set; }
-
-
     }
-
-
-
-
-
 }
