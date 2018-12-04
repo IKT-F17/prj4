@@ -60,6 +60,7 @@
     <Compile Include="DefensiveUnits\ArcherTowerUnitTest.cs" />
     <Compile Include="DefensiveUnits\CannonTowerUnitTest.cs" />
     <Compile Include="DefensiveUnitUtillitiesUnitTest.cs" />
+    <Compile Include="MapsUnitTest.cs" />
     <Compile Include="OffensiveUnits\GoblinUnitTests.cs" />
     <Compile Include="OffensiveUnits\MyLittlePonyUnitTest.cs" />
     <Compile Include="Pathing\MapFileReaderUnitTests.cs" />
