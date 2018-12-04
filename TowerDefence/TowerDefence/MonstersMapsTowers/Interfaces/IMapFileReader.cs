@@ -5,7 +5,8 @@ namespace MonstersMapsTowers.Interfaces
     public interface IMapFileReader
     {
         // void ReadMapFile(string FilePathAndName);
-        void LoadMapFile(string mapName);
+        //void LoadMapFile(string mapName);
+        void ReadMapFile();
 
 
         string mapName { get; set; }
