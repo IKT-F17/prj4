@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Reflection;
 using MonstersMapsTowers.Class.Pathing;
 using NUnit.Framework;
 
@@ -10,41 +12,58 @@ namespace TowerDefenceUnitTest.Pathing
     [TestFixture]
     public class MapFileReaderUnitTests
     {
+        MapFileReader _uut;
+
+        [SetUp]
+        public void Setup()
+        {
+            string _mapName = "";
+            _uut = new MapFileReader();
+            
+        }
+         
+
+
+
         [Test]
         public void ShouldLoadMapFile()
         {
+            string _mapname = "map01";
+            //var mapFileReader = new MapFileReader(_mapname);
+            //var filename = @"MapFiles\Map01.txt";
+
+            string realMapName = "FirstMap";
+            string realImageFilePath = "\\MapFiles\\Map01.png";
+            int realInitialPlayerBank = 100;
             string realRawPathstring =
                 "left;left;left;left;left;left;down;down;down;left;left;left;left;left;up;up;up;up;up;up;left;left;left;left;left;left;left;left;left;down;down;down;right;right;right;right;right;right;down;down;down;left;left;left;left;left;left;left;left;left;left;up;up;up;up;up;left;left;left;left";
             var realPathStack = new Stack<String>(realRawPathstring.Split(';'));
-            string _mapname = "map 1";
-            var mapFileReader = new MapFileReader(_mapname);
-            string realMapName = "FirstMap";
-            string realImageFilePath = "\\MapFiles\\Map01.png";
-            var filename = @"MapFiles\Map01.txt";
-            int realInitialPlayerBank = 100;
             int realnumberOfWaves = 5;
+            int realNumberOfOffensiveUnits = 10;
             int realTimeDelaybetweenSpawns = 2;
             string realOffensiveUnitType = "Goblin";
 
+            
 
-            //"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt"
-
-            //Assert.IsTrue(File.Exists(filename));
-
-            mapFileReader.LoadMapFile(_mapname);
+            _uut.ReadMapFile("Map01");
+            Debug.WriteLine(_uut.mapFilePath);
+            var filename = _uut.mapFileName;
+            
+            Assert.IsTrue(File.Exists(_uut.mapFilePath + filename));
 
             //var test = TestContext.CurrentContext.TestDirectory;
 
+            
 
 
-
-            Assert.AreEqual(realMapName, mapFileReader.mapName);
-            Assert.AreEqual(realImageFilePath, mapFileReader.mapImageFilepath);
-            Assert.AreEqual(realInitialPlayerBank, mapFileReader.initialPlayerBank);
-            Assert.AreEqual(realnumberOfWaves, mapFileReader.numberOfWaves);
-            Assert.AreEqual(realPathStack, mapFileReader.rawPath);
-            Assert.AreEqual(realTimeDelaybetweenSpawns, mapFileReader.timeDelaybetweenSpawns);
-            Assert.AreEqual(realOffensiveUnitType, mapFileReader.offensiveUnitType);
+            Assert.AreEqual(realMapName, _uut.mapName);
+            Assert.AreEqual(realImageFilePath, _uut.mapImageFilepath);
+            Assert.AreEqual(realPathStack, _uut.rawPath);
+            Assert.AreEqual(realInitialPlayerBank, _uut.initialPlayerBank);
+            Assert.AreEqual(realnumberOfWaves, _uut.numberOfWaves);
+            Assert.AreEqual(realNumberOfOffensiveUnits, _uut.numberOfOffensiveUnits);
+            Assert.AreEqual(realTimeDelaybetweenSpawns, _uut.timeDelaybetweenSpawns);
+            Assert.AreEqual(realOffensiveUnitType, _uut.offensiveUnitType);
 
 
             //Assert.AreEqual()

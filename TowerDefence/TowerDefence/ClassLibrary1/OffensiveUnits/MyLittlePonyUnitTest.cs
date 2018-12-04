@@ -23,7 +23,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         [SetUp]
         public void Setup()
         {
-            fakemapFile = Substitute.For<MapFileReader>("map 1");
+            fakemapFile = Substitute.For<MapFileReader>();
             var _path = fakemapFile.rawPath;
             _uut = new MyLittlePony(_path);
         }

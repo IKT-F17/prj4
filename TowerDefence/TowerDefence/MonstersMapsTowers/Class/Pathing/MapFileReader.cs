@@ -18,9 +18,11 @@ namespace MonstersMapsTowers.Class.Pathing
     /// </summary>
     public class MapFileReader
     {
-        public MapFileReader(string _mapname)
+        public MapFileReader()
         {
             mapName = "";
+            mapFileName = "";
+            mapFilePath = "";
             mapImageFilepath = "";
             initialPlayerBank = 0;
             numberOfWaves = 0;
@@ -30,45 +32,27 @@ namespace MonstersMapsTowers.Class.Pathing
             rawPath = null;
         }
 
-        public void LoadMapFile(string mapName)
+        public void ReadMapFile(string _mapName)
         {
+            Console.WriteLine("now in ReadMapFile");
             /// TODO: code database Filename/path retriever - Need help from Andreas - but lower priority
 
-
-            //string currentDirectory = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
-            //string path = Path.Combine(currentDirectory, @"\MonstersMapsTowers\MapFiles\fileName.txt");
-
-            //var path = Path.GetDirectoryName(Process.GetCurrentProcess().MainModule.FileName) + @"\MonstersMapsTowers\MapFiles\fileName.txt";
-            //var path = Path.Combine(Directory.GetCurrentDirectory(), "\\MonstersMapsTowers\\MapFiles\\fileName.txt");
-
-            var applicationPath = Directory.GetCurrentDirectory();
-            //string path = Application.StartupPath + @"\file.txt"
-
-            ///TODO: FIX THE FUCKING PATH TO A RELATIVE PATH! \T
-            //string path = @"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt";
-            string path = @".\Map01.txt";
+            mapName = _mapName;
+            mapFileName = mapName + ".txt";
 
 
 
-            //"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt"
 
-            ReadMapFile(path);    // the string needs to be the real path from the database. this is just the temporary hardcoded path and filename. 
-
+            Debug.WriteLine(mapFilePath);
 
 
-        }
 
-        //  This method will only be fully implemented if time allows. 
-        /// <summary>
-        /// Meaning of this method is take the mapname/MapID as a parameter and use it to get the filename
-        /// and filepath from the database and then parse the file
-        /// </summary>
-        private void ReadMapFile(string FilePathAndName)
-        {
-            // reading the file into string array
-            string[] mapFileLines = System.IO.File.ReadAllLines(FilePathAndName);
 
-            //  Using mapfile to set Map Settings
+
+            mapFilePath = ".\\MapFiles\\"; //Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + ".\\MapFiles\\";
+            var mapFileLines = LoadMapFile(mapFilePath + mapFileName);
+            
+            //  Using mapfilelines to set Map Settings
 
             mapName = mapFileLines[0];
             mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
@@ -105,9 +89,21 @@ namespace MonstersMapsTowers.Class.Pathing
             //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
             //  
             //var path = new Pathfinder().CalculatePath(rawPath);
-
-            return;
         }
+
+        //  This method will only be fully implemented if time allows. 
+        /// <summary>
+        /// Meaning of this method is take the mapname/MapID as a parameter and use it to get the filename
+        /// and filepath from the database and then parse the file
+        /// </summary>
+        private string[] LoadMapFile(string FilePathAndName)
+        {
+            string[] mapFileLines = System.IO.File.ReadAllLines(FilePathAndName);
+            return mapFileLines;
+        }
+
+
+
 
         public string mapName { get; set; }
         public string mapImageFilepath { get; set; }
@@ -117,5 +113,7 @@ namespace MonstersMapsTowers.Class.Pathing
         public int timeDelaybetweenSpawns { get; set; }
         public string offensiveUnitType { get; set; }
         public Stack<string> rawPath { get; set; }
+        public string mapFileName { get; set; }
+        public string mapFilePath { get; set; }
     }
 }
