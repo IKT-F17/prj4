@@ -10,6 +10,7 @@ using NUnit.Framework.Internal;
 
 namespace TowerDefenceUnitTest
 {
+    [TestFixture]
     public class PlayerUnitTest
     {
         Player _uut;
