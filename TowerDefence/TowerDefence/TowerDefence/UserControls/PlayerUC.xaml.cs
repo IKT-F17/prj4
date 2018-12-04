@@ -33,7 +33,7 @@ namespace TowerDefence.UserControls
             get => PlayerGold;
             set => PlayerGold = value;
         }
-        public PlayerUC(String username, int health)
+        public PlayerUC(String username, int health, double bank = 0 )
         {
             currentPlayer = new Player(username);
             PlayerGold.Content = currentPlayer.bank;
