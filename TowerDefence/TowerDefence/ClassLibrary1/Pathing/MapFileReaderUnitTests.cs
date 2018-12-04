@@ -46,7 +46,7 @@ namespace TowerDefenceUnitTest.Pathing
             
 
             _uut.ReadMapFile("Map01");
-            _uut.mapFilePath = @"C:\Program Files (x86)\Jenkins\workspace\Projekt_Gruppe7_Coverage\TowerDefence\TowerDefence\ClassLibrary1\MapFiles\"
+            //_uut.mapFilePath = @"C:\Program Files (x86)\Jenkins\workspace\Projekt_Gruppe7_Coverage\TowerDefence\TowerDefence\ClassLibrary1\MapFiles\"
             Debug.WriteLine(_uut.mapFilePath);
             var filename = _uut.mapFileName;
             
