@@ -8,8 +8,6 @@ namespace TowerDefenceUnitTest.Pathing
 {
 
     [TestFixture]
-
-
     public class MapFileReaderUnitTests
     {
         [Test]
