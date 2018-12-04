@@ -30,9 +30,12 @@ namespace TowerDefenceUnitTest
             fakePlayer = Substitute.For<Player>(); 
         }
 
+ 
         [Test]
         public void TestMapBeingLoaded()
         {
+           
+
             
             fakeMapFile.LoadMapFile("map 1");
             var mapName = fakeMapFile.mapName;
@@ -44,9 +47,9 @@ namespace TowerDefenceUnitTest
             Assert.That(fakeMapFile.mapImageFilepath, Is.EqualTo(mapImageFilePath));
             Assert.That(fakeMapFile.initialPlayerBank, Is.EqualTo(initialPlayerBank));
             Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(timeDelaybetweenSpawns));
-            */
+            
 
-        }
+        }*/
 
     }
 
