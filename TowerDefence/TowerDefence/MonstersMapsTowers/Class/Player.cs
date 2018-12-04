@@ -15,6 +15,7 @@ namespace MonstersMapsTowers.Class
             string databaseUserName = userName;
         }
         public double bank { get; set; }
+        public int Highscore { get; set; }
 
         public double updateBank(double sum)
         {
