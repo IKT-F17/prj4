@@ -34,7 +34,7 @@ namespace TowerDefenceUnitTest.Pathing
             Assert.AreEqual(mapFileReader.initialPlayerBank,100);
             Assert.AreEqual(mapFileReader.numberOfWaves,5);
             Assert.AreEqual(mapFileReader.rawPath,tempRawPath);
-            Assert.AreEqual()
+            //Assert.AreEqual()
 
 
 

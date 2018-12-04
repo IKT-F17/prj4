@@ -14,7 +14,7 @@ namespace MonstersMapsTowers.Class
     public class Maps : IMaps
     {
 
-        public Maps() //constructor
+        public Maps(string mapName) //constructor
         {
             //var mapToLoad = "_mapName";
             //LoadMap(mapToLoad);
@@ -41,44 +41,44 @@ namespace MonstersMapsTowers.Class
 
         }
 
-        public void Wave()
-        {
-            var testTimer = new System.Timers.Timer(timeDelaybetweenSpawns);
+        //public void Wave()
+        //{
+        //    var testTimer = new System.Timers.Timer(timeDelaybetweenSpawns);
 
-            for (int i = 0; i < numberOfOffensiveUnits; i++)
-            {
-                spawnMob(offensiveUnitType);
-                testTimer.Interval = timeDelaybetweenSpawns;
-            }
-        }
+        //    for (int i = 0; i < numberOfOffensiveUnits; i++)
+        //    {
+        //        spawnMob(offensiveUnitType);
+        //        testTimer.Interval = timeDelaybetweenSpawns;
+        //    }
+        //}
 
-        public void spawnMob(string _offensiveUnitType)
-        {
-            // needs to go into an foreach if we want to spawn more than one type of monster in a wave. + modifications to the Wave()
-            switch (_offensiveUnitType)
-            {
-                case "Goblin":
-                    var goblin = new Goblin(rawPath);
-                    offensiveUnitList.Add(goblin);
-                    break;
+        //public void spawnMob(string _offensiveUnitType)
+        //{
+        //    // needs to go into an foreach if we want to spawn more than one type of monster in a wave. + modifications to the Wave()
+        //    switch (_offensiveUnitType)
+        //    {
+        //        case "Goblin":
+        //            var goblin = new Goblin(rawPath);
+        //            offensiveUnitList.Add(goblin);
+        //            break;
 
-                case "MyLittlePony":
-                    var pony = new MyLittlePony(rawPath);
-                    offensiveUnitList.Add(pony);
-                    break;
+        //        case "MyLittlePony":
+        //            var pony = new MyLittlePony(rawPath);
+        //            offensiveUnitList.Add(pony);
+        //            break;
 
-                default:
-                    break;
-            }
-        }
+        //        default:
+        //            break;
+        //    }
+        //}
 
-        public void CallWave()
-        {
-            for (int i = 0; i < numberOfWaves; i++)
-            {
-                Wave();
-            }
-        }
+        //public void CallWave()
+        //{
+        //    for (int i = 0; i < numberOfWaves; i++)
+        //    {
+        //        Wave();
+        //    }
+        //}
         
         public string mapName { get; set; }
         public int numberOfWaves { get; set; }

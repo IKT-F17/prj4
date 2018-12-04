@@ -56,10 +56,14 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="ViewModel\BaseViewModel.cs" />
+    <Compile Include="ViewModel\HighscoreViewModel.cs" />
     <Compile Include="ViewModel\MainMenuViewModel.cs" />
     <Compile Include="ViewModel\MainWindowViewModel.cs" />
     <Compile Include="ViewModel\PersonalHighscoreViewModel.cs" />
     <Compile Include="ViewModel\RegisterUserViewModel.cs" />
+    <Compile Include="View\Highscore.xaml.cs">
+      <DependentUpon>Highscore.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\INavigationService.cs" />
     <Compile Include="View\Locator.cs" />
     <Compile Include="View\NavigationService.cs" />
@@ -73,6 +77,10 @@
     <Compile Include="View\MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Highscore.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

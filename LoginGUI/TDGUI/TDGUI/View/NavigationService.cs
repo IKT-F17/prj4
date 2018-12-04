@@ -29,6 +29,10 @@ namespace TDGUI.View
                     currentWindow = new PersonalHighscore();
                     currentWindow.ShowDialog();
                     break;
+                case "HighscoreViewModel":
+                    currentWindow = new Highscore();
+                    currentWindow.ShowDialog();
+                    break;
 
             }
         }

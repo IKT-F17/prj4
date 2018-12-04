@@ -35,7 +35,7 @@
         </Button>
 
          <!--see highscore button-->
-        <Button x:Name="seeHighscbtn"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
+        <Button x:Name="seeHighscbtn" Command="{Binding CreateGuestHighscoreView }"  Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" Background="Transparent" BorderThickness="0" BorderBrush="Transparent">
             <Button.Content>
                 <Border CornerRadius="5" Height="34" Width="200" Margin="0" BorderBrush="LightGray" BorderThickness="2,2,2,2">
                     <TextBlock Text="See Highscore" HorizontalAlignment="Center" VerticalAlignment="Center"/>

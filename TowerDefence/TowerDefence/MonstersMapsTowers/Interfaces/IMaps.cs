@@ -7,11 +7,11 @@ namespace MonstersMapsTowers.Interfaces
     {
         void LoadMap(string _mapName);
         //void makeOffensiveUnitPath();
-        void Wave();
-        void CallWave();
+        //void Wave();
+        //void CallWave();
 
         //string mapName { get; set; }
-        
+
 
     }
 }
