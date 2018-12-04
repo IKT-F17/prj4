@@ -11,6 +11,7 @@ using NUnit.Framework.Internal;
 
 namespace ClassLibrary1.DefensiveUnits
 {
+    [TestFixture]
     class CannonTowerUnitTest
     {
         private CannonTower _uut;
