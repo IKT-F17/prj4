@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonstersMapsTowers", "Monst
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towerdefense.Unit.Test", "ClassLibrary1\Towerdefense.Unit.Test.csproj", "{10658E04-2FE0-49FF-92D8-8916CA21243D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefence.Integration.Test", "TowerDefence.Integration.Test\TowerDefence.Integration.Test.csproj", "{C3144454-E806-4328-BC47-A8B0C98DE212}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10658E04-2FE0-49FF-92D8-8916CA21243D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3144454-E806-4328-BC47-A8B0C98DE212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3144454-E806-4328-BC47-A8B0C98DE212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3144454-E806-4328-BC47-A8B0C98DE212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3144454-E806-4328-BC47-A8B0C98DE212}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
