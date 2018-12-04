@@ -47,7 +47,7 @@ namespace MonstersMapsTowers.Class.Pathing
             ///TODO: FIX THE FUCKING PATH TO A RELATIVE PATH! \T
             string path = @"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt";
 
-            
+
 
             //"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt"
 
@@ -70,15 +70,15 @@ namespace MonstersMapsTowers.Class.Pathing
             //  Using mapfile to set Map Settings
 
             mapName = mapFileLines[0];
-             mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
-             initialPlayerBank = Int32.Parse(mapFileLines[2]); // Starting gold 
+            mapImageFilepath = mapFileLines[1]; // contains filepath and file name to Map Image - This should be a selection of coordinates with attributes (walkable, towerplacable, start tile, end(base) Tile
+            initialPlayerBank = Int32.Parse(mapFileLines[2]); // Starting gold 
 
             var rawPathString = mapFileLines[3];    // The raw string containing the offensive unit path. 
 
-             numberOfWaves = Int32.Parse(mapFileLines[4]); // # waves in this map
-             numberOfOffensiveUnits = Int32.Parse(mapFileLines[5]); // # offensive units pr. Wave
-             timeDelaybetweenSpawns = Int32.Parse(mapFileLines[6]);  // time delay before the next offensive unit is spawned. 
-             offensiveUnitType = mapFileLines[7]; // type of offensive unit in the wave. 
+            numberOfWaves = Int32.Parse(mapFileLines[4]); // # waves in this map
+            numberOfOffensiveUnits = Int32.Parse(mapFileLines[5]); // # offensive units pr. Wave
+            timeDelaybetweenSpawns = Int32.Parse(mapFileLines[6]);  // time delay before the next offensive unit is spawned. 
+            offensiveUnitType = mapFileLines[7]; // type of offensive unit in the wave. 
 
             #region Debug writelines.
 
@@ -91,7 +91,7 @@ namespace MonstersMapsTowers.Class.Pathing
             Debug.WriteLine($"Numbers of Units in each Wave: {numberOfOffensiveUnits}");
             Debug.WriteLine($"Delay 'Tween units: {timeDelaybetweenSpawns}");
             Debug.WriteLine($"Unit Type: {offensiveUnitType}");
-            
+
 
             #endregion
 
@@ -101,8 +101,8 @@ namespace MonstersMapsTowers.Class.Pathing
                 Debug.WriteLine(node);
             }
 
-                //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
-                //  
+            //  Instead of splitting this simple string into smaller strings containing instructions, we'd send the collection of coordinates w/ attributes
+            //  
             //var path = new Pathfinder().CalculatePath(rawPath);
 
             return;
