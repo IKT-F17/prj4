@@ -45,7 +45,8 @@ namespace MonstersMapsTowers.Class.Pathing
             //string path = Application.StartupPath + @"\file.txt"
 
             ///TODO: FIX THE FUCKING PATH TO A RELATIVE PATH! \T
-            string path = @"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt";
+            //string path = @"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt";
+            string path = @".\Map01.txt";
 
 
 

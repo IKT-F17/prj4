@@ -23,6 +23,9 @@ namespace TowerDefenceUnitTest.Pathing
             var filename = @"MapFiles\Map01.txt";
             int realInitialPlayerBank = 100;
             int realnumberOfWaves = 5;
+            int realTimeDelaybetweenSpawns = 2;
+            string realOffensiveUnitType = "Goblin";
+
 
             //"D:\GIT\PRJ4\prj4\TowerDefence\TowerDefence\MonstersMapsTowers\MapFiles\Map01.txt"
 
@@ -40,6 +43,9 @@ namespace TowerDefenceUnitTest.Pathing
             Assert.AreEqual(realInitialPlayerBank, mapFileReader.initialPlayerBank);
             Assert.AreEqual(realnumberOfWaves, mapFileReader.numberOfWaves);
             Assert.AreEqual(realPathStack, mapFileReader.rawPath);
+            Assert.AreEqual(realTimeDelaybetweenSpawns, mapFileReader.timeDelaybetweenSpawns);
+            Assert.AreEqual(realOffensiveUnitType, mapFileReader.offensiveUnitType);
+
 
             //Assert.AreEqual()
 
