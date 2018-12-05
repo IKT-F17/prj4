@@ -16,7 +16,7 @@ namespace TowerDefenceUnitTest
 {
     class MapsUnitTest
     {
-        /*
+        
         Maps _uut;
         private MapFileReader fakeMapFile;
         private Goblin fakeOffensiveUnits;
@@ -26,7 +26,7 @@ namespace TowerDefenceUnitTest
         public void Setup()
         {
             _uut = new Maps("");
-            fakeMapFile = Substitute.For<MapFileReader>("Map 1");
+            fakeMapFile = Substitute.For<MapFileReader>();
         }
 
  
@@ -34,7 +34,7 @@ namespace TowerDefenceUnitTest
         public void TestMapValues()
         {
 
-            fakeMapFile.LoadMapFile("map 1");
+            fakeMapFile.ReadMapFile("Map01");
             var mapName = fakeMapFile.mapName;
             var mapImageFilePath = fakeMapFile.mapImageFilepath;
             var initialPlayerBank = fakeMapFile.initialPlayerBank;
@@ -46,7 +46,7 @@ namespace TowerDefenceUnitTest
             Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(timeDelaybetweenSpawns));
             
 
-        } */
+        } 
 
     }
 
