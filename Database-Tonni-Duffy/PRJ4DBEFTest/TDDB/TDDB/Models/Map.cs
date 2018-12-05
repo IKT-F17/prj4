@@ -8,6 +8,12 @@ namespace TDDB.Models
 {
     public class Map
     {
+        public Map(string mapname, int mapscore)
+        {
+            this.MapName = mapname;
+            this.MapScore = mapscore;
+        }
+    
         [Key]
         public string MapName { get; set; }
 

@@ -21,8 +21,11 @@ namespace TDDB.Migrations
 
 
             context.Users.AddOrUpdate(x => x.UserID,
-                new User() { UserID = 1, Username = "xx1337Killerxx", Password = "12345", Scores = new List<Score>() { new Score() { ScoreID = 1, Maps = new List<Map>() { new Map() { MapName = "FangeKaelderen", MapScore = 0 } } } } } //, new Map() {MapName = "DAB", MapScore = 500}
-            );
+               
+                new User(1,"xx1337Killer","12345",0) { Scores = new List<Score>() { new Score(1) { Maps = new List<Map>() { new Map("FangeKaelderen",0) { } } } } }, //, new Map() {MapName = "DAB", MapScore = 500}
+                new User(2,"KillerDK","1234",0) { Scores = new List<Score>() { new Score(2) { Maps = new List<Map>() { new Map("TeknikLaden",0) {} } } } }
+                
+                );
 
 
             //  This method will be called after migrating to the latest version.

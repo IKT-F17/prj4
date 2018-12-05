@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Towerdefense.Unit.Test", "C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TowerDefence.Integration.Test", "TowerDefence.Integration.Test\TowerDefence.Integration.Test.csproj", "{C3144454-E806-4328-BC47-A8B0C98DE212}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDGUI", "..\..\LoginGUI\TDGUI\TDGUI\TDGUI.csproj", "{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDDB", "..\..\Database-Tonni-Duffy\PRJ4DBEFTest\TDDB\TDDB\TDDB.csproj", "{63E8F551-1D01-4CDA-8C15-892B3740AE63}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{C3144454-E806-4328-BC47-A8B0C98DE212}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C3144454-E806-4328-BC47-A8B0C98DE212}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C3144454-E806-4328-BC47-A8B0C98DE212}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E5A5C9A-A720-4C4A-9D9A-DFBCB18EED38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63E8F551-1D01-4CDA-8C15-892B3740AE63}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63E8F551-1D01-4CDA-8C15-892B3740AE63}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63E8F551-1D01-4CDA-8C15-892B3740AE63}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63E8F551-1D01-4CDA-8C15-892B3740AE63}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

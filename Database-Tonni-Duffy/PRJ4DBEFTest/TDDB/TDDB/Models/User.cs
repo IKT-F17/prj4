@@ -10,7 +10,13 @@ namespace TDDB.Models
     public class User
     {
 
-
+        public User(int id, string uname, string pword, int Thighscore)
+        {
+            this.UserID = id;
+            this.Username = uname;
+            this.Password = pword;
+            this.TotalHighscore = Thighscore;
+        }
 
 
 

@@ -8,6 +8,12 @@ namespace TDDB.Models
 {
     public class Score
     {
+        public Score(int ScoreID)
+        {
+            this.ScoreID = ScoreID;
+        }
+
+
         [Key]
         public int ScoreID { get; set; }
 
