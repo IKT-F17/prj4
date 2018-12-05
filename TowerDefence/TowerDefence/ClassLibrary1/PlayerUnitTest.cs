@@ -73,5 +73,20 @@ namespace TowerDefenceUnitTest
 
             Assert.That(_uut.bank, Is.EqualTo(0));
         }
+        [Test]
+        public void TestPlayerHighscore()
+        {
+            _uut.Highscore = 10;
+            
+            Assert.That(_uut.Highscore, Is.EqualTo(10));
+        }
+        [Test]
+        public void TestPlayerHighscore_override()
+        {
+            _uut.Highscore = 10;
+            _uut.Highscore = 100;
+
+            Assert.That(_uut.Highscore, Is.EqualTo(100));
+        }
     }
 }
