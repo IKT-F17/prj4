@@ -77,7 +77,32 @@ namespace ClassLibrary1
             Assert.That(fakePlayer.bank, Is.EqualTo(10));
         }
         [Test]
-        public void TestDowngradeDefensiveUnit_ArcherTower()
+        public void TestDowngradeDefensiveUnit_ArcherTower_fromlevel3to2()
+        {
+            fakePlayer.bank = 100;
+            fakeDefensiveUnit.defensiveLevel = 3;
+            fakeDefensiveUnit.nameDefensiveUnit = "ArcherTower Level 3";
+            fakeDefensiveUnit.defensivePower = 20;
+            fakeDefensiveUnit.defenseType = 1;
+            fakeDefensiveUnit.defenseRange = 2;
+            fakeDefensiveUnit.upgradeCost = 30;
+            fakeDefensiveUnit.unitValue = 30;
+
+            _uut.DowngradeUnit(ref fakeDefensiveUnit, ref fakePlayer);
+
+            Assert.That(fakeDefensiveUnit.defensiveLevel, Is.EqualTo(2));
+            Assert.That(fakeDefensiveUnit.nameDefensiveUnit, Is.EqualTo("ArcherTower Level 2"));
+            Assert.That(fakeDefensiveUnit.defensivePower, Is.EqualTo(18));
+            Assert.That(fakeDefensiveUnit.defenseType, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit.defenseRange, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit.upgradeCost, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit.unitValue, Is.EqualTo(10));
+
+            Assert.That(fakePlayer.bank, Is.EqualTo(130));
+        }
+
+        [Test]
+        public void TestDowngradeDefensiveUnit_ArcherTower_fromlevel2to1()
         {
             fakePlayer.bank = 100;
             fakeDefensiveUnit.defensiveLevel = 2;
