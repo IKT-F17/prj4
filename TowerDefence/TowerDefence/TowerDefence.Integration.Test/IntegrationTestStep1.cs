@@ -78,7 +78,7 @@ namespace TowerDefence.Integration.Test
             Assert.That(fakePlayer.bank, Is.EqualTo(10));
         }
         [Test]
-        public void TestDowngradeDefensiveUnit_ArcherTower()
+        public void TestDowngradeDefensiveUnit_ArcherTower_FromLevel2to1()
         {
             fakePlayer.bank = 100;
             DefensiveUnitArcher.defensiveLevel = 2;
@@ -98,6 +98,31 @@ namespace TowerDefence.Integration.Test
             Assert.That(DefensiveUnitArcher.defenseRange, Is.EqualTo(1));
             Assert.That(DefensiveUnitArcher.upgradeCost, Is.EqualTo(20));
             Assert.That(DefensiveUnitArcher.unitValue, Is.EqualTo(15));
+
+            Assert.That(fakePlayer.bank, Is.EqualTo(130));
+        }
+
+        [Test]
+        public void TestDowngradeDefensiveUnit_ArcherTower_fromlevel3to2()
+        {
+            fakePlayer.bank = 100;
+            DefensiveUnitArcher.defensiveLevel = 3;
+            DefensiveUnitArcher.nameDefensiveUnit = "ArcherTower Level 3";
+            DefensiveUnitArcher.defensivePower = 20;
+            DefensiveUnitArcher.defenseType = 1;
+            DefensiveUnitArcher.defenseRange = 2;
+            DefensiveUnitArcher.upgradeCost = 30;
+            DefensiveUnitArcher.unitValue = 30;
+
+            DefUtilities.DowngradeUnit(ref DefensiveUnitArcher, ref fakePlayer);
+
+            Assert.That(DefensiveUnitArcher.defensiveLevel, Is.EqualTo(2));
+            Assert.That(DefensiveUnitArcher.nameDefensiveUnit, Is.EqualTo("ArcherTower Level 2"));
+            Assert.That(DefensiveUnitArcher.defensivePower, Is.EqualTo(18));
+            Assert.That(DefensiveUnitArcher.defenseType, Is.EqualTo(1));
+            Assert.That(DefensiveUnitArcher.defenseRange, Is.EqualTo(1));
+            Assert.That(DefensiveUnitArcher.upgradeCost, Is.EqualTo(20));
+            Assert.That(DefensiveUnitArcher.unitValue, Is.EqualTo(10));
 
             Assert.That(fakePlayer.bank, Is.EqualTo(130));
         }
