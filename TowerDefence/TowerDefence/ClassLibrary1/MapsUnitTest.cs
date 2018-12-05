@@ -37,47 +37,27 @@ namespace TowerDefenceUnitTest
         {
             
             fakeMapFile.ReadMapFile("Map01");
-            var mapName = fakeMapFile.mapName;
-            var mapImageFilePath = fakeMapFile.mapImageFilepath;
-            var initialPlayerBank = fakeMapFile.initialPlayerBank;
-            var timeDelaybetweenSpawns = fakeMapFile.timeDelaybetweenSpawns;
-            var numberOfWaves = fakeMapFile.numberOfWaves;
-            var numberOfOffensiveUnits = fakeMapFile.numberOfOffensiveUnits;
-            var offensiveUnitType = fakeMapFile.offensiveUnitType;
-            
-            
-            Assert.That(fakeMapFile.mapName, Is.EqualTo(mapName));
-            Assert.That(fakeMapFile.mapImageFilepath, Is.EqualTo(mapImageFilePath));
-            Assert.That(fakeMapFile.initialPlayerBank, Is.EqualTo(initialPlayerBank));
-            Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(timeDelaybetweenSpawns));
-            Assert.That(fakeMapFile.numberOfWaves, Is.EqualTo(numberOfWaves));
-            Assert.That(fakeMapFile.numberOfOffensiveUnits, Is.EqualTo(numberOfOffensiveUnits));
-            Assert.That(fakeMapFile.offensiveUnitType, Is.EqualTo(offensiveUnitType));
-            
+            _uut.mapName = fakeMapFile.mapName;
+            //_uut.mapImageFilePath = fakeMapFile.mapImageFilepath;
+            _uut.initialPlayerBank = fakeMapFile.initialPlayerBank;
+            _uut.timeDelaybetweenSpawns = fakeMapFile.timeDelaybetweenSpawns;
+            _uut.numberOfWaves = fakeMapFile.numberOfWaves;
+            _uut.numberOfOffensiveUnits = fakeMapFile.numberOfOffensiveUnits;
+            _uut.offensiveUnitType = fakeMapFile.offensiveUnitType;
 
-            
+
+            Assert.That(_uut.mapName, Is.EqualTo("FirstMap"));
+            //Assert.That(_uut.mapImageFilepath, Is.EqualTo(mapImageFilePath));
+            Assert.That(_uut.initialPlayerBank, Is.EqualTo(100));
+            Assert.That(_uut.timeDelaybetweenSpawns, Is.EqualTo(2));
+            Assert.That(_uut.numberOfWaves, Is.EqualTo(5));
+            Assert.That(_uut.numberOfOffensiveUnits, Is.EqualTo(10));
+            Assert.That(_uut.offensiveUnitType, Is.EqualTo("Goblin"));
+
+
+
         }
 
-        [Test]
-        public void TestGettingMapFunctions()
-        {
-            fakeMapFile.ReadMapFile("Map01");
-            var mapName = "FirstMap";
-            //var mapImageFilePath = fakeMapFile.mapImageFilepath;
-            var initialPlayerBank = 100;
-            var timeDelaybetweenSpawns = 2;
-            var numberOfWaves = 5;
-            var numberOfOffensiveUnits = 10;
-            var offensiveUnitType = "Goblin";
-
-            Assert.That(fakeMapFile.mapName, Is.EqualTo("FirstMap"));
-            //Assert.That(fakeMapFile.mapImageFilepath, Is.EqualTo(mapImageFilePath));
-            Assert.That(fakeMapFile.initialPlayerBank, Is.EqualTo(100));
-            Assert.That(fakeMapFile.timeDelaybetweenSpawns, Is.EqualTo(2));
-            Assert.That(fakeMapFile.numberOfWaves, Is.EqualTo(5));
-            Assert.That(fakeMapFile.numberOfOffensiveUnits, Is.EqualTo(10));
-            Assert.That(fakeMapFile.offensiveUnitType, Is.EqualTo("Goblin"));
-        }
 
     }
 
