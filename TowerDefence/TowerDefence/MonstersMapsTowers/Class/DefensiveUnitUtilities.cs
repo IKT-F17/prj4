@@ -8,7 +8,7 @@ using MonstersMapsTowers.Interfaces;
 
 namespace MonstersMapsTowers.Class
 {
-    public class DefensiveUnitUtilities
+    public class DefensiveUnitUtilities:IDefensiveUnitUtilities
     {
         private double consecutivePlacementCostFactor = 1.5; // this is the factor which changes the cost of placing a consecutive tower 
         private double upgradeCostFactor = 1.5; // this is the factor which changes the cost of upgrading a tower.  

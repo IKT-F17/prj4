@@ -1,13 +1,17 @@
 ﻿using System.Collections.Generic;
 using MonstersMapsTowers.Class;
+using MonstersMapsTowers.Class.DefensiveUnits;
 
 
 namespace MonstersMapsTowers.Interfaces
 {
     public interface IDefensiveUnitUtilities
     {
-        IDefensiveUnit SpawnDefensivUnit(IDefensiveUnit type, IMaps map, IPlayer player);
-        void upgradUnit(ref IDefensiveUnit unit, ref IPlayer player);
-        void downgradeUnit(ref IDefensiveUnit unit, IPlayer player);
+        //  IDefensiveUnit SpawnDefensivUnit(DefensiveUnit type, Maps map, Player player);
+        void UpgradeUnit(ref ArcherTower unit, ref Player player);
+        void UpgradeUnit(ref CannonTower unit, ref Player player);
+        void DowngradeUnit(ref ArcherTower unit, ref Player player);
+        void DowngradeUnit(ref CannonTower unit, ref Player player);
+        //Bør være generisk
     }
 }
