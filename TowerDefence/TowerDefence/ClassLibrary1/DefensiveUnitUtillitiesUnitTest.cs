@@ -10,8 +10,9 @@ using NSubstitute;
 using NUnit.Framework;
 using NUnit.Framework.Internal;
 
-namespace ClassLibrary1
+namespace TowerDefenceUnitTest
 {
+    [TestFixture]
     public class DefensiveUnitUtillitiesUnitTest
     {
         DefensiveUnitUtilities _uut;
