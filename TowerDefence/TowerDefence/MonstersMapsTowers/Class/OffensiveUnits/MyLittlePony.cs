@@ -19,14 +19,8 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
             reward = 15;
             hitPoints = 150;
             attackPower = 1;
-            Immunities("");
+            // Immunities("");
             path = _path;
-        }
-
-
-        public void Immunities(string type)
-        {
-
         }
 
         public void TakeDamage(int damage)
@@ -38,7 +32,8 @@ namespace MonstersMapsTowers.Class.OffensiveUnits
         public int runSpeed { get; set; }//offensive unit speed on map
         public int reward { get; set; }//reward for killing an offensive unit
         public int hitPoints { get; set; }//attack power
-       public int attackPower { get; set; }
+        public int attackPower { get; set; }
         public Stack<string> path { get; set; }
+        //public void Immunities { get; set; }
     }
 }
