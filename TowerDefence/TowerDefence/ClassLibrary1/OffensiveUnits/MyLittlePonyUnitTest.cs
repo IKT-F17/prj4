@@ -17,8 +17,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
     public class MyLittlePonyUnitTest
     {
         MyLittlePony _uut;
-       // MapFileReader mapFile = new MapFileReader("map 1");
-        MapFileReader fakemapFile;
+       MapFileReader fakemapFile;
 
         [SetUp]
         public void Setup()

@@ -17,8 +17,7 @@ namespace ClassLibrary1
         DefensiveUnitUtilities _uut;
         Player fakePlayer;
         ArcherTower fakeDefensiveUnit;
-        //private string user_="IB";
-        private CannonTower fakeDefensiveUnit1;
+       CannonTower fakeDefensiveUnit1;
 
         [SetUp]
         public void Setup()
