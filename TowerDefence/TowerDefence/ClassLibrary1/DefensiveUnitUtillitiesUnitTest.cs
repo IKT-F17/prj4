@@ -103,6 +103,30 @@ namespace TowerDefenceUnitTest
         }
 
         [Test]
+        public void TestDowngradeDefensiveUnit_CannonTower_fromlevel3to2()
+        {
+            fakePlayer.bank = 100;
+            fakeDefensiveUnit1.defensiveLevel = 3;
+            fakeDefensiveUnit1.nameDefensiveUnit = "CannonTower Level 3";
+            fakeDefensiveUnit1.defensivePower = 22;
+            fakeDefensiveUnit1.defenseType = 1;
+            fakeDefensiveUnit1.defenseRange = 3;
+            fakeDefensiveUnit1.upgradeCost = 30;
+            fakeDefensiveUnit1.unitValue = 30;
+
+            _uut.DowngradeUnit(ref fakeDefensiveUnit1, ref fakePlayer);
+
+            Assert.That(fakeDefensiveUnit1.defensiveLevel, Is.EqualTo(2));
+            Assert.That(fakeDefensiveUnit1.nameDefensiveUnit, Is.EqualTo("CannonTower Level 2"));
+            Assert.That(fakeDefensiveUnit1.defensivePower, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit1.defenseType, Is.EqualTo(1));
+            Assert.That(fakeDefensiveUnit1.defenseRange, Is.EqualTo(2));
+            Assert.That(fakeDefensiveUnit1.upgradeCost, Is.EqualTo(20));
+            Assert.That(fakeDefensiveUnit1.unitValue, Is.EqualTo(10));
+
+            Assert.That(fakePlayer.bank, Is.EqualTo(130));
+        }
+        [Test]
         public void TestDowngradeDefensiveUnit_ArcherTower_fromlevel2to1()
         {
             fakePlayer.bank = 100;
@@ -176,7 +200,7 @@ namespace TowerDefenceUnitTest
             Assert.That(fakePlayer.bank, Is.EqualTo(80));
         }
         [Test]
-        public void TestDowngradeDefensiveUnit_CannonTower()
+        public void TestDowngradeDefensiveUnit_CannonTower_fromlevel2to1()
         {
             fakePlayer.bank = 100;
             fakeDefensiveUnit1.defensiveLevel = 2;
