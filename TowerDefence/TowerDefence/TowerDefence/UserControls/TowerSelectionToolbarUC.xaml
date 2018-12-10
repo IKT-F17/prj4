@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="TowerDefence.UserControls.TowerSelectionToolbar"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:TowerDefence.UserControls"
+             mc:Ignorable="d">
+
+    <Canvas x:Name="SelectTowerCanvas" Height="85" Width="90" Background="White">
+    
+        <StackPanel>
+
+            <Label Content="Select Tower:" FontWeight="Bold"/>
+
+            <StackPanel Orientation="Horizontal">
+
+                <StackPanel>
+                    <Rectangle x:Name="ArcherTowerBuy" Width="42" Height="42" StrokeThickness="1.5" RenderTransformOrigin="0.5,0.5" MouseDown="ArcherTowerBuy_OnMouseDown">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/TowerDefence;component/Resources/ArcherTower.png" Stretch="UniformToFill"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Height="15" Margin="6 -4" Orientation="Horizontal">
+                        <Rectangle Height="6" Width="6" Margin="5 0 0 0" >
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/TowerDefence;component/Resources/GoldCoin.gif" Stretch="Uniform"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Label x:Name="ArcherTowerPrice" Content="-" Margin="-2 -2" FontSize="6" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel>
+                    <Rectangle x:Name="CannonTowerBuy" Width="42" Height="42" StrokeThickness="1.5" RenderTransformOrigin="0.5,0.5" MouseDown="CannonTowerBuy_OnMouseDown">
+                        <Rectangle.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Rectangle.RenderTransform>
+                        <Rectangle.Fill>
+                            <ImageBrush ImageSource="/TowerDefence;component/Resources/CannonTower.png" Stretch="UniformToFill"/>
+                        </Rectangle.Fill>
+                    </Rectangle>
+                    <StackPanel Height="15" Margin="6 -4" Orientation="Horizontal">
+                        <Rectangle Height="6" Width="6" Margin="5 0 0 0" >
+                            <Rectangle.Fill>
+                                <ImageBrush ImageSource="/TowerDefence;component/Resources/GoldCoin.gif" Stretch="Uniform"/>
+                            </Rectangle.Fill>
+                        </Rectangle>
+                        <Label x:Name="CannonTowerPrice" Content="-" Margin="-2 -2" FontSize="6" />
+                    </StackPanel>
+                </StackPanel>
+
+            </StackPanel>
+        </StackPanel>
+
+    </Canvas>
+
+</UserControl>

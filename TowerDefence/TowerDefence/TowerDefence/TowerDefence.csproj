@@ -64,8 +64,8 @@
     <Compile Include="UserControls\GoblinUC.xaml.cs">
       <DependentUpon>GoblinUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\TowerSelectionToolbar.xaml.cs">
-      <DependentUpon>TowerSelectionToolbar.xaml</DependentUpon>
+    <Compile Include="UserControls\TowerSelectionToolbarUC.xaml.cs">
+      <DependentUpon>TowerSelectionToolbarUC.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -91,7 +91,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\TowerSelectionToolbar.xaml">
+    <Page Include="UserControls\TowerSelectionToolbarUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,6 +134,9 @@
   <ItemGroup>
     <Resource Include="Resources\ArcherTower.png" />
     <Resource Include="Resources\CannonTower.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\GoldCoin.gif" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

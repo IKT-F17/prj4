@@ -23,7 +23,7 @@
         <Button Content="Spawn Wave" Width="90" Height="30" Canvas.Left="445" Canvas.Top="460" Click="BtnSpawnWave_OnClick"/>
 
         <!-- Select Towers "Toolbox" -->
-        <StackPanel Canvas.Left="10" Canvas.Top="432">
+        <!--<StackPanel Canvas.Left="10" Canvas.Top="432">
             <Label Content="Select Tower:" FontWeight="Bold"/>
             <StackPanel Orientation="Horizontal" >
                 <Rectangle x:Name="ArcherTowerBuy" Margin="4 0 0 0" Width="42" Height="42" StrokeThickness="2" MouseDown="ArcherTowerBuy_MouseDown" >
@@ -31,7 +31,7 @@
                         <ImageBrush Stretch="Uniform" ImageSource="Resources/ArcherTower.png"/>
                     </Rectangle.Fill>
                 </Rectangle>
-                <!-- Spacer -->
+                --><!-- Spacer --><!--
                 <Rectangle Width="10" Visibility="Hidden"/>
                 <Rectangle x:Name="CannonTowerBuy" Width="42" Height="42" StrokeThickness="2" MouseDown="CannonTowerBuy_MouseDown">
                     <Rectangle.Fill>
@@ -39,7 +39,9 @@
                     </Rectangle.Fill>
                 </Rectangle>
             </StackPanel>
-        </StackPanel>
+        </StackPanel>-->
+
+        <userControls:TowerSelectionToolbar Canvas.Left="10" Canvas.Top="417"/>
 
         <!-- Tower Placements -->
         <Rectangle Width="42" Height="42" Canvas.Left="171" Canvas.Top="187" MouseDown="TowerPlacement_OnMouseDown" >

@@ -21,11 +21,13 @@ namespace TowerDefence
         private List<ArcherTowerUC> TowersList = new List<ArcherTowerUC>();
         private List<GoblinUC> MobsList = new List<GoblinUC>();
 
-        private bool _isClicked;
-        private Rectangle _towerSelected;
+        //private bool _isClicked;
+        //private Rectangle _towerSelected;
 
         private bool _mobSpawned = false;
         private int counter = 0;
+
+        public TowerSelectionToolbar BuyNewTowerSelection { get; set; }
         #endregion
 
 
@@ -34,12 +36,12 @@ namespace TowerDefence
         {
             InitializeComponent();
             GameTickSetup();
-            UIElementsInitializer();
+            InitUIElements();
         }
 
-        private void UIElementsInitializer()
+        private void InitUIElements()
         {
-            
+            BuyNewTowerSelection = new TowerSelectionToolbar();
         }
         #endregion
 
@@ -175,23 +177,10 @@ namespace TowerDefence
 
 
         #region SELECT & PLACE:
-        // ARCHER TOWER:
-        private void ArcherTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            SelectTower(sender);
-        }
-
-        // CANON TOWER:
-        private void CannonTowerBuy_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            SelectTower(sender);
-        }
-
         // TOWER PLACEMENT:
         private void TowerPlacement_OnMouseDown(object sender, MouseButtonEventArgs e)
         {
-            // Prevents event handler from going any future, when no tower is selected.
-            if (_towerSelected == null) return;
+            if (!BuyNewTowerSelection._towerSelected) return;
 
             // Pattern matching:
             if (!(sender is Rectangle s)) return;
@@ -201,7 +190,17 @@ namespace TowerDefence
 
             // Creating new Tower object and helper variables.
             var point = new Point(Canvas.GetLeft(s) - 43, Canvas.GetTop(s) - 43);
+
+            if (BuyNewTowerSelection._towerSelectedName == "ArcherTowerBuy")
+            {
+                
+            }
+
+
+
             var tower = new ArcherTowerUC();
+
+
             Canvas.SetLeft(tower, point.X);
             tower.TowerHitBox.X = point.X;
             Canvas.SetTop(tower, point.Y);
@@ -209,20 +208,6 @@ namespace TowerDefence
             Map1.Children.Add(tower);
 
             TowersList.Add(tower);
-
-            // Resetting variables, so a new tower can be selected and placed.
-            _towerSelected = null;
-            ArcherTowerBuy.Stroke = null;
-            _isClicked = false;
-        }
-
-        // GENERAL TOWER FUNCTIONS:
-        private void SelectTower(object sender)
-        {
-            _towerSelected = sender as Rectangle;
-
-            _isClicked = !_isClicked;
-            _towerSelected.Stroke = _isClicked ? Brushes.Black : null;
         }
         #endregion
 
