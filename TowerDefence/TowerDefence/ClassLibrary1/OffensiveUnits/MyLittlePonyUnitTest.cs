@@ -28,7 +28,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         }
 
         [Test]
-        public void TestConstructor_true()
+        public void TestMyLittlePony_Constructor_true()
         {
             Assert.That(_uut.nameOffensiveUnit, Is.EqualTo("MyLittlePony"));
             Assert.That(_uut.runSpeed, Is.EqualTo(2));
@@ -38,7 +38,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         }
 
         [Test]
-        public void TestConstrutionOnMoreMobs()
+        public void TestMyLittlePony_ConstrutionOnMoreMobs()
         {
             var _path = fakemapFile.rawPath;
 
@@ -51,7 +51,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
             Assert.That(pony1.attackPower, Is.EqualTo(pony2.attackPower));
         }
         [Test]
-        public void TestConstructor_false()
+        public void TestMyLittlePony_Constructor_false()
         {
             Assert.AreNotEqual(_uut.reward, 14);
             Assert.AreNotEqual(_uut.reward, 16);
@@ -65,7 +65,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         }
 
         [Test]
-        public void UnitTakingDamage()
+        public void UnitMyLittlePony_TakingDamage()
         {
             _uut.TakeDamage(1);
             Assert.That(_uut.hitPoints, Is.EqualTo(149));
