@@ -13,6 +13,12 @@ namespace TowerDefence
     /// </summary>
     public partial class App : Application
     {
-        
+        public string username;
+        private void Application_Startup(object sender, StartupEventArgs args)
+        {
+            //username = args.Args[0];
+            MainWindow window = new MainWindow();
+            window.Show();
+        }
     }
 }
