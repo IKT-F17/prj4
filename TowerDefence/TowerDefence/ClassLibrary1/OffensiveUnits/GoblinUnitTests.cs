@@ -57,7 +57,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         }
 
         [Test]
-        public void CheckingForFalse()
+        public void CheckingGoblinsForFalse()
         {
             Assert.AreNotEqual(_uut.runSpeed, 0);
             Assert.AreNotEqual(_uut.runSpeed, 2);
@@ -70,7 +70,7 @@ namespace TowerDefenceUnitTest.OffensiveUnits
         }
 
         [Test]
-        public void UnitTakingDamage()
+        public void UnitGoblinsTakingDamage()
         {
             _uut.TakeDamage(1);
             Assert.That(_uut.hitPoints, Is.EqualTo(99));

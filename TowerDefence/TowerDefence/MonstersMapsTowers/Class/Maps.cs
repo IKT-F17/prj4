@@ -12,7 +12,7 @@ using MonstersMapsTowers.Class.Pathing;
 namespace MonstersMapsTowers.Class
 {
     public class Maps : IMaps
-    {
+    {  
 
         public Maps(string mapName) //constructor
         {

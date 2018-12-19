@@ -71,7 +71,7 @@ namespace TDGUI.ViewModel
             //.NET REMOTING
             //JSON DESERIALIZER / SERIALIZER
             System.Diagnostics.Process.Start(
-                @"C:\Users\Duffy\Desktop\Integrationsforsøg\TowerDefence\TowerDefence\TowerDefence\bin\Debug\TowerDefence.exe",
+                @"..\TowerDefence\bin\Debug\TowerDefence.exe",
                 "Test");
 
         }
